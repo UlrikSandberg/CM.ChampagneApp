@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.ArticleList">
+    <ContentView.Content>
+        <StackLayout Spacing="30" x:Name="ContentPresenter">
+            
+            
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

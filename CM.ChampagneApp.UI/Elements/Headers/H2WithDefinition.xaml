@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Headers.H2WithDefinition">
+    <ContentView.Content>
+        <StackLayout Padding="20,0,20,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30">
+                <BoxView HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource Key=DarkGold}">
+                </BoxView>
+                <Label x:Name="AnotherLabel" Grid.Row="0" Grid.Column="2" Text="{Binding Title, Source={x:Reference Control}}" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                <BoxView HeightRequest="1" VerticalOptions="Center" BackgroundColor="{StaticResource Key=DarkGold}">
+                </BoxView>
+            </StackLayout>
+            <Label x:Name="DefinitionLabel" Text="{Binding Definition, Source={x:Reference Control}}" HorizontalOptions="Center" Margin="0" TextColor="White" FontSize="10" FontAttributes="Italic" FontFamily="{StaticResource Key=ButtonFont}" HorizontalTextAlignment="Center">
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

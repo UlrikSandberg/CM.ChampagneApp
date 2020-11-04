@@ -1,0 +1,398 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{65D54BBE-5FF4-45B9-AEFC-1BBA1C13561D}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CM.ChampagneApp.iOS</RootNamespace>
+    <AssemblyName>CM.ChampagneApp.iOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <ReleaseVersion>0.2</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <IOSDebuggerPort>51113</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Developer: Ulrik Sandberg (66ML9H67GM)</CodesignKey>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>Full</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
+    <CodesignKey>iPhone Developer: Ulrik Sandberg (66ML9H67GM)</CodesignKey>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>iPhone Developer: Ulrik Sandberg (66ML9H67GM)</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebuggerPort>39030</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <BuildIpa>true</BuildIpa>
+    <CodesignKey>iPhone Developer: Ulrik Sandberg (66ML9H67GM)</CodesignKey>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'iOS Release|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\iOS Release</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <CodesignKey>iPhone Developer: Ulrik Sandberg (66ML9H67GM)</CodesignKey>
+    <MtouchUseThumb>true</MtouchUseThumb>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <PackageReference Include="AutoMapper">
+      <Version>8.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>1.13.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Crashes">
+      <Version>1.13.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Distribute">
+      <Version>1.13.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Push">
+      <Version>1.13.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile.Client">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="LiveXAML">
+      <Version>2.1.70</Version>
+    </PackageReference>
+    <Reference Include="Xamarin.iOS" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0">
+      <ExcludeAssets>all</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="Effects\" />
+    <Folder Include="Renderers\" />
+    <Folder Include="Assets.xcassets\LaunchScreenImage.imageset\" />
+    <Folder Include="Assets.xcassets\AlertIcon.imageset\" />
+    <Folder Include="Resources\Fonts\" />
+    <Folder Include="Assets.xcassets\Intro screen.imageset\" />
+    <Folder Include="IOSImplementations\" />
+    <Folder Include="Assets.xcassets\TabBarBrands.imageset\" />
+    <Folder Include="Assets.xcassets\TabBarSearch.imageset\" />
+    <Folder Include="Assets.xcassets\InfoIcon.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IOSImplementations\CustomContextActionsManager.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Effects\ShadowEffect.cs" />
+    <Compile Include="Renderers\GradientFrameRenderer.cs" />
+    <Compile Include="Renderers\TransparentViewCellRenderer.cs" />
+    <Compile Include="Renderers\ColorFrameRenderer.cs" />
+    <Compile Include="Renderers\IOSScrollViewRenderer.cs" />
+    <Compile Include="Renderers\BasePageRenderer.cs" />
+    <Compile Include="Renderers\DefaultScrollViewRenderer.cs" />
+    <Compile Include="Renderers\RatingStarsRenderer.cs" />
+    <Compile Include="Renderers\TransparentTextEntryRenderer.cs" />
+    <Compile Include="Renderers\NavigationPageRenderer.cs" />
+    <Compile Include="Renderers\GroupListRenderer.cs" />
+    <Compile Include="IOSImplementations\PicturePickerImplementation.cs" />
+    <Compile Include="Renderers\LongTapH2Gesture.cs" />
+    <Compile Include="Renderers\SearchSliderRenderer.cs" />
+    <Compile Include="Renderers\OnLineLabelrenderer.cs" />
+    <Compile Include="IOSImplementations\IOSAuthService.cs" />
+    <Compile Include="Renderers\ChatEntryRenderer.cs" />
+    <Compile Include="Renderers\CustomChatEditorRenderer.cs" />
+    <Compile Include="Renderers\TransparentEditorRenderer.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="IOSImplementations\IOSDisplaySettings.cs" />
+    <Compile Include="Renderers\TabbarPageRenderer.cs" />
+    <Compile Include="IOSImplementations\iOSDevice.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CM.ChampagneApp.DTO\CM.ChampagneApp.DTO.csproj">
+      <Project>{0fc0825c-ac37-4a34-b5cb-0cf56ab5e406}</Project>
+      <Name>CM.ChampagneApp.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CM.ChampagneApp.UI\CM.ChampagneApp.UI.csproj">
+      <Project>{BE4068C0-7C91-46FD-A06F-FB460A4E8EF2}</Project>
+      <Name>CM.ChampagneApp.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-57x57%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-57x57%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-72x72%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-72x72%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\.DS_Store" />
+    <ImageAsset Include="Assets.xcassets\Assests\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\Flute.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\Flute.imageset\flute_small-01 copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\HeartIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\HeartIcon.imageset\like copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\Home.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\Home.imageset\Discover white v22.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\User.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\User.imageset\user copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\arrowIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\arrowIcon.imageset\icon-ios7-arrow-right-128.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\bottle_bubbles.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\bottle_bubbles.imageset\bottle copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\champagne moments logo hvid app-kopi.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\champagne moments logo hvid app-kopi.imageset\champagne moments logo hvid app-kopi.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\crossBold.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\crossBold.imageset\cross black.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\edit_profile_icon copy.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\edit_profile_icon copy.imageset\edit_profile_icon copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\emptyStar.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\emptyStar.imageset\starEmpty.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\filledFlag.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\filledFlag.imageset\added_to_cellar_icon copy-kopi.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\filledStar.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\filledStar.imageset\StarFilled.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\filterBlack.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\filterBlack.imageset\filterBlack.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\filterGray.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\filterGray.imageset\filterGray.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\foodPairing.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\foodPairing.imageset\dish.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\grayHeart.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\grayHeart.imageset\grayHeart.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\grayHeart30x30.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\grayHeart30x30.imageset\grayHeart copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\gridIconFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\gridIconFilled.imageset\Grid_gold_512x512- copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\gridIconGray.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\gridIconGray.imageset\Grid_grey_512x512-01 copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\likedHeart.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\likedHeart.imageset\likedHeart.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\listIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\listIcon.imageset\list_512x512-01 copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\listIconFilled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\listIconFilled.imageset\list_gold_512x512-01 copy.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\longArrow-1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\longArrow-1.imageset\right_arrow1600.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\longArrow.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\longArrow.imageset\right_arrow1600.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\moreDots.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\moreDots.imageset\moreDots.png" />
+    <ImageAsset Include="Assets.xcassets\Assests\searchBrands.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Assests\searchBrands.imageset\Search brands.png" />
+    <ImageAsset Include="Assets.xcassets\LogInSignIn\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LogInSignIn\guld.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LogInSignIn\guld.imageset\guld.png" />
+    <ImageAsset Include="Assets.xcassets\AlertIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AlertIcon.imageset\bell-icon-v3.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ItunesArtwork%402x.png" />
+    <ImageAsset Include="Assets.xcassets\TabBarBrands.imageset\Brands.png" />
+    <ImageAsset Include="Assets.xcassets\TabBarBrands.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TabBarSearch.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\TabBarSearch.imageset\Search users.png" />
+    <ImageAsset Include="Assets.xcassets\InfoIcon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\InfoIcon.imageset\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FilterSearchGray.png" />
+    <BundleResource Include="Resources\GridGray.png" />
+    <BundleResource Include="Resources\HouseGray.png" />
+    <BundleResource Include="Resources\StarGray.png" />
+    <BundleResource Include="Resources\Star.png" />
+    <BundleResource Include="Resources\TopBG.png" />
+    <BundleResource Include="Resources\LeftWing.png" />
+    <BundleResource Include="Resources\RightWing.png" />
+    <BundleResource Include="Resources\Oval.svg" />
+    <BundleResource Include="Resources\Oval4x.png" />
+    <BundleResource Include="Resources\PalateIcon.png" />
+    <BundleResource Include="Resources\NoseIcon.png" />
+    <BundleResource Include="Resources\EyeIcon.png" />
+    <BundleResource Include="Resources\ArrowIcon.png" />
+    <BundleResource Include="Resources\Oval.png" />
+    <BundleResource Include="Resources\HeartGoldIcon.png" />
+    <BundleResource Include="Resources\HeartGoldIcon2x.png" />
+    <BundleResource Include="Resources\BookmarkIcon.png" />
+    <BundleResource Include="Resources\BackArrowIcon.png" />
+    <BundleResource Include="Resources\Search.png" />
+    <BundleResource Include="Resources\Settings.png" />
+    <BundleResource Include="Resources\www.png" />
+    <BundleResource Include="Resources\Twitter.png" />
+    <BundleResource Include="Resources\Pinterest.png" />
+    <BundleResource Include="Resources\Instagram.png" />
+    <BundleResource Include="Resources\Facebook.png" />
+    <BundleResource Include="Resources\LoginBackground.png" />
+    <BundleResource Include="Resources\SignUpBackground.png" />
+    <BundleResource Include="Resources\StarGold.png" />
+    <BundleResource Include="Resources\HalfStar.png" />
+    <BundleResource Include="Resources\CheckMarkIcon.png" />
+    <BundleResource Include="Resources\HeartGrayIcon.png" />
+    <BundleResource Include="Resources\WelcomeBackground.png" />
+    <BundleResource Include="Resources\TransparentLogo.png" />
+    <BundleResource Include="Resources\Fonts\PlayfairDisplay-Black.ttf" />
+    <BundleResource Include="Resources\Fonts\PlayfairDisplay-BlackItalic.ttf" />
+    <BundleResource Include="Resources\Fonts\PlayfairDisplay-Italic.ttf" />
+    <BundleResource Include="Resources\Fonts\PlayfairDisplay-Regular.ttf" />
+    <BundleResource Include="Resources\ResetPasswordBackground.png" />
+    <BundleResource Include="Resources\Intro screen.jpg" />
+    <BundleResource Include="Resources\ForwardArrowIcon.png" />
+    <BundleResource Include="Resources\PlaceholderProfileImg.png" />
+    <BundleResource Include="Resources\PlaceholderCoverImg.png" />
+    <BundleResource Include="Resources\GridGold.png" />
+    <BundleResource Include="Resources\OvalBlack.png" />
+    <BundleResource Include="Resources\EmptyStateBG.png" />
+    <BundleResource Include="Resources\OptionIcon.png" />
+    <BundleResource Include="Resources\ForwardIcon.png" />
+    <BundleResource Include="Resources\Triangle.png" />
+    <BundleResource Include="Resources\TriangleBig.png" />
+    <BundleResource Include="Resources\FlatTriangle.png" />
+    <BundleResource Include="Resources\unbookmarkChampagneOptions.png" />
+    <BundleResource Include="Resources\bookmarkChampagneOptions.png" />
+    <BundleResource Include="Resources\editTastingChampagneOptions.png" />
+    <BundleResource Include="Resources\startTastingChampagneOptions.png" />
+    <BundleResource Include="Resources\CellarCoverDefault.jpg" />
+    <BundleResource Include="Resources\ProfileCoverDefault.jpg" />
+    <BundleResource Include="Resources\CellarCardDefault.jpg" />
+    <BundleResource Include="Resources\PlaceholderBrandLogoImg.png" />
+    <BundleResource Include="Resources\NotificationIcon.png" />
+    <BundleResource Include="Resources\CommentIconWhite.png" />
+    <BundleResource Include="Resources\CommentIconGold.png" />
+    <BundleResource Include="Resources\DeleteContextBtn.jpg" />
+    <BundleResource Include="Resources\EditContextBtn.jpg" />
+    <BundleResource Include="Resources\SuccesCheckAnimation.json" />
+    <BundleResource Include="SuccesCheckAnimation.json" />
+    <BundleResource Include="Resources\OnboardingImage1.png" />
+    <BundleResource Include="Resources\OnboardingImage2.png" />
+    <BundleResource Include="Resources\OnboardingImage3.png" />
+    <BundleResource Include="Resources\SignUpValidationSucces.png" />
+    <BundleResource Include="Resources\SignUpValidationError.png" />
+    <BundleResource Include="Resources\WelcomeOnboardingImage.png" />
+    <BundleResource Include="LCDAnimation.json" />
+    <BundleResource Include="OnboardingAnimation.json" />
+    <BundleResource Include="OnboardingAnimation2.json" />
+    <BundleResource Include="Resources\FollowUserTrue.png" />
+    <BundleResource Include="Resources\FollowUserFalse.png" />
+    <BundleResource Include="Resources\FollowHouseFalse.png" />
+    <BundleResource Include="Resources\FollowHouseTrue.png" />
+    <BundleResource Include="Resources\GrapesBackground.png" />
+    <BundleResource Include="Resources\OvalLightGold.png" />
+    <BundleResource Include="Resources\SubscriptionCoverImage.jpg" />
+    <BundleResource Include="Resources\SubscriptionCoverImage.png" />
+    <BundleResource Include="Resources\PhoneAndNotification.png" />
+    <BundleResource Include="Resources\PhoneAndMailbox.png" />
+    <BundleResource Include="Resources\SquareLogo.png" />
+    <BundleResource Include="Resources\SortDescendingWhite.png" />
+    <BundleResource Include="Resources\SortAscendingWhite.png" />
+    <BundleResource Include="Resources\Inactive.png" />
+    <BundleResource Include="Resources\SettingsWithBadge.png" />
+    <BundleResource Include="Resources\PlaceholderCover.jpg" />
+    <BundleResource Include="Resources\PlaceholderBrandList.jpg" />
+    <BundleResource Include="Resources\PlaceholderCellar.jpg" />
+    <BundleResource Include="Resources\WhiteStar_Discover.png" />
+    <BundleResource Include="Resources\EclipseLoader.gif" />
+    <BundleResource Include="RefreshAnimation.json" />
+    <BundleResource Include="RefreshAnimationShattered.json" />
+    <BundleResource Include="Resources\Top10ListTrapez.png" />
+    <BundleResource Include="Resources\Top10BannerLeft.png" />
+    <BundleResource Include="Resources\Top10BannerRight.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

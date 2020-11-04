@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.FilterSearchContent">
+    <ContentView.Content>
+        <ScrollView Padding="0,0,0,0">
+            <StackLayout Spacing="10">
+                <Headers:H2WithDefinition Padding="0,20,0,0" x:Name="TypeDefiniton" Title="Champagne Type">
+                </Headers:H2WithDefinition>
+                <Lists:FilterSearchTagList OnLongGestureEnded="Handle_OnLongGestureEndedType" OnLongGesture="Handle_OnLongGestureType" OnFiltersChosen="Handle_OnTypeFiltersChosen" ItemSource="{Binding ChampagneType}">
+                </Lists:FilterSearchTagList>
+                <Headers:H2WithDefinition x:Name="StyleDefinition" Title="Champagne Style">
+                </Headers:H2WithDefinition>
+                <Lists:FilterSearchTagList OnLongGestureEnded="Handle_OnLongGestureEndedStyle" OnLongGesture="Handle_OnLongGestureStyle" OnFiltersChosen="Handle_OnStyleFiltersChosen" ItemSource="{Binding ChampagneStyle}">
+                </Lists:FilterSearchTagList>
+                <Headers:H2WithDefinition x:Name="DosageDefinition" Title="Champagne Dosage">
+                </Headers:H2WithDefinition>
+                <Lists:FilterSearchTagList OnLongGestureEnded="Handle_OnLongGestureEndedDosage" OnLongGesture="Handle_OnLongGestureDosage" OnFiltersChosen="Handle_OnDosageFiltersChosen" ItemSource="{Binding ChampagneDosage}">
+                </Lists:FilterSearchTagList>
+                <Headers:H2 Title="Champagne Rating">
+                </Headers:H2>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Frame Padding="0" WidthRequest="30">
+                        <Label x:Name="MinimumRating" Text="0.0" TextColor="White" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="End" />
+                    </Frame>
+                    <Slider Minimum="0.0" Maximum="5.0" WidthRequest="180" ValueChanged="Handle_ValueChanged">
+                    </Slider>
+                    <Frame Padding="0" WidthRequest="30">
+                        <Label Text="5.0" TextColor="White" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" />
+                    </Frame>
+                </StackLayout>
+                <Buttons:RoundButtomMedium Text="     Search     " Padding="0,10,0,20" OnClicked="Handle_OnClicked">
+                </Buttons:RoundButtomMedium>
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

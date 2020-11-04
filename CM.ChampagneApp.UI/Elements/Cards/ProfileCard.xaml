@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.ProfileCard">
+    <ContentView.Content>
+
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                <Frame Padding="0" CornerRadius="15" IsClippedToBounds="true" BackgroundColor="{StaticResource Key=DenimBlack}">
+                    <Grid>
+                        <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Source="{Binding CardImgUrl}" Aspect="AspectFill" ErrorPlaceholder="PlaceholderCellar.jpg" LoadingPlaceholder="PlaceholderCellar.jpg"/>
+                        <Frame Padding="0" BackgroundColor="{StaticResource Key=TransparentColor}" Opacity="0.4"/>
+                    </Grid>
+                </Frame>
+                <StackLayout Padding="20" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start">
+                    <Label Text="{Binding Title}" FontFamily="{StaticResource Key=HeaderFont}" FontSize="24" TextColor="White"/>
+                    <StackLayout x:Name="LabelPresenter" Orientation="Horizontal" Spacing="15">
+                       
+                    </StackLayout>
+                </StackLayout>  
+                <Button Clicked="Handle_Clicked"></Button>
+            </Grid>
+        </RelativeLayout>
+        
+    </ContentView.Content>
+</ContentView>

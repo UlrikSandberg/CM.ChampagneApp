@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Resources.Colors">
+    <Color x:Key="Charcoal">#1C1E29</Color>
+    <Color x:Key="ArrogantGray">#2E3147</Color>
+    <Color x:Key="DenimBlack">#0B0E1D</Color>
+    <Color x:Key="TransparentColor">#333333</Color>
+    <Color x:Key="MistyPeacock">#252736</Color>
+    <Color x:Key="DarkPeacock">#1A1C27</Color>
+    <Color x:Key="GradientStart">#64553D</Color>
+    <Color x:Key="Coral">#C77966</Color>
+    <Color x:Key="Peanut">#665A4D</Color>
+    <Color x:Key="DarkGold">#A68F68</Color>
+    <Color x:Key="LightGold">#D9BB88</Color>
+    <Color x:Key="LightGrey">#F7F7F7</Color>
+</ResourceDictionary>

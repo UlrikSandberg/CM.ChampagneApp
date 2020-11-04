@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.ListSeperator">
+    <ContentView.Content>
+        <Frame HeightRequest="1" Padding="0" Margin="0,0,0,0" BackgroundColor="{StaticResource Key=DarkGold}"/>
+    </ContentView.Content>
+</ContentView>

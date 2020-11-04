@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:RoundBtn="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Btns="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CM.ChampagneApp.UI.Pages.LoginSignupPages.RegisterPage.RegisterPage">
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="WelcomeBackground" Aspect="AspectFill" />
+            <StackLayout>
+                <Navigation:DefaultNavigationBar Title="Create Your Account" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" LeftIcon="BackArrowIcon">
+                </Navigation:DefaultNavigationBar>
+                <ScrollView HorizontalOptions="Center" VerticalOptions="FillAndExpand" Padding="0,0,0,20">
+                    <StackLayout Padding="0,0,0,40" Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Typography:SignUpEntryField ValidationState="{Binding EmailValidationState}" IsValidating="{Binding IsValidatingEmail}" Keyboard="Email" Padding="60,0,60,0" Margin="0,0,0,0" Title="EMAIL" OnEntryFieldCompleted="Handle_OnEmailCompleted">
+                        </Typography:SignUpEntryField>
+                        <Label Margin="40,0,40,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding EmailErrorMessage}" TextColor="{StaticResource Key=Coral}" FontSize="10" />
+                        <Typography:SignUpEntryField ValidationState="{Binding UsernameValidationState}" IsValidating="{Binding IsValidatingUsername}" Keyboard="Default" Margin="60,0,60,0" Title="USERNAME" OnEntryFieldCompleted="Handle_OnUsernameCompleted">
+                        </Typography:SignUpEntryField>
+                        <Label Margin="40,0,40,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding UsernameErrorMessage}" TextColor="{StaticResource Key=Coral}" FontSize="10" />
+                        <Typography:SignUpEntryField OnTextChange="Handle_OnTextChange" ValidationState="{Binding PasswordValidationState}" IsValidating="{Binding IsValidatingPassword}" Keyboard="Default" IsPassword="true" Margin="60,0,60,0" Title="PASSWORD" OnEntryFieldCompleted="Handle_OnPasswordCompleted">
+                        </Typography:SignUpEntryField>
+                        <Label Margin="40,0,40,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding PasswordErrorMessage}" TextColor="{StaticResource Key=Coral}" FontSize="10" />
+                        <Button Text="By clicking Sign Up, you agree to our Terms and Policies" Clicked="Handle_OnTermsOfPoliciesClicked" TextColor="White" FontAttributes="Bold" FontSize="8" HorizontalOptions="Center" />
+                        <RoundBtn:RoundButtomMedium OnClicked="Handle_OnSignUpClicked" HasShadow="true" Text="             SIGN UP              " Background="{StaticResource Key=DarkGold}">
+                        </RoundBtn:RoundButtomMedium>
+                        <Headers:H2 Title="OR">
+                        </Headers:H2>
+                        <Button Margin="0,-15,0,0" Text="Already have an account? Login." Clicked="Handle_OnAlreadyHaveAccountClicked" TextColor="White" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center" />
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

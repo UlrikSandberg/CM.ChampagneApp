@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:EmptyStateScreen="clr-namespace:CM.ChampagneApp.UI.Elements.EmptyStateScreens" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:Carousel="clr-namespace:CM.ChampagneApp.UI.Elements.Carousels" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:SegControl="clr-namespace:CM.ChampagneApp.UI.Elements.SegmentedControl" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.CellarPage.CellarPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar Title="{Binding NavigationTitle}" BackgroundColor="{StaticResource Key=DenimBlack}" LeftIconCommand="{Binding NavigateBack}" LeftIcon="BackArrowIcon">
+            </Navigation:DefaultNavigationBar>
+            <SegControl:SegmentedControl OnSegmentSelected="Handle_OnSegmentSelected" Margin="0,-8,0,0" BackgroundColor="{StaticResource Key=DenimBlack}" x:Name="SegmentControl" IsSlidingIndicatorVisible="true" SlidingIndicatorTintColor="{StaticResource Key=DarkGold}" Padding="0,0,0,0" Grid.Row="0">
+                <SegControl:SegmentedControl.Children>
+                    <SegControl:SegmentedControlTab Text="TASTED" />
+                    <SegControl:SegmentedControlTab Text="SAVED" />
+                </SegControl:SegmentedControl.Children>
+            </SegControl:SegmentedControl>
+            <Carousel:GenericCarousel x:Name="CarouselView" PositionSelected="Handle_PositionSelected" ItemsSource="{Binding ItemSource}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Carousel:GenericCarousel.ItemTemplate>
+                    <DataTemplate>
+                        <InfiniteListView:InfiniteListView x:Name="InfiniteList" UseCustomEmptyStateContent="true" ReconnectCommand="{Binding PagingService.ReconnectCommand}" UseFooterAnimationLoaderAsDefault="true" RequestNextPageCommand="{Binding PagingService.RequestNextPage}" UsePullToRefreshAnimationLoaderAsDefault="true" IsRefreshingActivityStatus="{Binding PagingService.RefreshingStatus}" RefreshCommand="{Binding PagingService.RefreshCommand}" IsPullToRefreshEnabled="true" ActivityStatus="{Binding PagingService.LoadingStatus}" UseInitAnimationLoaderAsDefault="true" SeparatorVisibility="None"
+                            BackgroundColor="Transparent" ItemSource="{Binding PagingService._collectionViewData.ItemSource}">
+                            <InfiniteListView:InfiniteListView.AddCustomEmptyStateContent>
+                                <EmptyStateScreen:NoSavedChampagnes OnEmptyStateClicked="Handle_OnEmptyStateClicked" BindingContext="{Binding Source={x:Reference InfiniteList}, Path=BindingContext.EmptyStateModel}" Title="{Binding TitleProperty.Value}" Body="{Binding BodyProperty.Value}" ButtonText="{Binding ButtonTextProperty.Value}" Icon="{Binding IconProperty.Value}" IsButtonVisible="{Binding ButtonTextProperty.IsVisible}" IsIconVisible="{Binding IconProperty.IsVisible}">
+                                    
+                                </EmptyStateScreen:NoSavedChampagnes>
+                            </InfiniteListView:InfiniteListView.AddCustomEmptyStateContent>
+                            <InfiniteListView:InfiniteListView.ListItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid x:Name="ChampagneGrid" Padding="10,20,10,30" ColumnSpacing="10" BackgroundColor="Transparent">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Cards:ChampagneUserCard IsFlipEnabled="{Binding Source={x:Reference InfiniteList}, Path=BindingContext.IsFlipEnabled}" OnChosenPersonalNotes="Handle_OnChosenPersonalNotes" OnChosenChampagne="Handle_OnChosenChampagne" BindingContext="{Binding Entity1}" Grid.Column="0" IsVisible="{Binding Source={x:Reference ChampagneGrid}, Path=BindingContext.IsEntity1Visible}">
+                                            </Cards:ChampagneUserCard>
+                                            <Cards:ChampagneUserCard IsFlipEnabled="{Binding Source={x:Reference InfiniteList}, Path=BindingContext.IsFlipEnabled}" OnChosenPersonalNotes="Handle_OnChosenPersonalNotes" OnChosenChampagne="Handle_OnChosenChampagne" BindingContext="{Binding Entity2}" Grid.Column="1" IsVisible="{Binding Source={x:Reference ChampagneGrid}, Path=BindingContext.IsEntity2Visible}">
+                                            </Cards:ChampagneUserCard>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </InfiniteListView:InfiniteListView.ListItemTemplate>
+                        </InfiniteListView:InfiniteListView>
+                    </DataTemplate>
+                </Carousel:GenericCarousel.ItemTemplate>
+            </Carousel:GenericCarousel>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

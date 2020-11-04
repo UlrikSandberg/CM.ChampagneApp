@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage x:Name="Control" IsContentLoadingAnimationVisible="{Binding DownloadManager.IsDownloading}" IsContentLoadingAnimationEnabled="true" ReconnectCommand="{Binding DownloadManager.Reconnect}" IsOutOfService="{Binding DownloadManager.IsOutOfService}" HasBackButton="{Binding HasBackButton}" NavigationBackgroudColor="{StaticResource Key=DenimBlack}" ScrolledNavigationTitle="{Binding DownloadManager.Data.Title}" ScrolledNavigationSubtitle="{Binding DownloadManager.Data.BrandName}" HasNavigationBar="true"
+    NavigationTitle="{Binding DownloadManager.Data.Title}" NavigationSubTitle="{Binding DownloadManager.Data.BrandName}" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:Custom="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.InfoPages.BrandInfoPage.BrandInfoPage">
+    <d:BaseContentPage.PageContent>
+        <CustomLayouts:InfoPage ItemSource="{Binding DownloadManager.Data.Sections}" HeaderImg="{Binding DownloadManager.Data.HeaderImgUrl}" IsVintageUI="{Binding IsVintageUI}" IsVintageUIInverse="{Binding IsVintageUI}">
+        </CustomLayouts:InfoPage>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

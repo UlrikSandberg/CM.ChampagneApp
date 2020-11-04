@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.PickImage">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Frame HasShadow="true" Padding="0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.65}" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black">
+                <Frame CornerRadius="10" IsClippedToBounds="true" Padding="0">
+                    <Grid>
+                        <ffimageloading:CachedImage x:Name="ImagePresenter" BackgroundColor="Transparent" Source="{Binding Source, Source={x:Reference Control}}" Aspect="AspectFill" />
+                        <Button Clicked="Handle_Clicked"></Button>
+                    </Grid>
+                </Frame>
+            </Frame>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

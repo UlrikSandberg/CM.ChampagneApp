@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.EditProfilePage.EditProfilePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" LeftIcon="BackArrowIcon" Title="Edit Profile" IsToggle="false" RightIcon="CheckMarkIcon.png" OnRightNavIconClicked="Handle_OnRightNavIconClicked" />
+            <CustomLayouts:ReconnectView Reconnect="{Binding Reconnect}" IsOutOfService="{Binding IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfService}">
+                <CustomLayouts:ReconnectView.AddContent>
+                    <Grid>
+                        <ScrollView x:Name="Container" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingUserSettings, Converter={StaticResource InverseBool}}">
+                            <StackLayout BindingContext="{Binding UserSettings}" Spacing="20" BackgroundColor="Transparent" Padding="0,20,0,20">
+                                <Headers:H2 Title="Profile Picture">
+                                </Headers:H2>
+                                <Assets:CircleImageButton BackgroundColor="Transparent" Shadow="true" ChoosePhotoEnabled="true" OnImageChosen="Handle_OnProfileImageChosen" Source="{Binding ProfileImageUrl}" Diameter="120" HorizontalOptions="Center">
+                                </Assets:CircleImageButton>
+                                <Label Text="Tap to change profile picture" FontFamily="{StaticResource Key=ButtonFont}" FontSize="14" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                <Headers:H2 Title="Profile Info">
+                                </Headers:H2>
+                                <Assets:EditProfileForm2x2 Entry1Text="{Binding Name}" OnEntry1Entered="Handle_OnEntry1Entered" Entry2Text="{Binding ProfileName}" OnEntry2Entered="Handle_OnEntry2Entered" Padding="20,0,20,0">
+                                </Assets:EditProfileForm2x2>
+                                <Typography:GiveReviewTextField Title="Biography: " ReviewText="{Binding Biography}" PlaceholderText="Tell a bit about yourself..." IsWordCountEnabled="true" AllowedWordCount="150" OnReviewEntered="Handle_OnReviewEntered" Padding="20,0,20,0">
+                                </Typography:GiveReviewTextField>
+                                <Headers:H2 Title="Cover Image">
+                                </Headers:H2>
+                                <Assets:PickImage OnImageChosen="Handle_OnCoverImageChosen" Source="{Binding ProfileCoverImageUrl}" Padding="20,0,20,0">
+                                </Assets:PickImage>
+                                <Label Text="Tap to change cover image" FontFamily="{StaticResource Key=ButtonFont}" FontSize="14" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                <Headers:H2 Title="Cellar Image" />
+                                <Assets:PickImageCover OnImageChosen="Handle_OnImageChosen" Padding="20,0,20,0" Source="{Binding ProfileCellarCardImageUrl}" />
+                                <Label Text="Tap to change cellar image" FontFamily="{StaticResource Key=ButtonFont}" FontSize="14" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                        </ScrollView>
+                        <Assets:ActivityIndicatorWithSuccesBox Text="Please wait while we save your changes" OnDidDisappear="Handle_OnDidDisappear" IsVisible="{Binding IsUploadingIndicatorVisible}" IsLoading="{Binding IsUploadingUserSettings}" IsDoneUploadingWithSucces="{Binding IsDoneUploadingUserSettingsWithSucces}" IsDoneUploadingWithError="{Binding IsDoneUploadingUserSettingsWithError}">
+                        </Assets:ActivityIndicatorWithSuccesBox>
+                    </Grid>
+                </CustomLayouts:ReconnectView.AddContent>
+            </CustomLayouts:ReconnectView>
+            <ActivityIndicator IsVisible="{Binding IsDownloadingUserSettings}" IsRunning="{Binding IsDownloadingUserSettings}" Color="LightGray">
+            </ActivityIndicator>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

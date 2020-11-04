@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.PriceEntryCard">
+    <RelativeLayout>
+        <Frame Padding="10" CornerRadius="15" BackgroundColor="{StaticResource Key=MistyPeacock}" HasShadow="false" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" HeightRequest="60">
+            <StackLayout BackgroundColor="Transparent">
+                <Label VerticalOptions="Start" Text="Price:" FontFamily="{StaticResource Key=HeaderFont}" TextColor="{StaticResource Key=DarkGold}" FontSize="12"/>
+                <Grid ColumnSpacing="5" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label VerticalOptions="Center" Text="Add price:" TextColor="White" FontSize="12" Grid.Row="0" Grid.Column="0"/>
+                    <Typography:TransparentTextEntry x:Name="PriceEntry" Focused="Handle_Focused" Unfocused="Handle_Unfocused" TextColor="White" Keyboard="Numeric" FontSize="12" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1"></Typography:TransparentTextEntry>
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </RelativeLayout>
+</ContentView>

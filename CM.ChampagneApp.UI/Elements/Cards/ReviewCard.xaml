@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:RatingStars="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" x:Name="Control" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.ReviewCard">
+    <ContentView.Resources>
+    <ResourceDictionary>
+            <ValueConverters:BoolToStringConverter TrueValue="HeartGoldIcon2x.png" FalseValue="HeartGrayIcon.png" x:Key="LikeImage"/>
+            <ValueConverters:BoolToStringConverter TrueValue="CommentIconGold.png" FalseValue="CommentIconWhite.png" x:Key="CommentImage"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="ReviewContent" ColumnSpacing="10" Padding="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Frame Padding="0" x:Name="ProfileImageContainer" IsClippedToBounds="true" VerticalOptions="Start">
+            <ffimageloading:CachedImage x:Name="ProfileImage" VerticalOptions="Start" PropertyChanged="Handle_PropertyChanged" Source="{Binding ProfileImgUrl}" HeightRequest="25" WidthRequest="25" />
+            </Frame>
+                <StackLayout Spacing="10" Grid.Row="0" Grid.Column="1">
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                    <Button x:Name="Username" Text="{Binding AuthorName}" Margin="0,-15,0,-15" TextColor="White" FontSize="10" Clicked="Handle_ClickedProfileName" />
+                    <Image Source="Oval" HeightRequest="6" />
+                    <Label Text="{Binding TastingDateStringRepresentation}" TextColor="White" FontSize="10" />
+                </StackLayout>
+                <StackLayout Spacing="15" Orientation="Horizontal">
+                    <RatingStars:TastingCardStars RatingValue="{Binding Rating}"></RatingStars:TastingCardStars>
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                        <Button Image="{Binding IsLikedByRequester, Converter={StaticResource LikeImage}}" HeightRequest="15" WidthRequest="15" Clicked="Handle_ClickedLikeBtn"/>
+                        <Label Text="{Binding NumberOfLikes}" VerticalOptions="Center" FontSize="10" FontAttributes="Bold" TextColor="White" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                        <Button Image="{Binding IsCommentedByRequester, Converter={StaticResource CommentImage}}" HeightRequest="15" WidthRequest="15" Clicked="Handle_ClickedCommentBtn"/>
+                        <Label Text="{Binding NumberOfComments}" VerticalOptions="Center" FontSize="10" FontAttributes="Bold" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+                <Label x:Name="ReviewBody" Text="{Binding Review}" TextColor="White" FontSize="10" />
+            </StackLayout>
+            <Grid Grid.Column="2" HeightRequest="0">
+                <Image Source="ForwardIcon" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding InspectEnabled, Source={x:Reference Control}}"/>
+                <Button Clicked="Handle_ArrowClicked" IsVisible="{Binding InspectEnabled, Source={x:Reference Control}}" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

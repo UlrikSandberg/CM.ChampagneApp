@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.FilterSearchTagList">
+    <ContentView.Content>
+        <RelativeLayout>
+            <ScrollView Padding="20,18,20,18" BackgroundColor="Transparent"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.0001, Constant=80}" Orientation="Horizontal">
+                <StackLayout x:Name="ContentPresenter" HorizontalOptions="Center" Orientation="Horizontal" Spacing="15">
+                    
+                </StackLayout>   
+            </ScrollView>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,22 @@
+﻿{
+    "Environment": "LOCAL",
+    "ConfigurationEndpoint": "https://api-prod.champagnemoments.eu",
+    "ApplicationId": "ChampagneMoments.DEV",
+    "ClientId": "452f6a5f-07b4-4bb4-a270-99372dd3dee9",
+    "ClientSecret": "25191aee-4418-4861-96bb-2263a91e5f2e",
+    "BuildId": "",
+    "AppCenter" : {
+        "EnableAppCenterIntegration": "True",
+        "AppSecret": "",
+        "EnableAnalytics": "True",
+        "EnableCrashes": "True",
+        "EnableDistribute": "True",
+        "EnablePush": "True",
+        "LogLevel": "Verbose"
+    },
+    "Fallback": {
+        "ApiUrl": "https://api-prod.champagnemoments.eu",
+        "BlobUrl": "https://files-prod.champagnemoments.eu",
+        "IdpUrl": "https://idp-prod.champagnemoments.eu"
+    }
+}

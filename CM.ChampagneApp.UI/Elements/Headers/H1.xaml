@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Headers.H1">
+    <ContentView.Content>
+
+        <RelativeLayout Padding="0,10,0,10">
+            <Elements:GradientFrame CornerRadius="15" Padding="20,0,20,0" Margin="0,0,-100,0" StartColor="{StaticResource Key=DarkGold}" EndColor="{StaticResource Key=GradientStart}" StartPoint="0,0" EndPoint="1,0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.15}">
+                
+                <Label x:Name="TitleLabel" FontFamily="{StaticResource Key=HeaderFont}" FontSize="18" HorizontalOptions="Start" Text="Behind The Label" TextColor="White" VerticalOptions="Center"/>
+              
+            </Elements:GradientFrame>
+        </RelativeLayout>
+        
+        <!--RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.15}"-->
+        
+    </ContentView.Content>
+</ContentView>

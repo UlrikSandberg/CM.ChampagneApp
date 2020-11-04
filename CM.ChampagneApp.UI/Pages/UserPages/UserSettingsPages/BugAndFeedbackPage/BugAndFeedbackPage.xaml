@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.BugAndFeedbackPage.BugAndFeedbackPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Navigation:DefaultNavigationBar OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" Title="Feedback and bugs" BackgroundColor="{StaticResource Key=DenimBlack}" LeftIcon="BackArrowIcon">
+            </Navigation:DefaultNavigationBar>
+            <Grid>
+                <ScrollView>
+                    <StackLayout Padding="20">
+                        <Label FontSize="14" FontAttributes="Bold" FontFamily="Avenir" Text="Thank you for taking your time to help improve Champagne Moments. If you are experiencing bugs or have any suggestions on how we can improve the community, please use this form below. We look forward to serving your request." TextColor="White" HorizontalTextAlignment="Center">
+                        </Label>
+                        <Headers:H2 Title="Select Action" />
+                        <Assets:ContentSwitchWithTwoOptions OnFeedbackActionClicked="Handle_OnFeedbackActionClicked" OnBugActionClicked="Handle_OnBugActionClicked" Padding="20" HeightRequest="60" />
+                        <Grid>
+                            <StackLayout x:Name="BugUI" IsVisible="false">
+                                <Label FontSize="14" FontFamily="Avenir" Text="Are you experiencing a bug or odd behaviour, please let us know. Use the description box below, and or upload a screenshot." TextColor="White" HorizontalTextAlignment="Center">
+                                </Label>
+                                <Typography:GiveReviewTextField OnReviewEntered="Handle_OnBugDescriptionEntered" PlaceholderText="When i did... I Experienced..." Padding="0,20,0,20" Title="Description:">
+                                </Typography:GiveReviewTextField>
+                                <Label Text="Tab picture to upload image from your photos" FontFamily="{StaticResource Key=ButtonFont}" FontSize="14" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                <Assets:PickImage Padding="0,20,0,20" OnImageChosen="Handle_OnBugImageChosen"/>
+
+                                <Label Text="We may try to contact you by email when solving your bug" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+                                <Buttons:RoundButtomMedium OnClicked="Handle_SubmitBug" Padding="0,20,0,20" Text="Submit Bug" />
+
+                            </StackLayout>
+                            <StackLayout x:Name="FeedbackUI" IsVisible="false">
+                                <Label FontSize="14" FontFamily="Avenir" Text="Having a great idea, which you think could contribute to the community. Dont hesitate to reach out, write a description below." TextColor="White" HorizontalTextAlignment="Center">
+                                </Label>
+                                <Typography:GiveReviewTextField OnReviewEntered="Handle_OnFeedbackDescriptionEntered" PlaceholderText="I think it would be really cool to have..." Padding="0,20,0,20" Title="Feedback:">
+                                </Typography:GiveReviewTextField>
+                                <Label Text="We may try to contact you by email when serving your feedback" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+                                <Buttons:RoundButtomMedium OnClicked="Handle_SubmitFeedback" Padding="0,20,0,20" Text="Submit feedback" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+                <Assets:ActivityIndicatorWithSuccesBox x:Name="UploadingIndicator" Text="Thank you for your suggestion!" OnDidDisappear="Handle_OnDidDisappear" IsVisible="{Binding UploadingIndicatorIsVisible}" IsLoading="{Binding UploadingIndicatorIsLoading}" IsDoneUploadingWithSucces="{Binding UploadingIndicatorIsDoneUploadingWithSucces}"></Assets:ActivityIndicatorWithSuccesBox>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

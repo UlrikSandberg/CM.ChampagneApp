@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:ListFooters="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.FooterElements" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources"
+    xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.BrandPages.BrandListPage.BrandListPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+            <ValueConverters:BoolToStringConverter TrueValue="SortAscendingWhite.png" FalseValue="SortDescendingWhite.png" x:Key="SortOption" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar Padding="0,0,0,0" BackgroundColor="Transparent" RightIcon="{Binding SortingOption, Converter={StaticResource SortOption}}" RightIconCommand="{Binding SortOptionChanged}" Title="Brands">
+            </Navigation:DefaultNavigationBar>
+            <Grid VerticalOptions="FillAndExpand">
+                <CustomLayouts:ReconnectView OnTryAgain="Handle_OnTryAgain" IsOutOfService="{Binding Source={x:Reference Control}, Path=BindingContext.PageService.IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfService}">
+                    <CustomLayouts:ReconnectView.AddContent>
+                        <InfiniteListView:InfiniteListView OnItemTapped="Handle_OnItemTapped" ReconnectCommand="{Binding ReconnectCommand}" IsRefreshingActivityStatus="{Binding Source={x:Reference Control}, Path=BindingContext.PageService.RefreshingStatus}" RefreshCommand="{Binding Refresh}" UsePullToRefreshAnimationLoaderAsDefault="true" UseFooterAnimationLoaderAsDefault="true" UseInitAnimationLoaderAsDefault="true" IsPullToRefreshEnabled="true" RequestNextPageCommand="{Binding DownloadNextPage}" ActivityStatus="{Binding Source={x:Reference Control}, Path=BindingContext.PageService.LoadingStatus}" IsBackgroundVisible="true" ItemSource="{Binding PageService.itemSource}">
+                            <InfiniteListView:InfiniteListView.ListItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Cards:BrandCard BrandName="{Binding Name}" NumberOfBottles="{Binding NumberOfEditions}" UserTastings="{Binding NumberOfTastings}" Padding="20,0,20,20">
+                                        </Cards:BrandCard>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </InfiniteListView:InfiniteListView.ListItemTemplate>
+                            <InfiniteListView:InfiniteListView.CustomFooter>
+                                <ContentView>
+                                    <Grid>
+                                        <ListFooters:BrandSubmissionFooter SuccesState="{Binding SubmissionSuccesState}" OnSubmissionEntered="Handle_OnSubmissionEntered" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.PageService.AllEntitiesHasBeenDownloaded}">
+                                        </ListFooters:BrandSubmissionFooter>
+                                    </Grid>
+                                </ContentView>
+                            </InfiniteListView:InfiniteListView.CustomFooter>
+                        </InfiniteListView:InfiniteListView>
+                    </CustomLayouts:ReconnectView.AddContent>
+                </CustomLayouts:ReconnectView>
+                <Assets:ActivityIndicatorWithSuccesBox Text="Thanks for you suggestion!" OnDidDisappear="Handle_OnDidDisappear" IsDoneUploadingWithSucces="{Binding SuccessIndicatorIsDoneUploadingWithSucces}" IsLoading="{Binding SuccessIndicatorIsLoading}" IsVisible="{Binding SuccessIndicatorIsVisible}" x:Name="SuccesIndicator" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

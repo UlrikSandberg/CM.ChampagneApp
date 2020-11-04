@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Color="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Ele="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.SubscriptionCard">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.2}">
+                <Ele:GradientFrame StartColor="{StaticResource Key=DarkGold}" EndColor="{StaticResource Key=GradientStart}" StartPoint="0,0" EndPoint="1,0" CornerRadius="15">
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                        <Label Text="CHAMPAGNE LOVERS" FontSize="16" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" />
+                        <StackLayout HorizontalOptions="EndAndExpand" Spacing="0">
+                            <Label HorizontalTextAlignment="End" Text="{Binding TotalAmount, Source={x:Reference Control}}" FontFamily="Arial" FontAttributes="Bold" FontSize="14" TextColor="White" />
+                            <Label Text="{Binding WeeklyAmount, Source={x:Reference Control}}" FontFamily="Arial" FontSize="12" TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Ele:GradientFrame>
+                <Button Command="{Binding ClickedCommand, Source={x:Reference Control}}">
+                </Button>
+            </Grid>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

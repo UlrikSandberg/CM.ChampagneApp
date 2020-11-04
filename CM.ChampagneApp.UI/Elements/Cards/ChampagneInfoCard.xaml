@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="champagneInfoCard" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.ChampagneInfoCard">
+    <ContentView.Content>
+        <StackLayout>
+            <RelativeLayout>
+                <Grid BackgroundColor="Transparent" VerticalOptions="FillAndExpand" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.7}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Column 0-->
+                    <Assets:ChampagneRating AverageRating="{Binding AverageRating, Source={x:Reference champagneInfoCard}}" VerticalOptions="End" HorizontalOptions="Center">
+                    </Assets:ChampagneRating>
+                   
+                    <!-- Column 1-->
+                    <!-- Column 1, First layer represents the middle coloumn divided into 10 sections with a oval in the buttom-->
+                    <Grid Grid.Row="0" Grid.Column="1" Margin="0,0,0,0" BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="100*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="OvalBlack" Grid.Row="1" Grid.Column="1" />
+                    </Grid>
+                    <!-- Column 1, second layer represents the bottle on top of the Oval layer. Raised just alittle-->
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="89*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <ffimageloading:CachedImage x:Name="BottleImage" Source="{Binding ImageURI, Source={x:Reference champagneInfoCard}}" Aspect="AspectFit" Grid.Row="0" Grid.Column="0" ErrorPlaceholder="bottle_bubbles" LoadingPlaceholder="bottle_bubbles">
+                            
+                        </ffimageloading:CachedImage>
+                        <Button Grid.Row="0" Grid.Column="0"/>
+                    </Grid>
+                    <Button Grid.Row="0" Grid.Column="1" Clicked="Handle_Clicked"/>
+                    <!-- Coloumn 2-->
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="End" Spacing="5" Grid.Row="0" Grid.Column="2">
+                        <Label Text="{Binding NumberOfTastings, Source={x:Reference champagneInfoCard}}" TextColor="White" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" />
+                        <Label Text="Tastings" TextColor="White" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Grid>
+            </RelativeLayout>
+            <StackLayout Padding="15" Spacing="5">
+                <Label Text="{Binding BrandName, Source={x:Reference champagneInfoCard}}" FontFamily="{StaticResource Key=HeaderFont}" TextColor="{StaticResource Key=DarkGold}" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                <Label Text="{Binding BottleName, Source={x:Reference champagneInfoCard}}" FontFamily="{StaticResource Key=HeaderFont}" TextColor="White" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+            </StackLayout>
+            <Assets:Grid3x2 x:Name="Grid" Field1x1="{Binding Vintage, Source={x:Reference champagneInfoCard}}" Field1x2="{Binding Character, Source={x:Reference champagneInfoCard}}" Field1x3="{Binding Dosage, Source={x:Reference champagneInfoCard}}" Field2x1="{Binding Price, Source={x:Reference champagneInfoCard}}" Field2x2="{Binding Alchohol, Source={x:Reference champagneInfoCard}}" Field2x3="{Binding BottleSize, Source={x:Reference champagneInfoCard}}">
+            </Assets:Grid3x2>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

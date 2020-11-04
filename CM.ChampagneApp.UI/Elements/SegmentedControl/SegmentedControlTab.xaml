@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.SegmentedControl.SegmentedControlTab">
+    <ContentView.Content>
+        <Grid>
+            <Label Text="{Binding Text, Source={x:Reference Control}}" TextColor="White" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Clicked="Handle_Clicked"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

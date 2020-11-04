@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards"
+                    xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects"
+                    xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements"
+                    xmlns:res="clr-namespace:CM.ChampagneApp.UI.Resources"
+                    x:Class="CM.ChampagneApp.UI.Resources.Cards">
+    <ResourceDictionary.MergedDictionaries>
+        <res:Colors />
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="cards:ChampagneCard">
+        <Setter Property="effects:ShadowEffects.Opacity" Value="0.3" />
+        <Setter Property="effects:ShadowEffects.Color" Value="Black" />
+        <Setter Property="effects:ShadowEffects.BlurRadius" Value="15" />
+        <Setter Property="effects:ShadowEffects.Direction" Value="0,10" />
+    </Style>
+    <Style x:Key="DefaultShadow" TargetType="ContentView" ApplyToDerivedTypes="true">
+        <Setter Property="effects:ShadowEffects.Opacity" Value="0.3" />
+        <Setter Property="effects:ShadowEffects.Color" Value="Black" />
+        <Setter Property="effects:ShadowEffects.BlurRadius" Value="15" />
+        <Setter Property="effects:ShadowEffects.Direction" Value="0,10" />
+    </Style>
+    <Style x:Key="DefaultGradient" TargetType="elements:GradientFrame">
+        <Setter Property="StartColor" Value="{StaticResource MistyPeacock}" />
+        <Setter Property="EndColor" Value="{DynamicResource DarkPeacock}" />
+        <Setter Property="StartPoint" Value="0.2, 0.0" />
+        <Setter Property="EndPoint" Value="0.7, 1.0" />
+    </Style>
+    
+</ResourceDictionary>

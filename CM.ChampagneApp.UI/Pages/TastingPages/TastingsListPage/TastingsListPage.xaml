@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage IsOutOfService="{Binding IsOutOfService}" ReconnectCommand="{Binding Reconnect}" RightNavigationIconCommand="{Binding Source={x:Reference Control}, Path=BindingContext.RightIconClicked}" NavigationTitle="{Binding ChampagneWithRatingAndTasting.BottleName}" NavigationSubTitle="{Binding ChampagneWithRatingAndTasting.BrandName}" HasBackButton="{Binding HasBackButton}" HasNavigationBar="true" NavigationBackgroudColor="{StaticResource Key=DenimBlack}" RightNavigationIcon="OptionIcon" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources"
+    x:Name="Control" xmlns:ValueConverter="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Sections="clr-namespace:CM.ChampagneApp.UI.Elements.Sections" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.TastingPages.TastingsListPage.TastingsListPage">
+    <d:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverter:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </d:BaseContentPage.Resources>
+    <d:BaseContentPage.PageContent>
+        <Grid>
+            <StackLayout Spacing="0" x:Name="outerStack">
+                <Assets:ScatteredAnimationLoader IsVisible="{Binding IsRefreshing}">
+                </Assets:ScatteredAnimationLoader>
+                <Grid>
+                    <ListView x:Name="innerList" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding Refresh}" Margin="20,0,0,0" BackgroundColor="Transparent" SeparatorColor="{StaticResource Key=DarkGold}" HasUnevenRows="true" CachingStrategy="RecycleElement" ItemsSource="{Binding Tastings}"
+                        ItemAppearing="Handle_ItemAppearing">
+                        <ListView.Header>
+                            <StackLayout>
+                                <Headers:H1 Padding="0,10,0,0" Title="All Tastings By Stars" Margin="0,0,0,0" />
+                                <Sections:RatingsByStars ItemSource="{Binding Source={x:Reference Control}, Path=BindingContext.ChampagneWithRatingAndTasting.RatingByStars}" Padding="0,-5,0,20" />
+                                <Headers:H1 Title="All Tastings" Padding="0,0,0,0" />
+                                <StackLayout Padding="0,10,20,0" Spacing="20" x:Name="NoTastingNotes" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.NoTastingsWithNotes}">
+                                    <Label Text="No members have left any tasting notes yet. Be the first to share your thoughts about this champagne." TextColor="White" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12" HorizontalTextAlignment="Center" />
+                                    <Buttons:RoundButtomMedium Text="Start Tasting" OnClicked="Handle_OnClickedEmptyState" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Cards:ReviewCard Padding="0,20,20,20" OnProfileNameClicked="Handle_OnProfileNameClicked" OnInspectReview="Handle_OnInspectReview" OnLikeBtnClicked="Handle_OnLikeBtnClicked" OnCommentBtnClicked="Handle_OnCommentBtnClicked">
+                                    </Cards:ReviewCard>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Footer>
+                            <StackLayout Padding="0,10,20,30">
+                                <Assets:ScatteredAnimationLoader IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager.IsLoadingEntities}" HorizontalOptions="Center" VerticalOptions="Center">
+                                </Assets:ScatteredAnimationLoader>
+                                <Label Margin="0,-5,0,-10" Text="There are no more tastings" TextColor="White" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager.AllEntitiesHasBeenDownloaded}" FontSize="12" HorizontalOptions="Center" FontFamily="{StaticResource Key=HeaderFont}" />
+                            </StackLayout>
+                        </ListView.Footer>
+                    </ListView>
+                    <Frame IsVisible="{Binding PageManager.IsInitialLoadInProgress}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Key=Charcoal}">
+                        <Assets:ScatteredAnimationLoader HorizontalOptions="Center" VerticalOptions="Center">
+                        </Assets:ScatteredAnimationLoader>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+            <CustomLayouts:ChampagneOptionsView x:Name="OptionMenu" IsFakeNavigationBarVisible="false" Option1Command="{Binding Option1Clicked}" Option2Command="{Binding Option2Clicked}" Option2Icon="{Binding StartTastingToggleManager.BoolToggle.CurrentValue}" Option2Title="{Binding StartTastingToggleManager.CustomBoolToggle.CurrentValue}" Option1Icon="{Binding BookmarkManager.BoolToggle.CurrentValue}" Option1Title="{Binding BookmarkManager.CustomBoolToggle.CurrentValue}" BackgroundClickedCommand="{Binding RightIconClicked}" Option1IsVisible="true" Option2IsVisible="true" IsVisible="{Binding IsOptionsMenuVisible}" ShouldAnimateView="{Binding IsOptionsMenuVisible}" />
+        </Grid>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

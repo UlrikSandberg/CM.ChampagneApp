@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:EmptyStateScrees="clr-namespace:CM.ChampagneApp.UI.Elements.EmptyStateScreens" xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters"  xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.SearchPages.FilterSearchResultPage.FilterSearchResultPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" LeftIconCommand="{Binding NavigateBack}" LeftIcon="BackArrowIcon" Title="Search Results">
+            </Navigation:DefaultNavigationBar>
+            <InfiniteListView:InfiniteListView x:Name="InfiniteList" UseCustomEmptyStateContent="true" ReconnectCommand="{Binding PagingService.ReconnectCommand}" UseFooterAnimationLoaderAsDefault="true" RequestNextPageCommand="{Binding PagingService.RequestNextPage}" UsePullToRefreshAnimationLoaderAsDefault="true" IsRefreshingActivityStatus="{Binding PagingService.RefreshingStatus}" RefreshCommand="{Binding PagingService.RefreshCommand}" IsPullToRefreshEnabled="true" ActivityStatus="{Binding PagingService.LoadingStatus}"
+                UseInitAnimationLoaderAsDefault="true" SeparatorVisibility="None" BackgroundColor="Transparent" ItemSource="{Binding PagingService._collectionViewData.ItemSource}">
+                <InfiniteListView:InfiniteListView.AddCustomEmptyStateContent>
+                    <EmptyStateScrees:NoSavedChampagnes OnEmptyStateClicked="Handle_OnEmptyStateClicked" Title="{Binding EmptyStateModel.TitleProperty.Value}" Body="{Binding EmptyStateModel.BodyProperty.Value}" IsIconVisible="{Binding EmptyStateModel.IconProperty.IsVisible}" ButtonText="{Binding EmptyStateModel.ButtonTextProperty.Valie}" IsButtonVisible="{Binding EmptyStateModel.ButtonTextProperty.IsVisible}">
+                    </EmptyStateScrees:NoSavedChampagnes>
+                </InfiniteListView:InfiniteListView.AddCustomEmptyStateContent>
+                <InfiniteListView:InfiniteListView.ListItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="ChampagneGrid" Padding="10,20,10,30" ColumnSpacing="10" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Cards:ChampagneUserCard IsFlipEnabled="false" OnChosenPersonalNotes="Handle_OnChosenPersonalNotes" OnChosenChampagne="Handle_OnChosenChampagne" BindingContext="{Binding Entity1}" Grid.Column="0" IsVisible="{Binding Source={x:Reference ChampagneGrid}, Path=BindingContext.IsEntity1Visible}">
+                                </Cards:ChampagneUserCard>
+                                <Cards:ChampagneUserCard IsFlipEnabled="false" OnChosenPersonalNotes="Handle_OnChosenPersonalNotes" OnChosenChampagne="Handle_OnChosenChampagne" BindingContext="{Binding Entity2}" Grid.Column="1" IsVisible="{Binding Source={x:Reference ChampagneGrid}, Path=BindingContext.IsEntity2Visible}">
+                                </Cards:ChampagneUserCard>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </InfiniteListView:InfiniteListView.ListItemTemplate>
+            </InfiniteListView:InfiniteListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

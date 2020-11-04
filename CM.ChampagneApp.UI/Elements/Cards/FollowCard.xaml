@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:ValueConvert="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:CustomButtons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.FollowCard">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConvert:BoolToStringConverter x:Key="BoolToString" TrueValue="Unfollow" FalseValue=" Follow ">
+            </ValueConvert:BoolToStringConverter>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <RelativeLayout x:Name="Parent">
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.7}">
+                <Grid RowSpacing="0" Padding="0" BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="22*" />
+                        <RowDefinition Height="78*" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" />
+                    <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#252736" CornerRadius="15" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black" />
+                </Grid>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="44*" />
+                        <RowDefinition Height="56*" />
+                    </Grid.RowDefinitions>
+                    <Frame Padding="0" HasShadow="true">
+                    <Frame x:Name="RoundImage" HasShadow="true" HorizontalOptions="Center" Grid.Row="0" Padding="0" CornerRadius="15" IsClippedToBounds="true">
+                        <ffimageloading:CachedImage x:Name="RoundImageCachedImage" Source="{Binding ProfileImgUrl}" PropertyChanged="Handle_PropertyChanged" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                        </Frame>
+                    <!--                   <Image Source="{Binding Pr}" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>-->
+                    <Button Clicked="Handle_OnCardClicked" Grid.Row="0" />
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Label Margin="5,0,5,0" Text="{Binding ProfileName}" LineBreakMode="MiddleTruncation" TextColor="White" FontSize="10" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Button Clicked="Handle_OnCardClicked" Grid.Row="0" />
+                        <CustomButtons:RoundButton OnClicked="Handle_OnButtonClicked" Grid.Row="1" ButtonText="{Binding IsRequesterFollowing, Converter={StaticResource BoolToString}}" VerticalOptions="Start">
+                        </CustomButtons:RoundButton>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

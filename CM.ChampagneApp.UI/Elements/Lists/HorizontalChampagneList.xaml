@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:wrap="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.HorizontalChampagneList">
+    <ContentView.Content>
+        <ScrollView Padding="20,0,0,0" Orientation="Horizontal">
+            <StackLayout x:Name="ContentPresenter" Padding="0,0,0,40" Orientation="Horizontal" Spacing="10">
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

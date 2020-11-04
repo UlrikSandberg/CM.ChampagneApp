@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:CV="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" xmlns:Btns="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.LoginSignupPages.WelcomeScreenPage.WelcomeScreenPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <StackLayout x:Name="MainContent" Opacity="0" Grid.Row="1" VerticalOptions="Start">
+                <Image Source="WelcomeOnboardingImage.png"/>
+                <Label Margin="50,0,50,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="to Champagne Moments we're excited to have you join our community for champagne lovers. The maître d'Hôtel is preparing your personal cellar." TextColor="White" FontSize="12"/> 
+            </StackLayout>
+            <Grid Grid.Row="2" Padding="0,0,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Frame x:Name="animationContainer" Padding="0" CornerRadius="0" Grid.Row="0">
+                    <Lottie:AnimationView Speed="0.3" x:Name="animationView" OnFinish="Handle_OnFinish" Animation="OnboardingAnimation.json"></Lottie:AnimationView>
+                </Frame>
+                <Label Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End" Text="Please enjoy responsibly!" TextColor="White" FontSize="16" FontFamily="{StaticResource Key=HeaderFont}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

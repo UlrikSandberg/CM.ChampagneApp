@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage x:Name="Control" ReconnectCommand="{Binding ChampagneProfileManager.Reconnect}" IsOutOfService="{Binding ChampagneProfileManager.IsOutOfService}" RightNavigationIconCommand="{Binding RightIconClicked}" RightNavigationIcon="OptionIcon.png" IsContentLoadingAnimationEnabled="true" IsContentLoadingAnimationVisible="{Binding ChampagneProfileManager.IsDownloading}" ScrolledNavigationSubtitle="{Binding ChampagneProfileManager.Data.BrandName}" ScrolledNavigationTitle="{Binding ChampagneProfileManager.Data.BottleName}" NavigationSubTitle="{Binding DownloadManager.Data.BrandName}" NavigationTitle="{Binding DownloadManager.Data.BottleName}" ScrolledNavigationBackgroundColor="{StaticResource Key=DenimBlack}"
+    HasFloatingNavigationBar="true" IsNavigationbarScrollResponsive="true" NavigationBackgroudColor="Transparent" HasNavigationBar="true" HasBackButton="{Binding HasBackButton}" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:ValueConvert="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Sections="clr-namespace:CM.ChampagneApp.UI.Elements.Sections" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography"
+    xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.ChampagnePages.ChampagneProfilePage.ChampagneProfilePage">
+    <d:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConvert:BoolToStringConverter x:Key="VintageConverter" TrueValue="Vintage" FalseValue="Non-Vintage">
+            </ValueConvert:BoolToStringConverter>
+            <ValueConvert:InverseBoolConverter x:Key="InverseBool" TrueValue="false" FalseValue="true">
+            </ValueConvert:InverseBoolConverter>
+        </ResourceDictionary>
+    </d:BaseContentPage.Resources>
+    <d:BaseContentPage.PageContent>
+        <Grid>
+            <CustomLayouts:ContentBackground OnHandle_OnScrolled="Handle_Scrolled" HeaderImg="{Binding ChampagneProfileManager.Data.BottleCoverImgUrl}">
+                <CustomLayouts:ContentBackground.AddContent>
+                    <StackLayout x:Name="ContentStack">
+                        <cards:ChampagneInfoCard x:Name="ChampagneHeader" BottleClickedCommand="{Binding NavigateToChampagneLightroom}" BottleName="{Binding ChampagneProfileManager.Data.BottleNameWithYear}" BrandName="{Binding ChampagneProfileManager.Data.BrandName}" NumberOfTastings="{Binding ChampagneProfileManager.Data.NumberOfTastings}" AverageRating="{Binding ChampagneProfileManager.Data.AverageRating}" ImageURI="{Binding ChampagneProfileManager.Data.BottleImgUrl}" BottleSize="75cl" Dosage="{Binding ChampagneProfileManager.Data.Dosage}" Alchohol="{Binding ChampagneProfileManager.Data.Alchohol, StringFormat='Alc.Vol {0:N}%'}"
+                            Character=" - " Vintage="{Binding ChampagneProfileManager.Data.IsVintage, Converter={StaticResource VintageConverter}}" Price="{Binding ChampagneProfileManager.Data.BottleYear}" Padding="0,0,0,30">
+                        </cards:ChampagneInfoCard>
+                        <Sections:GiveRatingSection Rating="{Binding ChampagneProfileManager.Data.UserRating}" StartTastingCommand="{Binding StartTasting}" OnChosenRating="Handle_OnChosenRating" IsGiveRatingVisible="{Binding ChampagneProfileManager.Data.IsTastedByRequester}" Padding="0,0,0,20">
+                        </Sections:GiveRatingSection>
+                        <Headers:H1 Title="Behind The Label" />
+                        <Headers:H2 IsVisible="{Binding ChampagneProfileManager.Data.IsTechnicalIdentitiesVisible}" Title="Technical Identity">
+                        </Headers:H2>
+                        <Lists:TechnicalList IsVisible="{Binding ChampagneProfileManager.Data.IsTechnicalIdentitiesVisible}" ItemSource="{Binding ChampagneProfileManager.Data.TechnicalIdentities}" Margin="-20,0,-20,0">
+                        </Lists:TechnicalList>
+                        <Headers:H2 Title="Blend Information" IsVisible="{Binding ChampagneProfileManager.Data.IsBlendInformationVisible}">
+                        </Headers:H2>
+                        <Typography:TextField IsVisible="{Binding ChampagneProfileManager.Data.IsBlendInformationVisible}" TextContent="{Binding ChampagneProfileManager.Data.ChampagneProfile.BlendInfo}">
+                        </Typography:TextField>
+                        <Headers:H2 Title="Tasting Notes" IsVisible="{Binding ChampagneProfileManager.Data.IsTastingNotesSectionVisible}">
+                        </Headers:H2>
+                        <Assets:TastingSection IsVisible="{Binding ChampagneProfileManager.Data.IsAppearanceVisible}" SectionIcon="EyeIcon" SectionHeader="To The Eye" Notes="{Binding ChampagneProfileManager.Data.ChampagneProfile.Appearance}">
+                        </Assets:TastingSection>
+                        <Assets:TastingSection IsVisible="{Binding ChampagneProfileManager.Data.IsAromaVisible}" SectionIcon="NoseIcon" SectionHeader="To The Nose" Notes="{Binding ChampagneProfileManager.Data.ChampagneProfile.Aroma}">
+                        </Assets:TastingSection>
+                        <Assets:TastingSection IsVisible="{Binding ChampagneProfileManager.Data.IsTasteVisible}" SectionIcon="PalateIcon" SectionHeader="On The Palate" Notes="{Binding ChampagneProfileManager.Data.ChampagneProfile.Taste}">
+                        </Assets:TastingSection>
+                        <Headers:H2 Title="Food Pairing" IsVisible="{Binding ChampagneProfileManager.Data.IsFoodPairingVisible}">
+                        </Headers:H2>
+                        <Typography:TextField IsVisible="{Binding ChampagneProfileManager.Data.IsFoodPairingVisible}" TextContent="{Binding ChampagneProfileManager.Data.ChampagneProfile.FoodPairing}" Padding="0,0,0,10">
+                        </Typography:TextField>
+                        <StackLayout IsVisible="{Binding ChampagneProfileManager.Data.RootIsSingleton, Converter={StaticResource InverseBool}}">
+                            <Headers:H2 Title="Other Editions" Padding="0,0,0,10">
+                            </Headers:H2>
+                            <ActivityIndicator Margin="0,0,0,0" IsVisible="{Binding OtherEditions.IsDownloading}" IsRunning="true" Color="LightGray" />
+                            <Lists:HorizontalChampagneEditionList x:Name="HorizontalChampagneEditionList" Margin="-20,0,-20,0" OnChampagneClicked="Handle_OnVintageArchiveChampagneClicked" IsVisible="{Binding OtherEditions.IsDownloading, Converter={StaticResource InverseBool}}" ItemSource="{Binding OtherEditions.ItemSource}">
+                            </Lists:HorizontalChampagneEditionList>
+                        </StackLayout>
+                        <Headers:H1 Title="Tastings" Padding="0,10,0,0">
+                        </Headers:H1>
+                        <Sections:ChampagneProfileReviewSection Padding="0,20,0,20" OnCommentBtnClicked="Handle_OnCommentBtnClicked" OnLikeBtnClicked="Handle_OnLikeBtnClicked" OnProfileNameClicked="Handle_OnProfileNameClicked" OnInspectReview="Handle_OnInspectReview" SeeAllCommand="{Binding SeeAllTastingsClicked}" IsDownloadingTastings="{Binding TastingsManager.IsDownloading}" ItemSource="{Binding TastingsManager.Data}">
+                        </Sections:ChampagneProfileReviewSection>
+                        <Headers:H1 Title="People also looked at..." Padding="0,10,0,0" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.ShouldShowBrandChampagnes}">
+                        </Headers:H1>
+                        <ActivityIndicator Margin="0,0,0,20" IsVisible="{Binding OtherChampagnes.IsDownloading}" IsRunning="true" Color="LightGray" />
+                        <Lists:HorizontalChampagneList OnChampagneClicked="Handle_OnOtherChampagneClicked" Margin="-20,0,-20,0" Padding="0,0,0,0" IsVisible="{Binding OtherChampagnes.IsDownloading, Converter={StaticResource InverseBool}}" ItemSource="{Binding OtherChampagnes.ItemSource}">
+                        </Lists:HorizontalChampagneList>
+                        <Lists:ArticleList Padding="0,0,0,0" Margin="0,0,-20,0" OnItemClicked="Handle_OnArticleClicked" ItemSource="{Binding Articles}">
+                        </Lists:ArticleList>
+                    </StackLayout>
+                </CustomLayouts:ContentBackground.AddContent>
+            </CustomLayouts:ContentBackground>
+            <CustomLayouts:ChampagneOptionsView x:Name="OptionMenu" Option1Title="{Binding BookmarkManager.CustomBoolToggle.CurrentValue}" Option1Icon="{Binding BookmarkManager.BoolToggle.CurrentValue}" Option1Command="{Binding Option1Clicked}" Option2Title="{Binding StartTastingToggleManager.CustomBoolToggle.CurrentValue}" Option2Icon="{Binding StartTastingToggleManager.BoolToggle.CurrentValue}" Option2Command="{Binding StartTasting}" BackgroundClickedCommand="{Binding RightIconClicked}" Option1IsVisible="true" Option2IsVisible="true"
+                IsVisible="{Binding IsOptionsMenuVisible}" ShouldAnimateView="{Binding IsOptionsMenuVisible}">
+            </CustomLayouts:ChampagneOptionsView>
+            <CustomLayouts:VintageArchive BackgroundClickedCommand="{Binding VintageArchive.CancelVintageArchive}" OnChampagneClicked="Handle_OnVintageArchiveChampagneClicked" IsOutOfServiceTextVisible="{Binding VintageArchive.IsVintageArchiveOutOfServiceTextVisible}" ItemSource="{Binding VintageArchive.ItemSource}" IsVisible="false" IsVisibleWithAnimation="{Binding VintageArchive.VintageArchiveIsVisible}" Title="{Binding VintageArchive.VintageArchiveTitle}" Description="{Binding VintageArchive.VintageArchiveDescription}">
+            </CustomLayouts:VintageArchive>
+        </Grid>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

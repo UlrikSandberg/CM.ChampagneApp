@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.PushNotificationCard">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame Padding="5" BackgroundColor="White" Opacity="0.7" CornerRadius="15">
+            <StackLayout Spacing="2">
+                <StackLayout Padding="5,5,0,0" Orientation="Horizontal">
+                    <Frame Padding="0,0,0,0" CornerRadius="4" IsClippedToBounds="true" HeightRequest="20" WidthRequest="20">
+                        <Image Source="{Binding Image, Source={x:Reference Control}}"/>
+                    </Frame>
+                    <Label VerticalOptions="Center" Text="{Binding Title, Source={x:Reference Control}}" FontSize="12"/>
+                </StackLayout>
+                <StackLayout Padding="5" IsVisible="{Binding IsPlaceholderTextVisible, Source={x:Reference Control}}">
+                    <Frame CornerRadius="0" Padding="0,10,0,2" BackgroundColor="#333333" Opacity="0.7"></Frame>
+                    <Frame CornerRadius="0" Padding="0,10,0,2" BackgroundColor="#333333" Opacity="0.7"></Frame>
+                </StackLayout>
+                <StackLayout Padding="5,5,5,8" IsVisible="{Binding IsPlaceholderTextVisible, Converter={StaticResource InverseBool}, Source={x:Reference Control}}">
+                    <Label Text="{Binding Text, Source={x:Reference Control}}" FontSize="10"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

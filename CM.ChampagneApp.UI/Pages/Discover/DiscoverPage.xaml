@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:Backgrounds="clr-namespace:CM.ChampagneApp.UI.Elements.Backgrounds" xmlns:EmptyState="clr-namespace:CM.ChampagneApp.UI.Elements.EmptyStateScreens" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" x:Name="Control" xmlns:navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.Discover.DiscoverPage">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <navigation:DiscoverNavBar LeftButtonCommand="{Binding NavigateToTop10List}" RightButtonCommand="{Binding NavigateToFilterSearch}" HasShadow="false" BackgroundColor="Transparent" VerticalOptions="Start" x:Name="Navbar">
+                </navigation:DiscoverNavBar>
+                <InfiniteListView:InfiniteListView ReconnectCommand="{Binding PagingService.ReconnectCommand}" UseFooterAnimationLoaderAsDefault="true" RequestNextPageCommand="{Binding PagingService.RequestNextPage}" UsePullToRefreshAnimationLoaderAsDefault="true" IsRefreshingActivityStatus="{Binding PagingService.RefreshingStatus}" RefreshCommand="{Binding PagingService.RefreshCommand}" IsPullToRefreshEnabled="true" ActivityStatus="{Binding PagingService.LoadingStatus}" UseInitAnimationLoaderAsDefault="true" SeparatorVisibility="None"
+                    BackgroundColor="Transparent" ItemSource="{Binding PagingService._collectionViewData.ItemSource}">
+                    <InfiniteListView:InfiniteListView.CustomHeader>
+                        <Frame Padding="0" HasShadow="true">
+                            <Grid>
+                                <Frame CornerRadius="10" IsClippedToBounds="true" Padding="0" Margin="10,10,10,10" HeightRequest="100">
+                                    <Grid ColumnSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="Top10BannerLeft.png" Grid.Column="0" Aspect="Fill" />
+                                        <Image Source="Top10BannerRight.png" Grid.Column="1" Aspect="Fill" />
+                                    </Grid>
+                                </Frame>
+                                <Button Command="{Binding NavigateToTop10List}" />
+                            </Grid>
+                        </Frame>
+                    </InfiniteListView:InfiniteListView.CustomHeader>
+                    <InfiniteListView:InfiniteListView.ListItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid x:Name="ChampagneGrid" Padding="10,0,10,30" ColumnSpacing="10" BackgroundColor="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <cards:ChampagneCard IsFlipEnabled="false" BindingContext="{Binding Entity1}" IsVisible="{Binding Source={x:Reference ChampagneGrid}, Path=BindingContext.IsEntity1Visible}" Grid.Column="0" OnChosenChampagne="Handle_OnChosenChampagne">
+                                    </cards:ChampagneCard>
+                                    <cards:ChampagneCard IsFlipEnabled="false" BindingContext="{Binding Entity2}" IsVisible="{Binding Source={x:Reference ChampagneGrid}, Path=BindingContext.IsEntity2Visible}" Grid.Column="1" OnChosenChampagne="Handle_OnChosenChampagne">
+                                    </cards:ChampagneCard>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </InfiniteListView:InfiniteListView.ListItemTemplate>
+                </InfiniteListView:InfiniteListView>
+            </StackLayout>
+            <CustomLayouts:VintageArchive Title="{Binding VintageArchive.VintageArchiveTitle}" Description="{Binding VintageArchive.VintageArchiveDescription}" BackgroundClickedCommand="{Binding VintageArchive.CancelVintageArchive}" OnChampagneClicked="Handle_OnVintageArchiveChampagneClicked" IsOutOfServiceTextVisible="{Binding VintageArchive.IsVintageArchiveOutOfServiceTextVisible}" ItemSource="{Binding VintageArchive.ItemSource}" IsVisible="false" IsVisibleWithAnimation="{Binding VintageArchive.VintageArchiveIsVisible}">
+            </CustomLayouts:VintageArchive>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

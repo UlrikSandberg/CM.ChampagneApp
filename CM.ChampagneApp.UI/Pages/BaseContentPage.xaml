@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:Backgrounds="clr-namespace:CM.ChampagneApp.UI.Elements.Backgrounds" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.BaseContentPage">
+    <ContentPage.Resources>
+        <ValueConverters:InverseBoolConverter x:Key="InverseBool" FalseValue="true" TrueValue="false" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:Name="MainStack" Spacing="0">
+            <ContentView x:Name="InContentNavigationBarContainer" IsVisible="{Binding HasFloatingNavigationBar, Source={x:Reference Control}, Converter={StaticResource InverseBool}}">
+                <Navigation:DefaultNavigationBar OnNavTitleClicked="Handle_OnNavTitleClicked" x:Name="InContentNavigationBar" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" OnRightNavIconClicked="Handle_OnRightNavIconClicked" RightIconCommand="{Binding RightNavigationIconCommand, Source={x:Reference Control}}" RightIcon="{Binding RightNavigationIcon, Source={x:Reference Control}}" LeftIcon="{Binding LeftNavigationIcon, Source={x:Reference Control}}" Title="{Binding NavigationTitle, Source={x:Reference Control}}" SubTitle="{Binding NavigationSubTitle, Source={x:Reference Control}}" BackgroundColor="{Binding NavigationBackgroudColor, Source={x:Reference Control}}">
+                </Navigation:DefaultNavigationBar>
+            </ContentView>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Backgrounds:GrapeBackground IsVisible="{Binding IsGrapeBackgroundVisible, Source={x:Reference Control}}" Margin="0,0,0,-70">
+                </Backgrounds:GrapeBackground>
+                <Grid x:Name="MainGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Frame HeightRequest="1000">
+                    </Frame>
+                    <Grid IsVisible="{Binding IsOutOfService, Source={x:Reference Control}, Converter={StaticResource InverseBool}}">
+                        <Grid IsVisible="{Binding IsContentLoadingAnimationVisible, Source={x:Reference Control}, Converter={StaticResource InverseBool}}" x:Name="MainContent">
+                            <!-- Content -->
+                        </Grid>
+                        <!-- Loading Animation is place below this -->
+                        <Assets:ScatteredAnimationLoader IsVisible="{Binding IsContentLoadingAnimationVisible, Source={x:Reference Control}}"></Assets:ScatteredAnimationLoader>
+                    </Grid>
+                    <!-- Error Screen handling -->
+                    <Grid IsVisible="{Binding IsOutOfService, Source={x:Reference Control}}" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Backgrounds:GrapeBackground Margin="0,0,0,-70"></Backgrounds:GrapeBackground>
+                        <StackLayout Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="Connection Failed..." FontSize="18" FontFamily="{StaticResource Key=HeaderFont}" TextColor="{StaticResource Key=DarkGold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Label Text="Something went wrong, please try again." TextColor="White" FontSize="12" FontFamily="Avenir" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Buttons:RoundButtomMedium Text="Try Again" ClickedCommand="{Binding ReconnectCommand, Source={x:Reference Control}}"></Buttons:RoundButtomMedium>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <!-- Nothing in this grid may be placed below this comment, ensure the floating navigation bar will keep being on top-->
+                <ContentView x:Name="FloatingNavigationBarContainer" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding HasFloatingNavigationBar, Source={x:Reference Control}}">
+                    <Navigation:DefaultNavigationBar x:Name="FloatingNavigationbar" OnNavTitleClicked="Handle_OnNavTitleClicked" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" RightIconCommand="{Binding RightNavigationIconCommand, Source={x:Reference Control}}" RightIcon="{Binding RightNavigationIcon, Source={x:Reference Control}}" LeftIcon="{Binding LeftNavigationIcon, Source={x:Reference Control}}" Title="{Binding NavigationTitle, Source={x:Reference Control}}" SubTitle="{Binding NavigationSubTitle, Source={x:Reference Control}}" BackgroundColor="{Binding NavigationBackgroudColor, Source={x:Reference Control}}">
+                    </Navigation:DefaultNavigationBar>
+                </ContentView>
+            </Grid>
+        </StackLayout>
+        <!-- Everything placed here will cover the entire screen and lock down the users possible to access the app -->
+    </ContentPage.Content>
+</ContentPage>

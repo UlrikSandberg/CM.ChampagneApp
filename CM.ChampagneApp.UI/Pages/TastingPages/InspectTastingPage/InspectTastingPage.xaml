@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage x:Name="Control" ReconnectCommand="{Binding Reconnect}" IsOutOfService="{Binding IsOutOfService}" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" TitleClickedCommand="{Binding TitleClicked}" RightNavigationIcon="OptionIcon.png" RightNavigationIconCommand="{Binding RightIconClicked}" NavigationSubTitle="{Binding InspectTastingModel.BrandName}" NavigationTitle="{Binding InspectTastingModel.BottleName}" HasNavigationBar="true" HasBackButton="{Binding HasBackButton}" NavigationBackgroudColor="{StaticResource Key=DenimBlack}"
+    xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:DataSelector="clr-namespace:CM.ChampagneApp.UI.Elements.Helpers" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.TastingPages.InspectTastingPage.InspectTastingPage">
+    <d:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+            <DataTemplate x:Key="DefaultViewCell">
+                <ViewCell>
+                    <Cards:CommentCard OnLikeComment="Handle_OnLikeComment" OnProfileNameClicked="Handle_OnProfileNameClicked">
+                    </Cards:CommentCard>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="EditingViewCell">
+                <ViewCell>
+                    <Cards:CommentCard OnLikeComment="Handle_OnLikeComment" OnProfileNameClicked="Handle_OnProfileNameClicked">
+                    </Cards:CommentCard>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text=" DELETE " IsDestructive="true" Command="{Binding Source={x:Reference Control}, Path=BindingContext.DeleteComment}" CommandParameter="{Binding .}" />
+                        <MenuItem Text="  EDIT  " Command="{Binding Source={x:Reference Control}, Path=BindingContext.EditComment}" CommandParameter="{Binding .}" />
+                    </ViewCell.ContextActions>
+                </ViewCell>
+            </DataTemplate>
+            <DataSelector:CommentTemplateSelector x:Key="CommentTemplateSelector" DefaultCommentViewCell="{StaticResource Key=DefaultViewCell}" EditingCommentViewCell="{StaticResource Key=EditingViewCell}" />
+        </ResourceDictionary>
+    </d:BaseContentPage.Resources>
+    <d:BaseContentPage.PageContent>
+        <Grid>
+            <StackLayout Spacing="0">
+                <Grid VerticalOptions="FillAndExpand">
+                    <ListView x:Name="CommentList" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshData}" IsPullToRefreshEnabled="true" ItemTemplate="{StaticResource CommentTemplateSelector}" IsVisible="{Binding IsDownloadingInitTastingInverse}" ItemAppearing="Handle_ItemAppearing" BackgroundColor="Transparent" ItemsSource="{Binding Comments}" HasUnevenRows="true">
+                        <ListView.Header>
+                            <StackLayout Padding="20,30,20,0">
+                                <Frame IsVisible="{Binding IsRefreshing}">
+                                    <Assets:ScatteredAnimationLoader IsVisible="true">
+                                    </Assets:ScatteredAnimationLoader>
+                                </Frame>
+                                <Cards:ReviewCard OnLikeBtnClicked="Handle_OnTastingLikeBtnClicked" OnProfileNameClicked="Handle_OnProfileNameClicked" InspectEnabled="false" BindingContext="{Binding Source={x:Reference Control}, Path=BindingContext.InspectTastingModel.Tasting}" />
+                                <Headers:H2 Padding="20" Title="Comments" />
+                            </StackLayout>
+                        </ListView.Header>
+                        <ListView.Footer>
+                            <StackLayout Padding="20">
+                                <Assets:ScatteredAnimationLoader IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager.IsLoadingEntities}" HorizontalOptions="Center" VerticalOptions="Center">
+                                </Assets:ScatteredAnimationLoader>
+                                <Label IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager.AllEntitiesHasBeenDownloaded}" Text="There are no more comments" TextColor="White" FontSize="12" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center" />
+                            </StackLayout>
+                        </ListView.Footer>
+                    </ListView>
+                    <Button x:Name="ClickableBackground" Clicked="Handle_ClickedKeyboardBackground" />
+                </Grid>
+                <Typography:GiveCommentField SuccesState="{Binding SuccesState}" BackgroundColor="Blue" x:Name="ChatEntry" EditModel="{Binding CommentToEdit}" OnUpdateComment="Handle_OnUpdateComment" OnEditCommentCancel="Handle_OnEditCommentCancel" OnPostComment="Handle_OnPostComment" OnKeyboardUnfocused="Handle_OnKeyboardUnfocused" OnKeyboardRaisedEvent="Handle_OnKeyboardRaised">
+                </Typography:GiveCommentField>
+            </StackLayout>
+            <Assets:ScatteredAnimationLoader IsVisible="{Binding PageManager.IsInitialLoadInProgress}" HorizontalOptions="Center" VerticalOptions="Center">
+            </Assets:ScatteredAnimationLoader>
+            <CustomLayouts:ChampagneOptionsView x:Name="OptionMenu" IsFakeNavigationBarVisible="false" Option1Title="{Binding BookmarkManager.CustomBoolToggle.CurrentValue}" Option1Icon="{Binding BookmarkManager.BoolToggle.CurrentValue}" Option1Command="{Binding BookmarkClicked}" Option2Title="{Binding StartTastingToggleManager.CustomBoolToggle.CurrentValue}" Option2Icon="{Binding StartTastingToggleManager.BoolToggle.CurrentValue}" Option2Command="{Binding TastingClicked}" BackgroundClickedCommand="{Binding RightIconClicked}" Option1IsVisible="true"
+                Option2IsVisible="true" IsVisible="{Binding ShouldShowOptionsMenu}" ShouldAnimateView="{Binding ShouldShowOptionsMenu}">
+            </CustomLayouts:ChampagneOptionsView>
+        </Grid>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

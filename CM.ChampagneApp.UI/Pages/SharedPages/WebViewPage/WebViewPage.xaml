@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.SharedPages.WebViewPage.WebViewPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" LeftIcon="BackArrowIcon">
+            </Navigation:DefaultNavigationBar>
+            <Label x:Name="LoadingLabel" Text="Loading..." TextColor="White" FontFamily="{StaticResource Key=ButtonFont}" HorizontalOptions="Center" IsVisible="false"/>
+            <WebView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Blue" x:Name="Browser" GoBackRequested="Handle_GoBackRequested" GoForwardRequested="Handle_GoForwardRequested" Source="{Binding Url}" Navigating="Handle_Navigating" Navigated="Handle_Navigated">
+            </WebView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

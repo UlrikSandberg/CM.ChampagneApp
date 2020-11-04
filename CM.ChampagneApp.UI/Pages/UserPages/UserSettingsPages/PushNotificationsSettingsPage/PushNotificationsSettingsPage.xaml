@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.PushNotificationsSettingsPage.PushNotificationsSettingsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" LeftIcon="BackArrowIcon" LeftIconCommand="{Binding NavigateBack}" RightIconCommand="{Binding DoneEditing}" Title="Push Notifications" RightIcon="CheckMarkIcon.png">
+            </Navigation:DefaultNavigationBar>
+            <CustomLayouts:ReconnectView Reconnect="{Binding Reconnect}" IsOutOfService="{Binding IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfService}">
+                <CustomLayouts:ReconnectView.AddContent>
+                    <Grid>
+                        <ScrollView Padding="0,0,0,20">
+                            <StackLayout>
+                                <StackLayout IsVisible="{Binding IsDownloadingUserSettings, Converter={StaticResource InverseBool}}">
+                                    <Image Margin="20,20,20,0" Source="PhoneAndNotification.png" />
+                                    <Label Margin="20,10,20,10" FontFamily="Avenir" FontSize="11" TextColor="White" Text="You can manage the Push Notifications you receive from us on this page. We respect your privacy and we will only notify you about activities that are important to you." />
+                                    <Headers:H2 Title="Community Updates" Padding="0,0,0,15">
+                                    </Headers:H2>
+                                    <Cards:PushNotificationCard Padding="20,0,20,10" Title="CHAMPAGNE MOMENTS" Image="SquareLogo.png" Text="Champagne Perrier-Jouët is now on Champagne Moments. Experience their champagnes and history now." IsPlaceholderTextVisible="false">
+                                    </Cards:PushNotificationCard>
+                                    <Label Margin="20,10,20,0" FontFamily="Avenir" FontSize="11" TextColor="White" Text="Community Updates will give you notifications when new champagnes and brands are added. Likewise we will notify you about important and useful activity, etc." />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding CMNotifications}" IsToggled="{Binding ReceiveCMNotifications}" Description="Community Updates" IsTextToggleVisible="true" Padding="20,20,20,10" />
+                                    <Headers:H2 Title="Brand Updates" Padding="0,0,0,15" />
+                                    <Cards:PushNotificationCard Padding="20,0,20,10" Title="CHAMPAGNE MOMENTS" Image="SquareLogo.png" Text="Champagne Lombard is filled with exciting stories. A new article has been added to Lombard, check it out here." IsPlaceholderTextVisible="false">
+                                    </Cards:PushNotificationCard>
+                                    <Label Margin="20,10,20,0" FontFamily="Avenir" FontSize="11" TextColor="White" Text="Brand updates will give you notifications when a brand that you follow, add new champagnes, news or articles to their brand profile etc." />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding BrandNews}" IsToggled="{Binding NotifyBrandNews}" Description="Brand News" IsTextToggleVisible="true" Padding="20,20,20,10" />
+                                    <Headers:H2 Title="User Updates" Padding="0,0,0,15" />
+                                    <Cards:PushNotificationCard Padding="20,0,20,10" Title="CHAMPAGNE MOMENTS" Image="SquareLogo.png" Text="You have a new comment on your Louis Roederer Cristal 2006 tasting. Click here to see the new comment." IsPlaceholderTextVisible="false">
+                                    </Cards:PushNotificationCard>
+                                    <Label Margin="20,10,20,0" FontFamily="Avenir" FontSize="11" TextColor="White" Text="User Updates will give you notifications when someone follow you, comment your tasting, reply to a comment you made, and or likes your tasting and comments, etc." />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding NewFollower}" IsToggled="{Binding NotifyFollower}" Description="New follower" IsTextToggleVisible="true" Padding="20,20,20,10" />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding NewComment}" IsToggled="{Binding NotifyComment}" Description="New comment" IsTextToggleVisible="true" Padding="20,10,20,10" />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding ActivityInThread}" IsToggled="{Binding NotifyActivityInThread}" Description="Activity on comment" IsTextToggleVisible="true" Padding="20,10,20,10" />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding LikeTasting}" IsToggled="{Binding NotifyLikeTasting}" Description="Like on tasting" IsTextToggleVisible="true" Padding="20,10,20,10" />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding LikeComment}" IsToggled="{Binding NotifyLikeComment}" Description="Like on comment" IsTextToggleVisible="true" Padding="20,10,20,10" />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding ChampagneTasted}" IsToggled="{Binding NotifyChampagneTasted}" Description="Notify on Champagne Tasted" IsTextToggleVisible="true" Padding="20,10,20,10" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                        <Assets:ActivityIndicatorWithSuccesBox DissappearCommand="{Binding DoneUploading}" Text="Please wait while we save your changes" IsVisible="{Binding IsUploadingIndicatorVisible}" IsLoading="{Binding IsUploadingUserSettings}" IsDoneUploadingWithError="{Binding IsDoneUploadingUserSettingsWithError}" IsDoneUploadingWithSucces="{Binding IsDoneUploadingUserSettingsWithSucces}"></Assets:ActivityIndicatorWithSuccesBox>
+                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsDownloadingUserSettings}" IsRunning="{Binding IsDownloadingUserSettings}" Color="LightGray">
+                        </ActivityIndicator>
+                    </Grid>
+                </CustomLayouts:ReconnectView.AddContent>
+            </CustomLayouts:ReconnectView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

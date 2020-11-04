@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.DeleteButton">
+    <ContentView.Content>
+        
+            <Button BorderColor="{StaticResource Key=Coral}" Clicked="Handle_Clicked" BorderRadius="20" Text="Delete" TextColor="White" FontSize="16" FontAttributes="Bold" BorderWidth="2" HeightRequest="40"/>
+        
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:PageLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts.VintageBrandInfoPageUI">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+                <!--<Navigation:DefaultNavigationBar OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" BackgroundColor="{StaticResource Key=DenimBlack}" LeftIcon="BackArrowIcon" Title="{Binding NavigationTitle, Source={x:Reference Control}}" SubTitle="{Binding NavigationSubTitle, Source={x:Reference Control}}">
+                </Navigation:DefaultNavigationBar>-->
+                <ScrollView>
+                    <StackLayout Padding="20,0,20,20" Spacing="0">
+                        <ffimageloading:CachedImage Aspect="AspectFit" Source="{Binding HeaderImg, Source={x:Reference Control}}">
+                        </ffimageloading:CachedImage>
+                        <StackLayout x:Name="InnerStackContent" Spacing="0">
+                            <!-- Content goes here -->
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+    </ContentView.Content>
+</ContentView>

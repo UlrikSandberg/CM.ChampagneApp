@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.RoundButtonMediumFullScreen">
+    <ContentView.Content>
+         <RelativeLayout>
+            <Frame RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" BackgroundColor="{Binding Background, Source={x:Reference Control}}" Padding="0" HeightRequest="30" CornerRadius="15" HasShadow="{Binding HasShadow, Source={x:Reference Control}}" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black">
+                <Grid >
+                    <Label Text="{Binding Text, Source={x:Reference Control}}" TextColor="White" FontAttributes="Bold" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Command="{Binding ClickedCommand, Source={x:Reference Control}}"  Grid.Row="0" Grid.Column="0" FontSize="12" BackgroundColor="Transparent"/>
+                </Grid>
+            </Frame>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

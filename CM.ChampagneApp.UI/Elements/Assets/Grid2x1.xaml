@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.Grid2x1">
+    <ContentView.Content>
+        <Grid RowSpacing="1" ColumnSpacing="1" BackgroundColor="{StaticResource Key=DarkGold}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Frame Margin="0,1,0,1" Padding="10" CornerRadius="0" BackgroundColor="{StaticResource Key=Charcoal}" Grid.Row="0" Grid.Column="0">
+                <StackLayout Orientation="Horizontal">
+                    
+                </StackLayout>
+            </Frame>
+            <Frame Margin="0,1,0,1" Padding="10" CornerRadius="0" BackgroundColor="{StaticResource Key=Charcoal}" Grid.Row="0" Grid.Column="1">
+                
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

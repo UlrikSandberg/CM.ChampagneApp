@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="RoundButtomSmall" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.RoundButtonSmall">
+    <ContentView.Content>
+        <AbsoluteLayout Margin="0,0,0,0" BackgroundColor="Transparent" HorizontalOptions="Center">
+            <Frame BackgroundColor="{Binding Background, Source={x:Reference RoundButtomSmall}}" Padding="0" HorizontalOptions="Center" HeightRequest="30" CornerRadius="15" HasShadow="{Binding HasShadow, Source={x:Reference RoundButtomSmall}}" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black">
+                <Grid >
+                    <Label Margin="20,0,20,0"  Text="{Binding Text, Source={x:Reference RoundButtomSmall}}" TextColor="White" FontAttributes="Bold" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Clicked="Handle_Clicked"  Grid.Row="0" Grid.Column="0" FontSize="10" BackgroundColor="Transparent"/>
+                </Grid>
+            </Frame>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

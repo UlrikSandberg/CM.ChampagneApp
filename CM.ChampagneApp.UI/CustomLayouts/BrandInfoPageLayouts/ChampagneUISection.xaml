@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:BrandInfoPageLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts.ChampagneUISection">
+    <ContentView.Content>
+        <StackLayout>
+            <Headers:H1 x:Name="Title" Margin="0,0,0,-10" Title="{Binding Title}">
+            </Headers:H1>
+            <Headers:H2 x:Name="SubTitle" Title="{Binding SubTitle}" Padding="0,0,0,5">
+            </Headers:H2>
+            <Label x:Name="Body" Text="{Binding Body}" LineBreakMode="WordWrap" TextColor="White" FontSize="16" FontFamily="Times" />
+            <BrandInfoPageLayouts:ChampagneUIImageCard x:Name="SingleImage" Padding="0,10,0,10">
+                
+            </BrandInfoPageLayouts:ChampagneUIImageCard>
+            <ScrollView x:Name="ImageSlider" Orientation="Horizontal" Padding="0,20,0,20" Margin="-20,0,-20,0">
+                <StackLayout Padding="0,0,0,0" Spacing="15" x:Name="ImageSliderContent" Orientation="Horizontal">
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

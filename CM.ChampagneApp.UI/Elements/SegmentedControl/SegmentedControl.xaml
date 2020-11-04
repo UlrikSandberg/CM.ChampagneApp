@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.SegmentedControl.SegmentedControl">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <ContentView x:Name="SegmentedControlView"></ContentView>
+            <StackLayout Spacing="0" x:Name="SlidingIndicatorContainer" IsVisible="{Binding IsSlidingIndicatorVisible, Source={x:Reference Control}}" Orientation="Horizontal">
+                <Frame x:Name="slidingIndicator" HasShadow="false" BackgroundColor="{Binding SlidingIndicatorTintColor, Source={x:Reference Control}}" CornerRadius="0" Padding="0,20,0,20"></Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

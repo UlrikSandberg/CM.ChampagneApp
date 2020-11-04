@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage x:Name="viewModel" RightNavigationIcon="CheckMarkIcon" ReconnectCommand="{Binding DownloadManager.Reconnect}" RightNavigationIconCommand="{Binding RightIconClicked}" IsContentLoadingAnimationEnabled="true" IsContentLoadingAnimationVisible="{Binding DownloadManager.IsDownloading}" IsOutOfService="{Binding DownloadManager.IsOutOfService}" HasBackButton="{Binding HasBackButton}" HasNavigationBar="true" ScrolledNavigationSubtitle="{Binding DownloadManager.Data.BrandName}"
+    ScrolledNavigationTitle="{Binding DownloadManager.Data.BottleName}" HasFloatingNavigationBar="true" IsNavigationbarScrollResponsive="true" ScrolledNavigationBackgroundColor="{StaticResource Key=DenimBlack}" NavigationBackgroudColor="Transparent" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:ValueConverter="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers"
+    xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.TastingPages.CreateTastingPage.CreateTastingPage">
+    <d:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverter:InverseBoolConverter x:Key="InverseBool" TrueValue="false" FalseValue="true">
+            </ValueConverter:InverseBoolConverter>
+        </ResourceDictionary>
+    </d:BaseContentPage.Resources>
+    <d:BaseContentPage.PageContent>
+        <Grid>
+            <CustomLayouts:ContentBackground OnHandle_OnScrolled="Handle_Scrolled" HeaderImg="{Binding DownloadManager.Data.ChampagneCoverImgUrl}">
+                <CustomLayouts:ContentBackground.AddContent>
+                    <StackLayout x:Name="Content" Spacing="20" BindingContext="{Binding DownloadManager.Data}">
+                        <Cards:GiveRatingHeaderCard ChampagneImage="{Binding ChampagneBottleImgUrl}" BottleName="{Binding BottleName}" BrandName="{Binding BrandName}">
+                        </Cards:GiveRatingHeaderCard>
+                        <Buttons:RatingStars StartValue="{Binding Source={x:Reference viewModel}, Path=BindingContext.Rating}" OnChosenRating="Handle_OnChosenRating" Padding="50,0,50,5">
+                        </Buttons:RatingStars>
+                        <Headers:H2 Padding="0,0,0,20" Title="General Review">
+                        </Headers:H2>
+                        <Typography:GiveReviewTextField Title="Review:" ReviewText="{Binding Review}" PlaceholderText="Matches seafood, Worth the money, To dry for my taste, Very fresh, Visually appealing..." IsWordCountEnabled="false" OnReviewEntered="Handle_OnReviewEntered" Padding="0,-10,0,0">
+                        </Typography:GiveReviewTextField>
+                        <Grid ColumnSpacing="20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60*" />
+                                <ColumnDefinition Width="40*" />
+                            </Grid.ColumnDefinitions>
+                            <Cards:PriceEntryCard IsVisible="false" OnPriceEntered="Handle_OnPriceEntered" Grid.Row="0" Grid.Column="0">
+                            </Cards:PriceEntryCard>
+                            <Cards:CurrencyPickerCard IsVisible="false" OnCurrencyPicked="Handle_OnCurrencyPicked" Grid.Row="0" Grid.Column="1">
+                            </Cards:CurrencyPickerCard>
+                        </Grid>
+                        <Buttons:DeleteButton OnClicked="Handle_OnDeleteClicked" Padding="70,10,70,0" IsVisible="{Binding Source={x:Reference viewModel}, Path=BindingContext.IsTasting, Converter={StaticResource InverseBool}}">
+                        </Buttons:DeleteButton>
+                    </StackLayout>
+                </CustomLayouts:ContentBackground.AddContent>
+            </CustomLayouts:ContentBackground>
+            <!--<ActivityIndicator IsVisible="{Binding IsUploadingReview}" IsRunning="{Binding IsUploadingReview}" Color="White" />-->
+            <Assets:ActivityIndicatorWithSuccesBox HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding LoadingMessages}" OnDidDisappear="Handle_OnDidDisappear" IsVisible="{Binding IsUploadingIndicatorVisible}" IsLoading="{Binding IsUploadingReview}" IsDoneUploadingWithSucces="{Binding IsDoneUploadingReviewWithSucces}" IsDoneUploadingWithError="{Binding IsDoneUploadingReviewWithError}">
+            </Assets:ActivityIndicatorWithSuccesBox>
+        </Grid>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

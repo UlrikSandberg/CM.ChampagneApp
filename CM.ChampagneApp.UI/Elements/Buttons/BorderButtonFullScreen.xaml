@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.BorderButtonFullScreen">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Frame RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" Padding="0" HeightRequest="30" CornerRadius="15" HasShadow="false">
+                <Grid>
+                    <Label Text="{Binding Text, Source={x:Reference Control}}" TextColor="White" FontAttributes="Bold" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button BorderWidth="1" Command="{Binding ClickedCommand, Source={x:Reference Control}}" BorderColor="{StaticResource Key=DarkGold}" BorderRadius="15"  Grid.Row="0" Grid.Column="0" FontSize="12" BackgroundColor="Transparent"/>
+                </Grid>
+            </Frame>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

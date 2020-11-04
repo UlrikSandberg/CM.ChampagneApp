@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ValueConvert="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Sections.GiveRatingSection">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConvert:InverseBoolConverter x:Key="InverseBool" TrueValue="false" FalseValue="true"></ValueConvert:InverseBoolConverter>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout>
+            <StackLayout x:Name="GiveRating" IsVisible="{Binding IsGiveRatingVisible, Converter={StaticResource InverseBool}}">
+                <Label Text="Start Tasting" TextColor="White" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Buttons:RatingStars OnChosenRating="Handle_OnChosenRating" Padding="70,0,70,0">
+                </Buttons:RatingStars>
+            </StackLayout>
+            <StackLayout x:Name="YourRating" IsVisible="{Binding IsGiveRatingVisible}" HorizontalOptions="Center">
+                <Buttons:YourRating Rating="{Binding Rating, Source={x:Reference Control}}" OnYourRatingClicked="Handle_OnYourRatingClicked">
+                </Buttons:YourRating>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
+

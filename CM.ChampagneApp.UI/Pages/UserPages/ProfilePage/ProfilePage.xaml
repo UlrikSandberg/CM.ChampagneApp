@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage HasBackButton="{Binding HasBackButton}" RightNavigationIconCommand="{Binding RightIconClicked}" ReconnectCommand="{Binding DownloadManager.Reconnect}" IsOutOfService="{Binding DownloadManager.IsOutOfService}" ScrolledNavigationTitle="{Binding Source={x:Reference Control}, Path=BindingContext.DownloadManager.Data.ProfileName}" IsNavigationbarScrollResponsive="true" RightNavigationIcon="{Binding ToggleManager.BoolToggle.CurrentValue}" ScrolledNavigationBackgroundColor="{StaticResource Key=DenimBlack}" NavigationBackgroudColor="Transparent" IsContentLoadingAnimationVisible="{Binding DownloadManager.IsDownloading}" IsContentLoadingAnimationEnabled="true" HasFloatingNavigationBar="true" HasNavigationBar="true" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" x:Name="Control" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards"
+    xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:ReconnectView="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.ProfilePage.ProfilePage">
+    <d:BaseContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </d:BaseContentPage.Resources>
+    <d:BaseContentPage.PageContent>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <CustomLayouts:ContentBackground OnHandle_OnScrolled="Handle_Scrolled" HeaderImg="{Binding Source={x:Reference Control}, Path=BindingContext.DownloadManager.Data.ProfileCoverImgUrl}">
+                <CustomLayouts:ContentBackground.AddContent>
+                    <StackLayout x:Name="Content" BindingContext="{Binding DownloadManager.Data}" Spacing="30" Margin="0,0,0,-30">
+                        <Cards:ProfileHeaderCard Field1x1Command="{Binding Source={x:Reference Control}, Path=BindingContext.NavigateToCellar}" Field1x2Command="{Binding Source={x:Reference Control}, Path=BindingContext.NavigateToFollowers}" Field1x3Command="{Binding Source={x:Reference Control}, Path=BindingContext.NavigateToFollowing}" ProfileImgPlaceholder="PlaceholderProfileImg.png" ProfileImg="{Binding ProfileImageUrl}" ProfileText="{Binding biography}" ProfileName="{Binding ProfileName}" Field1x1Header="Tastings" Field1x1Value="{Binding tastedChampagnes}" Field1x2Header="Followers" Field1x2Value="{Binding followers}"
+                                 Field1x3Header="Following" Field1x3Value="{Binding following}"></Cards:ProfileHeaderCard>
+                        <Lists:ProfileCardList OnItemClicked="Handle_OnItemClicked" ItemSource="{Binding pages}"></Lists:ProfileCardList>
+                    </StackLayout>
+                </CustomLayouts:ContentBackground.AddContent>
+            </CustomLayouts:ContentBackground>
+        </Grid>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

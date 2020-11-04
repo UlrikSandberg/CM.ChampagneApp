@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="DefaultNavBar" xmlns:Helpers="clr-namespace:CM.ChampagneApp.UI.Resources.Helpers" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Navigation.DefaultNavigationBar">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" BackgroundColor="Transparent">
+            <BoxView x:Name="NavigationPadding" BackgroundColor="Transparent" HeightRequest="18">
+            </BoxView>
+            <Grid VerticalOptions="Center" BackgroundColor="Transparent" Padding="20,-4,20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <Frame Padding="0,20,20,20">
+                    <Image Source="{Binding LeftIcon, Source={x:Reference DefaultNavBar}}" BackgroundColor="Transparent" Aspect="AspectFit" HorizontalOptions="Start" />
+                </Frame>
+                <Button BackgroundColor="Transparent" Command="{Binding LeftIconCommand, Source={x:Reference DefaultNavBar}}" Clicked="Handle_OnLeftIconClicked" Grid.Row="0" Grid.Column="0" />
+                <StackLayout Spacing="0" Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
+                    <Label Text="{Binding SubTitle, Source={x:Reference DefaultNavBar}}" TextColor="{StaticResource Key=DarkGold}" FontFamily="{StaticResource Key=HeaderFont}" LineBreakMode="NoWrap" FontSize="14" FontAttributes="None" HorizontalTextAlignment="Center" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Typography:OneLineLabel Text="{Binding Title, Source={x:Reference DefaultNavBar}}" LineBreakMode="TailTruncation" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+                <Frame Grid.Column="2" Padding="20,10,0,10">
+                    <Grid>
+                        <Image x:Name="RightIconImg" Source="{Binding RightIcon, Source={x:Reference DefaultNavBar}}" BackgroundColor="Transparent" HorizontalOptions="End" />
+                        <Frame IsVisible="{Binding IsBadgeVisible, Source={x:Reference DefaultNavBar}}" HorizontalOptions="End" VerticalOptions="Start" Margin="0,5,-2,0" HeightRequest="14" WidthRequest="14" CornerRadius="7" Padding="1" BackgroundColor="{StaticResource Key=Coral}">
+                                <Label Text="1" TextColor="White" FontSize="8" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+                <Button Clicked="Handle_OnTitleClicked" Grid.Row="0" Grid.Column="1" />
+                <Button Command="{Binding RightIconCommand, Source={x:Reference DefaultNavBar}}" Clicked="Handle_OnRightIconClicked" Grid.Row="0" Grid.Column="2" />
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.EmailNotificationsSettingsPage.EmailNotificationsSettingsPage">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar Title="Emails" BackgroundColor="{StaticResource Key=DenimBlack}" LeftIcon="BackArrowIcon" LeftIconCommand="{Binding NavigateBack}" RightIcon="CheckMarkIcon" RightIconCommand="{Binding DoneEditing}"></Navigation:DefaultNavigationBar>
+            <CustomLayouts:ReconnectView Reconnect="{Binding Reconnect}" IsOutOfService="{Binding IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfServiceHelper}">
+                <CustomLayouts:ReconnectView.AddContent>
+                    <Grid>
+                        <ScrollView Padding="0,0,0,20">
+                            <StackLayout>
+                                <StackLayout IsVisible="{Binding IsDownloadingUserSettings, Converter={StaticResource InverseBool}}">
+                                    <Image Margin="20,20,20,0" Source="PhoneAndMailbox.png" />
+                                    <Label Margin="20,10,20,10" FontFamily="Avenir" FontSize="11" TextColor="White" Text="You can manage the Emails you receive from us on this page. We respect your privacy and we will only notify you about activities which are important to you." />
+                                    <Headers:H2 Title="News &amp; Updates"/>
+                                    <Label Margin="20,20,20,10" FontFamily="Avenir" FontSize="11" TextColor="White" Text="News &amp; Updates, includes a monthly newsletter with our progress, news, stories, etc. It will furthermore notify about important; We respect your privacy and we will only notify you about news and updates that are important to you." />
+                                    <Assets:SwitchButtonWithDescription ToggleCommand="{Binding NewsLetterToggled}" IsToggled="{Binding ReceiveNewsLetter}" Description="NewsLetter" IsTextToggleVisible="true" Padding="20,0,20,0"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                        <Assets:ActivityIndicatorWithSuccesBox DissappearCommand="{Binding DoneUploading}" Text="Please wait while we save your changes" IsVisible="{Binding IsUploadingIndicatorVisible}" IsLoading="{Binding IsUploadingUserSettings}" IsDoneUploadingWithError="{Binding IsDoneUploadingUserSettingsWithError}" IsDoneUploadingWithSucces="{Binding IsDoneUploadingUserSettingsWithSucces}"></Assets:ActivityIndicatorWithSuccesBox>
+                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsDownloadingUserSettings}" IsRunning="{Binding IsDownloadingUserSettings}" Color="LightGray">
+                        </ActivityIndicator>
+                    </Grid>
+                </CustomLayouts:ReconnectView.AddContent>
+            </CustomLayouts:ReconnectView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts.ChampagneUIImageCardAspectFill">
+    <ContentView.Content>
+        <Frame x:Name="SingleImage" IsClippedToBounds="true" Padding="0,0,0,0" Margin="0,0,0,0" CornerRadius="15">
+            <Grid BackgroundColor="Red">
+                <ffimageloading:CachedImage Source="{Binding Source, Source={x:Reference Control}}" x:Name="SingleImageContent" Aspect="AspectFill">
+                </ffimageloading:CachedImage>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Section" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts.VintageUISection">
+    <ContentView.Content>
+        <StackLayout Padding="0,20,0,0" Spacing="5">
+            <Label x:Name="Title" IsVisible="true" Text="{Binding Title}" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="34" FontFamily="{StaticResource Key=HeaderFont}">
+            </Label>
+            <Label x:Name="SubTitle" IsVisible="true" Text="{Binding SubTitle}" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="16" FontFamily="{StaticResource Key=HeaderFont}" />
+            <Label x:Name="Body" Text="{Binding Body}" LineBreakMode="WordWrap" TextColor="White" FontSize="16" FontFamily="Times" />
+            <ffimageloading:CachedImage Margin="0,20,0,0" x:Name="SingleImage" IsVisible="false">
+            </ffimageloading:CachedImage>
+            <ScrollView x:Name="ImageSlider" Orientation="Horizontal" Margin="-20,0,-20,0">
+                <StackLayout Padding="20,0,20,0" Spacing="15" x:Name="ImageSliderContent" Orientation="Horizontal">
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

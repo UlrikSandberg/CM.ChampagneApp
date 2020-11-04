@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Backgrounds="clr-namespace:CM.ChampagneApp.UI.Elements.Backgrounds" xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.InfiniteListView.InfiniteListView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter FalseValue="true" TrueValue="false" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <CustomLayouts:ReconnectView x:Name="ReconnectView" OnTryAgain="Handle_OnReconnectClicked">
+            <CustomLayouts:ReconnectView.AddContent>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Backgrounds:GrapeBackground IsVisible="{Binding IsBackgroundVisible, Source={x:Reference Control}}">
+                    </Backgrounds:GrapeBackground>
+                    <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <StackLayout x:Name="CustomPreContent" IsVisible="{Binding UseCustomPreContentView, Source={x:Reference Control}}">
+                            <!-- Custom pre content goes here -->
+                        </StackLayout>
+                        <!-- Default pre content-->
+                        <StackLayout x:Name="DefaultPreContent" IsVisible="{Binding UseDefaultPreContentView, Source={x:Reference Control}}">
+                            <Label Text="{Binding DefaultPreContentText, Source={x:Reference Control}}" TextColor="{StaticResource Key=DarkGold}" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout x:Name="PreContentView" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ActivityIndicator x:Name="InitLoadingIndicator" Color="White" HorizontalOptions="Center" VerticalOptions="Center">
+                            </ActivityIndicator>
+                            <Grid IsVisible="false" x:Name="InitLoadingAnimation" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Frame Padding="0,-80,0,-80" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <forms:AnimationView HeightRequest="200" WidthRequest="500" x:Name="CheckMarkAnimation2" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+                                    </forms:AnimationView>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                    <InfiniteListView:InfinityListView ItemTapped="Handle_ItemTapped" x:Name="InfinityListView" Refreshing="Handle_Refreshing" IsRefreshing="{Binding IsRefreshing, Source={x:Reference Control}}" IsPullToRefreshEnabled="{Binding IsPullToRefreshEnabled, Source={x:Reference Control}}" HasUnevenRows="true" SeparatorVisibility="{Binding SeparatorVisibility, Source={x:Reference Control}}" SeparatorColor="{Binding SeparatorColor, Source={x:Reference Control}}" BackgroundColor="Transparent" ItemDisappearing="Handle_ItemDisappearing"
+                        ItemAppearing="Handle_ItemAppearing">
+                        <InfiniteListView:InfinityListView.Header>
+                            <Grid>
+                                <StackLayout IsVisible="true" x:Name="HeaderContentView" SizeChanged="Handle_SizeChanged">
+                                    <ActivityIndicator x:Name="RefreshActivityIndicator" Margin="0,20,0,20" Color="White">
+                                    </ActivityIndicator>
+                                    <Grid IsVisible="true" x:Name="RefreshAnimation" Padding="0,-100,0,-80">
+                                        <Frame HeightRequest="200">
+                                            <forms:AnimationView HeightRequest="200" WidthRequest="500" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+                                            </forms:AnimationView>
+                                        </Frame>
+                                    </Grid>
+                                </StackLayout>
+                                <StackLayout x:Name="DefaultHeader">
+                                </StackLayout>
+                            </Grid>
+                        </InfiniteListView:InfinityListView.Header>
+                        <InfiniteListView:InfinityListView.Footer>
+                            <StackLayout x:Name="CustomFooterContentView">
+                                <StackLayout>
+                                    <StackLayout>
+                                        <ActivityIndicator x:Name="FooterActivityIndicator" Color="White">
+                                        </ActivityIndicator>
+                                        <Grid IsVisible="false" x:Name="FooterLoadingAnimation" Margin="0,0,0,-100" Padding="0,0,0,-100">
+                                            <Frame HeightRequest="200">
+                                                <forms:AnimationView HeightRequest="200" WidthRequest="500" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+                                                </forms:AnimationView>
+                                            </Frame>
+                                        </Grid>
+                                    </StackLayout>
+                                    <StackLayout Spacing="20" x:Name="OutOfServiceLabel" IsVisible="false" Padding="20,20,20,40">
+                                        <Label IsVisible="true" Text="Is out of service... Try reconnecting" TextColor="White" Margin="0,0,0,0" FontSize="12" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                        <Buttons:RoundButtomMedium OnClicked="Handle_OnReconnectClicked" ClickedCommand="{Binding ReconnectCommand, Source={x:Reference Control}}" Text="Reconnect">
+                                        </Buttons:RoundButtomMedium>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </InfiniteListView:InfinityListView.Footer>
+                    </InfiniteListView:InfinityListView>
+                    <Grid x:Name="CustomEmptyStateContent" IsVisible="false" HorizontalOptions="Center" VerticalOptions="Center">
+                        <!-- Custom empty state content goes here -->
+                    </Grid>
+                </Grid>
+            </CustomLayouts:ReconnectView.AddContent>
+        </CustomLayouts:ReconnectView>
+    </ContentView.Content>
+</ContentView>

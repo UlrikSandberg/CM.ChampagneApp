@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:SegControl="clr-namespace:CM.ChampagneApp.UI.Elements.SegmentedControl" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.ChooseSubscriptionPage.ChooseSubscriptionPage">
+    <ContentPage.Content>
+        <CustomLayouts:ContentBackground CoverImageOpacity="0.0" ScrolledTitle="Choose Subscription" NavLeftIcon="BackArrowIcon" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" HeaderImg="SubscriptionCoverImage.png">
+            <CustomLayouts:ContentBackground.AddContent>
+                <StackLayout Spacing="0">
+                    <StackLayout Spacing="10">
+                        <Label Text="Champagne Moments opens the door to the world most luxurious champagne house and hidden gems in the champagne region" FontFamily="Helvetica" FontSize="13" TextColor="White" />
+                        <Label Text="Select your Member Subscription:" TextColor="White" FontSize="14" FontAttributes="Bold" />
+                    </StackLayout>
+                    <SegControl:SegmentedControl OnSegmentSelected="Handle_OnSegmentSelected" IsSlidingIndicatorVisible="true" SlidingIndicatorTintColor="{StaticResource Key=DarkGold}" Padding="-20,5,-20,0">
+                        <SegControl:SegmentedControl.Children>
+                            <SegControl:SegmentedControlTab Text="3 MONTHS" />
+                            <SegControl:SegmentedControlTab Text="6 MONTHS" />
+                            <SegControl:SegmentedControlTab Text="12 MONTHS" />
+                        </SegControl:SegmentedControl.Children>
+                    </SegControl:SegmentedControl>
+                    <Grid Margin="-20,0,-20,-20" BackgroundColor="{StaticResource Key=DenimBlack}">
+                        <Frame>
+                            <StackLayout>
+                                <Cards:SubscriptionCard BindingContext="{Binding ChosenSubscription}" ClickedCommand="{Binding Source={x:Reference Control}, Path=BindingContext.SubscriptionClicked}" TotalAmount="{Binding TotalAmount}" WeeklyAmount="{Binding WeeklyAmount}" Padding="0,10,0,20">
+                                </Cards:SubscriptionCard>
+                                <Label FontFamily="Avenir" FontSize="13" Text="Buying the Champagne Lover will grant access to enjoy all the features on Champagne Moments. This includes the possibility to; see and comment other members tastings, save champagne and add tastings to your personal cellar, visit brands and much more. The selected member subscription will automatically renew within 24 hours of the end of the selected member subscription period unless cancelled. You will be charged through your iTunes account. You can manage your Member Subscription in Account Settings. By purchasing the Champagne Lover via in-app Member Subscription, you agree to the Apple App Store terms and conditions. You may use store credit to pay for your subscription; however, you must have a valid payment method on file at the time of purchase." TextColor="White" />
+                                <StackLayout Padding="0,10,0,0" Orientation="Horizontal" Spacing="1">
+                                    <Label Text="Visit our " TextColor="White" FontFamily="Avenir" FontSize="10" />
+                                    <Label Text="Terms of Use " TextColor="White" FontAttributes="Bold" FontFamily="Avenir" FontSize="10">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigateTermsOfUse}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Text="and " TextColor="White" FontFamily="Avenir" FontSize="10" />
+                                    <Label Text="Privacy Policy " TextColor="White" FontAttributes="Bold" FontFamily="Avenir" FontSize="10">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigatePrivacyPolicy}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Text="to learn more" TextColor="White" FontFamily="Avenir" FontSize="10" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </CustomLayouts:ContentBackground.AddContent>
+        </CustomLayouts:ContentBackground>
+    </ContentPage.Content>
+</ContentPage>

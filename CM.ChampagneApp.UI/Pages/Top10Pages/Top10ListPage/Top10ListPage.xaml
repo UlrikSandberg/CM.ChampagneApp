@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage ReconnectCommand="{Binding DownloadManager.Reconnect}" IsOutOfService="{Binding DownloadManager.IsOutOfService}" IsContentLoadingAnimationEnabled="true" IsContentLoadingAnimationVisible="{Binding DownloadManager.IsDownloading}" HasFloatingNavigationBar="false" NavigationTitle="Top - 10" HasBackButton="{Binding HasBackButton}" NavigationBackgroudColor="{StaticResource Key=DenimBlack}" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:SegmentedControl="clr-namespace:CM.ChampagneApp.UI.Elements.SegmentedControl" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:ListTemplates="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.ListTemplates" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.Top10Pages.Top10ListPage.Top10ListPage">
+    <d:BaseContentPage.PageContent>
+        <StackLayout Spacing="0">
+            <SegmentedControl:SegmentedControl OnSegmentSelected="Handle_OnSegmentSelected" Margin="0,-8,0,0" IsSlidingIndicatorVisible="true" SlidingIndicatorTintColor="{StaticResource Key=DarkGold}" BackgroundColor="{StaticResource Key=DenimBlack}">
+                <SegmentedControl:SegmentedControl.Children>
+                    <SegmentedControl:SegmentedControlTab HeightRequest="80" Text="Non-Vintage"/>
+                    <SegmentedControl:SegmentedControlTab HeightRequest="80" Text="Vintage"/>
+                </SegmentedControl:SegmentedControl.Children>
+            </SegmentedControl:SegmentedControl>
+            <InfiniteListView:InfiniteListView OnItemTapped="Handle_OnItemTapped" ItemSource="{Binding ItemSource}" IsBackgroundVisible="true">
+                <InfiniteListView:InfiniteListView.ListItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ListTemplates:Top10ListTemplate Title="{Binding AugmentedTitle}" SubTitle="{Binding AugmentedSubtitle}" ImageUrl="{Binding ImageUrl}" Padding="10,10,10,10">
+                            </ListTemplates:Top10ListTemplate>
+                        </ViewCell>
+                    </DataTemplate>
+                </InfiniteListView:InfiniteListView.ListItemTemplate>
+            </InfiniteListView:InfiniteListView>
+        </StackLayout>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.CurrencyPickerCard">
+    <RelativeLayout>
+        <Frame Padding="10" CornerRadius="15" BackgroundColor="{StaticResource Key=MistyPeacock}" HasShadow="false" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" HeightRequest="60">
+            <StackLayout>
+                <Label Text="Currency:" FontFamily="{StaticResource Key=HeaderFont}" FontSize="12" TextColor="{StaticResource Key=DarkGold}" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                <Grid  VerticalOptions="FillAndExpand">
+                    <Label x:Name="Currency" Text="€" TextColor="White" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Clicked="Handle_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </RelativeLayout>
+</ContentView>

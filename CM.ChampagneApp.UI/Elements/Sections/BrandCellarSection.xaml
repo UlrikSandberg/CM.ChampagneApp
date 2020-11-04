@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Sections.BrandCellarSection">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Headers:H2 x:Name="SectionHeader" IsVisible="{Binding IsTitleEnabled}" Padding="0,0,0,10" Title="{Binding Title}">
+            </Headers:H2>
+            <Label x:Name="Body" Text="{Binding Body}" LineBreakMode="WordWrap" TextColor="White" FontSize="14" FontFamily="Times" />
+            <CustomLayouts:ChampagneGrid Padding="0,15,0,20" OnItemClicked="Handle_OnItemClicked" ItemSource="{Binding Champagnes}"></CustomLayouts:ChampagneGrid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

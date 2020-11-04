@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.SocialButtons">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button x:Name="FacebookButton" Image="Facebook" IsVisible="false" Clicked="Handle_OnFacebookClicked" HeightRequest="50" WidthRequest="50"></Button>
+            <Button x:Name="InstagramButton" Image="Instagram" IsVisible="false" Clicked="Handle_OnInstagramClicked" HeightRequest="50" WidthRequest="50"></Button>
+            <Button x:Name="PinterestButton" Image="Pinterest" IsVisible="false" Clicked="Handle_OnPinterestClicked" HeightRequest="50" WidthRequest="50"></Button>
+            <Button x:Name="TwitterButton" Image="Twitter" IsVisible="false" Clicked="Handle_OnTwitterClicked" HeightRequest="50" WidthRequest="50"></Button>
+            <Button x:Name="wwwButton" Image="www" IsVisible="false" Clicked="Handle_OnwwwClicked" HeightRequest="50" WidthRequest="50"></Button>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

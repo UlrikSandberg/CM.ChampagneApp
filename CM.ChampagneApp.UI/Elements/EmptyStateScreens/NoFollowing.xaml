@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.EmptyStateScreens.NoFollowing">
+    <ContentView.Content>
+        <StackLayout Padding="50,40,50,0" Spacing="20">
+            <Label Text="It's lonely here..." TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Label Text="Find someone to follow and get inspired by their champagne moments " TextColor="White" FontSize="12" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Buttons:RoundButtomMedium Text="     Find     "></Buttons:RoundButtomMedium>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

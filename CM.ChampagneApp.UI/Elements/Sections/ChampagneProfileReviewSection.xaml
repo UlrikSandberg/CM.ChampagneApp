@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" x:Name="Control" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Sections.ChampagneProfileReviewSection">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <StackLayout x:Name="ReviewPresenter" IsVisible="{Binding IsDownloadingTastings, Source={x:Reference Control}, Converter={StaticResource InverseBool}}">
+                <Lists:ReviewList x:Name="Reviews" OnCommentBtnClicked="Handle_OnCommentBtnClicked" OnLikeBtnClicked="Handle_OnLikeBtnClicked" OnProfileNameClicked="Handle_OnProfileNameClicked" OnReviewChosen="Handle_OnReviewChosen" IsVisible="true" ItemSource="{Binding ItemSource, Source={x:Reference Control}}">
+                </Lists:ReviewList>
+                <Buttons:RoundButtomMedium x:Name="ReviewsBtn" IsVisible="true" Padding="0,30,0,0" Text="See All Tastings" OnClicked="Handle_OnClickedSeeAllTastings"/>
+                <StackLayout x:Name="NoReviewText">
+                    <Frame Padding="10,0,10,10" BackgroundColor="Transparent">
+                        <Label TextColor="White" FontSize="12" HorizontalTextAlignment="Center" Text="No members have left any tasting notes yet. Be the first to share your thoughts about this champagne." />
+                    </Frame>
+                    <Buttons:RoundButtomMedium OnClicked="Handle_OnClickedSeeAllTastings" Padding="0,10,0,0" Text="See ratings by stars">
+                    </Buttons:RoundButtomMedium>
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator x:Name="loadingIndicator" IsRunning="{Binding IsDownloadTastings, Source={x:Reference Control}}" IsVisible="{Binding IsDownloadTastings, Source={x:Reference Control}}" Color="LightGray" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.NotificationsReminder">
+    <ContentView.Content>
+        <ScrollView>
+            <StackLayout Padding="0,20,0,0">
+                <Image Source="PhoneAndNotification.png" Scale="0.9" />
+                <StackLayout Padding="0,-10,0,0" Spacing="0">
+                    <Label Text="You Will Never" FontSize="30" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" />
+                    <Label Text="Miss A Moment" FontSize="30" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" />
+                </StackLayout>
+                <Label Margin="0,0,0,0" FontFamily="Avenir" FontSize="11" TextColor="White" Text="We will notify you when someone comment or interact with your profile or content, community updates and when we add new champagnes and brands." />
+                <Button Text="Read Our Privacy Policy" Command="{Binding PrivacyPolicyCommand, Source={x:Reference Control}}" HorizontalOptions="Start" TextColor="White" FontSize="11" FontAttributes="Bold" />
+                <StackLayout Spacing="10">
+                    <Buttons:RoundButtonMediumFullScreen ClickedCommand="{Binding AllowNotificationsCommand, Source={x:Reference Control}}"  Text="Okay, Sounds Good"/>
+                    <Buttons:BorderButtonFullScreen ClickedCommand="{Binding NotNowCommand, Source={x:Reference Control}}" Text="See Notification Settings"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

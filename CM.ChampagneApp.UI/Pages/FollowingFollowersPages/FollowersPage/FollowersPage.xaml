@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:EmptyState="clr-namespace:CM.ChampagneApp.UI.Elements.EmptyStateScreens" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:InfiniteListView="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.FollowingFollowersPages.FollowersPage.FollowersPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" LeftIcon="BackArrowIcon" LeftIconCommand="{Binding NavigateBack}" Title="{Binding NavigationTitle}">
+            </Navigation:DefaultNavigationBar>
+            <InfiniteListView:InfiniteListView UseCustomEmptyStateContent="true" ReconnectCommand="{Binding PagingService.ReconnectCommand}" UseFooterAnimationLoaderAsDefault="true" RequestNextPageCommand="{Binding PagingService.RequestNextPage}" UsePullToRefreshAnimationLoaderAsDefault="true" IsRefreshingActivityStatus="{Binding PagingService.RefreshingStatus}" RefreshCommand="{Binding PagingService.RefreshCommand}" IsPullToRefreshEnabled="true" ActivityStatus="{Binding PagingService.LoadingStatus}" UseInitAnimationLoaderAsDefault="true" ItemSource="{Binding PagingService._collectionViewData.ItemSource}">
+                <InfiniteListView:InfiniteListView.AddCustomEmptyStateContent>
+                    <EmptyState:NoSavedChampagnes ClickedCommand="{Binding Source={x:Reference Control}, Path=BindingContext.EmptyStateButtonClicked}" IsBackgroundVisible="false" HorizontalOptions="Center" VerticalOptions="Center" Title="{Binding TitleProperty.Value}" Body="{Binding BodyProperty.Value}" ButtonText="{Binding ButtonTextProperty.Value}" IsIconVisible="{Binding IconProperty.IsVisible}" IsButtonVisible="{Binding ButtonTextProperty.IsVisible}" BindingContext="{Binding EmptyStateModel}">
+                    </EmptyState:NoSavedChampagnes>
+                </InfiniteListView:InfiniteListView.AddCustomEmptyStateContent>
+                <InfiniteListView:InfiniteListView.ListItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="FollowerGrid" Padding="10,20,10,10" ColumnSpacing="10" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Cards:FollowCard Grid.Column="0" OnFollowButtonClicked="Handle_OnFollowButtonClicked" OnCardClicked="Handle_OnCardClicked" BindingContext="{Binding Entity1}" IsEnabled="{Binding IsEnabled}" IsVisible="{Binding Source={x:Reference FollowerGrid}, Path=BindingContext.IsEntity1Visible}">
+                                </Cards:FollowCard>
+                                <Cards:FollowCard Grid.Column="1" OnFollowButtonClicked="Handle_OnFollowButtonClicked" OnCardClicked="Handle_OnCardClicked" BindingContext="{Binding Entity2}" IsEnabled="{Binding IsEnabled}" IsVisible="{Binding Source={x:Reference FollowerGrid}, Path=BindingContext.IsEntity2Visible}">
+                                </Cards:FollowCard>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </InfiniteListView:InfiniteListView.ListItemTemplate>
+            </InfiniteListView:InfiniteListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

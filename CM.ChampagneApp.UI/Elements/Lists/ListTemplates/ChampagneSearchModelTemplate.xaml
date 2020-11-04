@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:RatingStars="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.ListTemplates.ChampagneSearchModelTemplate">
+    <ContentView.Content>
+        <Grid Padding="0,0,0,0" ColumnSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="8*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <Frame Padding="0" HasShadow="true">
+            <ffimageloading:CachedImage Grid.Column="0" ErrorPlaceholder="bottle_bubbles" LoadingPlaceholder="bottle_bubbles" Source="{Binding BottleImageUri, Source={x:Reference Control}}">
+            </ffimageloading:CachedImage>
+                </Frame>
+            <StackLayout Grid.Column="1" Spacing="1">
+                <Label Text="{Binding BrandName, Source={x:Reference Control}}" TextColor="White" FontSize="11" FontFamily="Avenir" />
+                <Label Text="{Binding BottleName, Source={x:Reference Control}}" TextColor="White" FontSize="11" FontAttributes="Bold" FontFamily="Avenir" />
+                <Label Text="{Binding Vintage, Source={x:Reference Control}}" TextColor="White" FontSize="11" FontFamily="Avenir" />
+                <StackLayout Orientation="Horizontal" Spacing="5" Padding="0,0,0,5">
+                    <Label Margin="0,0,0,-5" Text="{Binding AverageRatingString, Source={x:Reference Control}}" FontSize="20" TextColor="White" VerticalOptions="EndAndExpand" FontAttributes="Bold" FontFamily="Avenir" />
+                    <StackLayout Spacing="-3">
+                        <RatingStars:ChampagneCardStars Padding="0,0,0,0" RatingValue="{Binding AverageRating, Source={x:Reference Control}}">
+                        </RatingStars:ChampagneCardStars>
+                        <Label Text="{Binding Tastings, Source={x:Reference Control}, StringFormat='{0} Tastings'}" TextColor="White" FontSize="11" FontFamily="Avenir" FontAttributes="Bold" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

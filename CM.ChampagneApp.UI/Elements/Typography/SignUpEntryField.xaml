@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Typography.SignUpEntryField">
+    <ContentView.Content>
+        <StackLayout Spacing="10" Margin="0,0,0,0">
+            <Label Text="{Binding Title, Source={x:Reference Control}}" TextColor="White" FontSize="12" FontAttributes="Bold" FontFamily="{StaticResource Key=ButtonFont}" />
+            <StackLayout Orientation="Horizontal">
+                <Typography:TransparentTextEntry TextChanged="Handle_TextChanged" HorizontalOptions="FillAndExpand" Text="{Binding Text, Source={x:Reference Control}}" IsPassword="{Binding IsPassword, Source={x:Reference Control}}" Keyboard="{Binding Keyboard, Source={x:Reference Control}}" x:Name="TextField" TextColor="{Binding TextColor, Source={x:Reference Control}}" Unfocused="Handle_Unfocused">
+                </Typography:TransparentTextEntry>
+                <Frame Padding="0">
+                    <StackLayout>
+                    <ActivityIndicator x:Name="ActivityIndicator" IsVisible="{Binding IsValidating, Source={x:Reference Control}}" IsRunning="{Binding IsValidating, Source={x:Reference Control}}" Color="White"></ActivityIndicator>
+                    <Image HeightRequest="20" WidthRequest="20" x:Name="ValidationIcon" IsVisible="false"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Assets:ListSeperator>
+            </Assets:ListSeperator>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

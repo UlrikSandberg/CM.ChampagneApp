@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.ScatteredAnimationLoader">
+    <ContentView.Content>
+        <Frame Padding="0,-80,0,-80" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center">
+            <forms:AnimationView HeightRequest="200" WidthRequest="500" x:Name="CheckMarkAnimation2" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+            </forms:AnimationView>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

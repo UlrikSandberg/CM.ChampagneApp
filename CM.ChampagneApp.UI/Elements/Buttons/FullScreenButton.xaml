@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Ele="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.FullScreenButton">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.2}">
+                <Ele:GradientFrame CornerRadius="15" StartColor="{StaticResource Key=DarkGold}" EndColor="{StaticResource Key=GradientStart}" StartPoint="0,0" EndPoint="1,.5">
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                        <Label Text="{Binding LeftText, Source={x:Reference Control}}" FontSize="14" TextColor="White" VerticalOptions="Center" FontFamily="{StaticResource Key=HeaderFont}" />
+                        <Label Text="{Binding RightText, Source={x:Reference Control}}" FontSize="14" TextColor="White" FontFamily="Avenir" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </Ele:GradientFrame>
+                <Button Command="{Binding Command, Source={x:Reference Control}}">
+                </Button>
+            </Grid>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

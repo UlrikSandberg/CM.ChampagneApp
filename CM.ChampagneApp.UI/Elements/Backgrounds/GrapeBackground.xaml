@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Backgrounds.GrapeBackground">
+    <ContentView.Content>
+        <Image x:Name="Image" IsVisible="true" Aspect="AspectFit" Source="GrapesBackground.png" Margin="0,0,0,-20" />
+    </ContentView.Content>
+</ContentView>

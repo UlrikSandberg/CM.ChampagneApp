@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.EmptyStateScreens.OutOfServiceEmptyState">
+    <ContentView.Content>
+        <Grid>
+            <Image IsVisible="{Binding IsBackgroundVisible, Source={x:Reference Control}}" Source="GrapesBackground.png" Margin="-10,0,-20,0">
+            </Image>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="25">
+                <Label Text="Connection Failed..." FontSize="18" FontFamily="{StaticResource Key=HeaderFont}" TextColor="{StaticResource Key=DarkGold}" HorizontalTextAlignment="Center" />
+                <Label Text="Something went wrong, please try again." FontSize="12" TextColor="White" HorizontalTextAlignment="Center" />
+                <Buttons:RoundButtomMedium ClickedCommand="{Binding TryAgainCommand,Source={x:Reference Control}}" Text="Try Again" OnClicked="Handle_OnClicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

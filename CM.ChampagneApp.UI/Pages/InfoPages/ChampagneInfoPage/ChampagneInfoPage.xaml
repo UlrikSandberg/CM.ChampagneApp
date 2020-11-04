@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.InfoPages.ChampagneInfoPage.ChampagneInfoPage">
+    <ContentPage.Content>
+        <CustomLayouts:ContentBackground NavLeftIcon="BackArrowIcon" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked">
+            <CustomLayouts:ContentBackground.AddContent>
+                <StackLayout Spacing="0">
+                    <Headers:H1 Title="The Art Of Champagne" Padding="0,0,0,-10"></Headers:H1>
+                    <Typography:TextField TextContent="Philipponnat crafts its wines using exclusively first press juice from the finest grapes, mainly from Premier and Grand Cru plots, and is committed to harvesting grapes when they reach greater maturity than the average in the Champagne wine-growing region. A portion of the wines is fermented or matured in casks, which is exceptional for Champagne; aging in wood gives them greater complexity without in any way coarsening them. Wines are aged in the bottle on lees for three to eleven years. "></Typography:TextField>
+                    <Grid HeightRequest="200">
+
+                        <Label Text="A list of all articles should be placed here" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                    </Grid>
+                </StackLayout>
+            </CustomLayouts:ContentBackground.AddContent>
+        </CustomLayouts:ContentBackground>
+    </ContentPage.Content>
+</ContentPage>

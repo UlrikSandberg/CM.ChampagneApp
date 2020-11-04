@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" x:Name="Control" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.FilterSearchTagCard">
+    <ContentView.Content>
+        <Frame x:Name="border" CornerRadius="10" Padding="20,0,20,0" HasShadow="false" BackgroundColor="Transparent" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}" WidthRequest="80">
+            <Frame CornerRadius="10" Margin="-19,1,-19,1" Padding="0" BackgroundColor="{StaticResource Key=MistyPeacock}" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black">
+            <Grid>
+                <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Title, Source={x:Reference Control}}" FontSize="10" FontFamily="{StaticResource Key=ButtonFont}" TextColor="White" />
+                <Button Clicked="Handle_Clicked">
+                </Button>
+            </Grid>
+            </Frame>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.FooterElements.BrandSubmissionFooter">
+    <ContentView.Content>
+        <StackLayout Padding="20">
+            <StackLayout>
+                <Headers:H2 Title="Missing a brand?" />
+                <Buttons:RoundButtomMedium x:Name="SubmitButton" OnClicked="Handle_OnSubmissionClicked" Padding="0,15,0,5" Text="{Binding SubmissionButtonText, Source={x:Reference Control}}">
+                </Buttons:RoundButtomMedium>
+                <StackLayout Spacing="20" x:Name="SubmitForm" Orientation="Horizontal" Padding="15" IsVisible="false">
+                    <Typography:GiveReviewTextField x:Name="TextField" Title="Suggestion:" HorizontalOptions="FillAndExpand" PlaceholderText="Suggest brand or brands...">
+                    </Typography:GiveReviewTextField>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

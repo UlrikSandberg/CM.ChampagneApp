@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.BrandCard">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.4545}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="166*"/>
+                        <RowDefinition Height="17*"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="1" CornerRadius="15" Padding="0" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    </Frame>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="57*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="1" Padding="0" CornerRadius="15" IsClippedToBounds="true">
+                        <ffimageloading:CachedImage Aspect="AspectFill" Source="{Binding BrandListImageUrl}" ErrorPlaceholder="PlaceholderBrandList.jpg" LoadingPlaceholder="PlaceholderBrandList.jpg">
+                            
+                        </ffimageloading:CachedImage>
+                    </Frame>
+                    <Frame Grid.Column="2" Padding="15,0,0,0">
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="{Binding BrandName, Source={x:Reference Control}}" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" FontSize="13"/>
+                            <StackLayout Orientation="Horizontal" Spacing="2">
+                                <Label Text="{Binding NumberOfBottles, Source={x:Reference Control}}" FontSize="12" TextColor="White" FontFamily="Avenir" FontAttributes="Bold"/>
+                                <Label Text="Bottles" FontSize="12" TextColor="White" FontFamily="Avenir"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="2">
+                                <Label Text="{Binding UserTastings, Source={x:Reference Control}}" FontSize="12" TextColor="White" FontFamily="Avenir" FontAttributes="Bold"/>
+                                <Label Text="Tastings" FontSize="12" TextColor="White" FontFamily="Avenir"/>
+                            </StackLayout>
+                    </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

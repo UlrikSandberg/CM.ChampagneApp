@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:InfoPageLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.BrandInfoPageLayouts.InfoPage">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter FalseValue="true" TrueValue="false" x:Key="InverseBool"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <InfoPageLayouts:ChampagneBrandInfoPageUI OnNavigateBack="Handle_OnNavigateBack" ItemSource="{Binding ItemSource, Source={x:Reference Control}}" HeaderImg="{Binding HeaderImg, Source={x:Reference Control}}" ScrolledNavigationTitle="{Binding ScrolledNavigationTitle, Source={x:Reference Control}}" ScrolledNavigationSubTitle="{Binding ScrolledNavigationSubTitle, Source={x:Reference Control}}" IsVisible="false" x:Name="ChampagneUI"></InfoPageLayouts:ChampagneBrandInfoPageUI>
+            <InfoPageLayouts:VintageBrandInfoPageUI OnNavigateBack="Handle_OnNavigateBack" ItemSource="{Binding ItemSource, Source={x:Reference Control}}" HeaderImg="{Binding HeaderImg, Source={x:Reference Control}}" NavigationTitle="{Binding NavigationTitle, Source={x:Reference Control}}" NavigationSubTitle="{Binding NavigationSubTitle, Source={x:Reference Control}}" ScrolledNavigationTitle="{Binding ScrolledNavigationTitle, Source={x:Reference Control}}" ScrolledNavigationSubTitle="{Binding ScrolledNavigationSubTitle, Source={x:Reference Control}}" IsVisible="false" x:Name="VintageUI"></InfoPageLayouts:VintageBrandInfoPageUI>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

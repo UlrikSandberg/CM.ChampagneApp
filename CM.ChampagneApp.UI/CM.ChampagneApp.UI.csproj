@@ -1,0 +1,396 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ReleaseVersion>0.2</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <ItemGroup>
+    <None Remove="App.xaml" />
+    <None Remove="CM.ChampagneAppPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FreshMvvm" Version="2.2.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Xamarin.Auth" Version="1.6.0.4" />
+    <PackageReference Include="EmailValidation" Version="1.0.3" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.0" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Fody" Version="4.0.2" />
+    <PackageReference Include="IdentityModel" Version="3.10.6" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.13.2" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.13.2" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.13.2" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.13.2" />
+    <PackageReference Include="PropertyChanged.Fody" Version="2.6.0" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.4.859" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
+    <PackageReference Include="Xamarin.Badge.Plugin" Version="2.0.0" />
+    <PackageReference Include="LiveXAML" Version="2.1.70" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Elements\CustomContextActionViews" />
+    <Folder Include="Pages\" />
+    <Folder Include="Elements\" />
+    <Folder Include="Elements\Cards\" />
+    <Folder Include="Elements\Navigation\" />
+    <Folder Include="Elements\Typography\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Elements\Lists\" />
+    <Folder Include="CustomLayouts\" />
+    <Folder Include="CustomEventArgs\" />
+    <Folder Include="Elements\Assets\" />
+    <Folder Include="Elements\Headers\" />
+    <Folder Include="Elements\Sections\" />
+    <Folder Include="Elements\EmptyStateScreens\" />
+    <Folder Include="Resources\ValueConverters\" />
+    <Folder Include="Elements\Buttons\" />
+    <Folder Include="UIFacade\" />
+    <Folder Include="UIFacade\Configuration\" />
+    <Folder Include="UIFacade\Models\" />
+    <Folder Include="UIFacade\Services\" />
+    <Folder Include="UIFacade\Models\UIArticleStructure\" />
+    <Folder Include="Resources\Helpers\" />
+    <Folder Include="UIFacade\Models\UIUser\" />
+    <Folder Include="UIFacade\Models\UIProfileCardStructure\" />
+    <Folder Include="UIFacade\Models\UIFollowStructure\" />
+    <Folder Include="UIFacade\Models\UITastingModels\" />
+    <Folder Include="UIFacade\Models\UICommentModels\" />
+    <Folder Include="Elements\CustomContextActionViews\" />
+    <Folder Include="Elements\Helpers\" />
+    <Folder Include="UIFacade\Models\UIBrandModels\" />
+    <Folder Include="CustomLayouts\BrandInfoPageLayouts\" />
+    <Folder Include="UIFacade\Models\UIImageModels\" />
+    <Folder Include="UIFacade\Models\UIEmptyStateMessageModels\" />
+    <Folder Include="Elements\Helpers\ElementEnum\" />
+    <Folder Include="UIFacade\Models\UISubscription\" />
+    <Folder Include="UIFacade\Models\UINotifications\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Elements\Backgrounds\" />
+    <Folder Include="Elements\Lists\InfiniteListView\" />
+    <Folder Include="Elements\Lists\FooterElements\" />
+    <Folder Include="Elements\Assets\InputFields\" />
+    <Folder Include="UIFacade\Models\UIChampagneModels\" />
+    <Folder Include="Elements\Lists\ListTemplates\" />
+    <Folder Include="Pages\Top10Pages\" />
+    <Folder Include="UIFacade\Models\UITop10\" />
+    <Folder Include="UIFacade\Models\Helpers\" />
+    <Folder Include="Pages\FollowingFollowersPages\" />
+    <Folder Include="Elements\Carousels\" />
+    <Folder Include="Pages\UserPages\" />
+    <Folder Include="Pages\Discover\" />
+    <Folder Include="Pages\LoginSignupPages\" />
+    <Folder Include="Pages\BrandPages\" />
+    <Folder Include="Pages\ChampagnePages\" />
+    <Folder Include="Pages\BrandPages\BrandCellarPage\" />
+    <Folder Include="Pages\BrandPages\BrandListPage\" />
+    <Folder Include="Pages\InfoPages\" />
+    <Folder Include="Pages\InfoPages\BrandInfoPage\" />
+    <Folder Include="Pages\Top10Pages\Top10LightroomPage\" />
+    <Folder Include="Pages\BrandPages\BrandProfilePage\" />
+    <Folder Include="Pages\InfoPages\ChampagneInfoPage\" />
+    <Folder Include="Pages\ChampagnePages\ChampagneProfilePage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\BugAndFeedbackPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\ChangeEmailPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\ChangePasswordPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\EmailNotificationsSettingsPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\ManageSubscriptionPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\PushNotificationsSettingsPage\" />
+    <Folder Include="Pages\UserPages\CellarPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\EditProfilePage\" />
+    <Folder Include="Pages\ChampagnePages\ChampagneLightroomPage\" />
+    <Folder Include="Pages\SearchPages\" />
+    <Folder Include="Pages\SearchPages\FilterSearchPage\" />
+    <Folder Include="Pages\SearchPages\FilterSearchResultPage\" />
+    <Folder Include="Pages\SearchPages\GlobalSearchPage\" />
+    <Folder Include="Pages\UserPages\ChooseSubscriptionPage\" />
+    <Folder Include="Pages\TastingPages\" />
+    <Folder Include="Pages\TastingPages\InspectTastingPage\" />
+    <Folder Include="Pages\LoginSignupPages\LoginPage\" />
+    <Folder Include="Pages\LoginSignupPages\OnboardingPage\" />
+    <Folder Include="Pages\LoginSignupPages\ResetPasswordPage\" />
+    <Folder Include="Pages\LoginSignupPages\WelcomeScreenPage\" />
+    <Folder Include="Pages\LoginSignupPages\RegisterPage\" />
+    <Folder Include="Pages\NotificationsOverviewPage\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\UserSettingsOverviewPage\" />
+    <Folder Include="Pages\SharedPages\" />
+    <Folder Include="Pages\SharedPages\BaseInitPage\" />
+    <Folder Include="Pages\SharedPages\WebViewPage\" />
+    <Folder Include="Pages\TastingPages\TastingsListPage\" />
+    <Folder Include="Pages\TastingPages\CreateTastingPage\" />
+    <Folder Include="Pages\FollowingFollowersPages\FollowersPage\" />
+    <Folder Include="Pages\FollowingFollowersPages\FollowingPage\" />
+    <Folder Include="Pages\FollowingFollowersPages\Helpers\" />
+    <Folder Include="Pages\UserPages\CellarPage\Helpers\" />
+    <Folder Include="UIFacade\Mapper\" />
+    <Folder Include="Pages\SearchPages\Helpers\" />
+    <Folder Include="Pages\LoginSignupPages\OnboardingPage\Helpers\" />
+    <Folder Include="Pages\UserPages\UserSettingsPages\UserSettingsOverviewPage\Helpers\" />
+    <Folder Include="Pages\LoginSignupPages\WelcomeScreenPage\Helpers\" />
+    <Folder Include="Pages\SharedPages\Helpers\" />
+    <Folder Include="Pages\ChampagnePages\Helpers\" />
+    <Folder Include="Pages\TastingPages\Helpers\" />
+    <Folder Include="Pages\BrandPages\Helpers\" />
+    <Folder Include="Pages\NotificationsOverviewPage\Helpers\" />
+    <Folder Include="Pages\InfoPages\BrandInfoPage\Helpers\" />
+    <Folder Include="Pages\Commons\" />
+    <Folder Include="Helpers\FreshMvvmHelpers\" />
+    <Folder Include="Helpers\Routing\" />
+    <Folder Include="Resources\Effects\" />
+    <Folder Include="Helpers\AccountService\" />
+    <Folder Include="Pages\Commons\Helpers\" />
+    <Folder Include="Pages\Commons\ActiveCallTracker\" />
+    <Folder Include="Pages\UserPages\ProfilePage\" />
+    <Folder Include="Pages\UserPages\ProfilePage\Helper\" />
+    <Folder Include="Pages\Top10Pages\Top10ListPage\" />
+    <Folder Include="Pages\Top10Pages\Top10ListPage\Helpers\" />
+    <Folder Include="Pages\Top10Pages\Top10LightroomPage\Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CM.ChampagneApp.Business\CM.ChampagneApp.Business.csproj" />
+    <ProjectReference Include="..\CM.ChampagneApp.Acq\CM.ChampagneApp.Acq.csproj" />
+    <ProjectReference Include="..\CM.ChampagneApp.DTO\CM.ChampagneApp.DTO.csproj" />
+    <ProjectReference Include="..\CM.ChampagneApp.Instrumentation\CM.ChampagneApp.Instrumentation.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Elements\Navigation\DiscoverNavigationPage.xaml.cs" />
+    <Compile Remove="Elements\Assets\Grid3x2.cs" />
+    <Compile Remove="Elements\Lists\TechnicalIdentityList.cs" />
+    <Compile Remove="Elements\Cards\ArticleInfoCard.cs" />
+    <Compile Remove="Elements\RoundButtonMedium.cs" />
+    <Compile Remove="Elements\Lists\ProfileContentList.xaml.cs" />
+    <Compile Remove="PageModels\IPageModel.cs" />
+    <Compile Remove="Pages\BrandCellerPage.xaml.cs" />
+    <Compile Remove="CustomLayouts\ChampagneGrid.cs" />
+    <Compile Remove="Routing\Route.cs" />
+    <Compile Remove="Elements\EmptyStateScreens\NoFollowers.xaml.cs" />
+    <Compile Remove="Elements\EmptyStateScreens\NoFollowing.xaml.cs" />
+    <Compile Remove="Elements\EmptyStateScreens\NoFollowingBrands.xaml.cs" />
+    <Compile Remove="Elements\EmptyStateScreens\NoTastedChampagnes.xaml.cs" />
+    <Compile Remove="CustomLayouts\ContentInsetScrollView.cs" />
+    <Compile Remove="PageModels\LoginPageModels\WelcomeScreenPageModel.cs" />
+    <Compile Remove="Elements\Cards\ChampagneCard.xaml %28copy%29.cs" />
+    <Compile Remove="Elements\Cards\ChampagneEditionCard.cs" />
+    <Compile Remove="Elements\Buttons\RatingStars.cs" />
+    <Compile Remove="CustomLayouts\MyPage.xaml.cs" />
+    <Compile Remove="Pages\MyPagez.xaml.cs" />
+    <Compile Remove="Pages\TestSignUp.xaml.cs" />
+    <Compile Remove="Pages\TestSignUpPage.xaml.cs" />
+    <Compile Remove="PageModels\TestSignUpPageModel.cs" />
+    <Compile Remove="Pages\WelcomeScreenPage.xaml %28copy%29.cs" />
+    <Compile Remove="Pages\LoginPageModel.xaml.cs" />
+    <Compile Remove="Elements\Assets\CircleImage.cs" />
+    <Compile Remove="Elements\Assets\_x3Form.xaml.cs" />
+    <Compile Remove="Elements\Navigation\DiscoverNavBar.cs" />
+    <Compile Remove="Elements\Lists\HorizontalChampagneEditionList.cs" />
+    <Compile Remove="UIFacade\Models\UIArticleOverviews.cs" />
+    <Compile Remove="Elements\Cards\ChampagneCard2.cs" />
+    <Compile Remove="Resources\ValueConverters\BoolToImageSourceConverter.cs" />
+    <Compile Remove="Elements\Navigation\DefaultNavigationBar.cs" />
+    <Compile Remove="CustomLayouts\ChampagneOptionsView.cs" />
+    <Compile Remove="UIFacade\Models\UIUser.cs" />
+    <Compile Remove="BaseInitPage.cs" />
+    <Compile Remove="ICMAuthService.cs" />
+    <Compile Remove="CMAuthService.cs" />
+    <Compile Remove="CMAuth\IBussAuthService.cs" />
+    <Compile Remove="Pages\Helpers\BaseInitPageHelper.cs" />
+    <Compile Remove="Pages\Helpers\BaseInitPageHelper.cs" />
+    <Compile Remove="UIFacade\Documents\UIPostResponse.cs" />
+    <Compile Remove="UIFacade\Models\UIBrandProfileCard.cs" />
+    <Compile Remove="PageModelInitData\UserProfileInitData\UserFollowersInitData.cs" />
+    <Compile Remove="Pages\NotificationsOverviewPage.cs" />
+    <Compile Remove="Pages\InspectReviewPage.xaml.cs" />
+    <Compile Remove="Elements\Sections\TastedChampagneCollectionView.cs" />
+    <Compile Remove="Elements\Sections\CollectionView.xaml.cs" />
+    <Compile Remove="Elements\Sections\NewTrialView.cs" />
+    <Compile Remove="CollectionView\CollectionViewBaseUI.xaml.cs" />
+    <Compile Remove="CustomLayouts\BrandInfoPageLayouts\ChampagneUISection.cs" />
+    <Compile Remove="Builder\BUserSettings.cs" />
+    <Compile Remove="Builder\IBuilder.cs" />
+    <Compile Remove="Elements\Navigation\NavigationBarWithSearch.cs" />
+    <Compile Remove="Pages\ReportBugFeedBackPage.xaml.cs" />
+    <Compile Remove="Elements\IconButton.xaml.cs" />
+    <Compile Remove="Pages\BrandPages\BrandInfoPage\BrandInfoPage.xaml.cs" />
+    <Compile Remove="Pages\InfoPage\BrandInfoPage.xaml.cs" />
+    <Compile Remove="Pages\InfoPage\BrandInfoPage\BrandInfoPage.xaml.cs" />
+    <Compile Remove="Pages\Top10Pages\Top10ListPage\Top10ChampagneListPage.xaml.cs" />
+    <Compile Remove="Pages\ChampagnePages\ChampagneProfilePage.xaml.cs" />
+    <Compile Remove="Pages\SearchPages\FilterSearchResultPage\SearchResultPage.xaml.cs" />
+    <Compile Remove="Pages\LoginSignupPages\SignUpPage\SignUpPage.xaml.cs" />
+    <Compile Remove="Pages\FollowersPage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Colors.xaml.cs">
+      <DependentUpon>Colors.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Typography.xaml.cs">
+      <DependentUpon>Typography.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Elements\Cards\VerticalCard.xaml.cs">
+      <DependentUpon>ChampagneCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Elements\Cards\ChampagneCard.xaml.cs">
+      <DependentUpon>ChampagneCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Headers\H1.xaml.cs">
+      <DependentUpon>H1.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Typography\TextField.xaml.cs">
+      <DependentUpon>TextField.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Lists\HorizontalChampagneList.xaml.cs">
+      <DependentUpon>HorizontalChampagneList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Lists\ArticleList.xaml.cs">
+      <DependentUpon>ArticleList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\ReviewCard.xaml.cs">
+      <DependentUpon>ReviewCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Lists\ReviewList.xaml.cs">
+      <DependentUpon>ReviewList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Sections\ChampagneProfileReviewSection.xaml.cs">
+      <DependentUpon>ChampagneProfileReviewSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\ProfileHeaderCard.xaml.cs">
+      <DependentUpon>ProfileHeaderCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\ProfileCard.xaml.cs">
+      <DependentUpon>ProfileCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Lists\ProfileCardList.xaml.cs">
+      <DependentUpon>ProfileCardList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Sections\PersonalCellarSection.xaml.cs">
+      <DependentUpon>ChampagneCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\EmptyStateScreens\NoSavedChampagnes.xaml.cs">
+      <DependentUpon>NoSavedChampagnes.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Sections\PersonalFollowersSection.xaml.cs">
+      <DependentUpon>FollowersSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\LoginPages\WelcomeScreenPage.xaml.cs">
+      <DependentUpon>WelcomeScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Sections\GiveRatingSection.xaml.cs">
+      <DependentUpon>GiveRatingSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Buttons\RatingStars.xaml.cs">
+      <DependentUpon>RatingStars.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Buttons\YourRating.xaml.cs">
+      <DependentUpon>YourRating.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\GiveRatingHeaderCard.xaml.cs">
+      <DependentUpon>GiveRatingHeaderCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Typography\GiveReviewTextField.xaml.cs">
+      <DependentUpon>GiveReviewTextField.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\DefaultTextCard.xaml.cs">
+      <DependentUpon>PriceEntryCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\PriceEntryCard.cs">
+      <DependentUpon>PriceEntryCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\CurrencyPickerCard.xaml.cs">
+      <DependentUpon>CurrencyPickerCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Buttons\DeleteButton.xaml.cs">
+      <DependentUpon>DeleteButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Sections\RatingsByStars.xaml.cs">
+      <DependentUpon>RatingsByStars.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Typography\GiveCommentField.xaml.cs">
+      <DependentUpon>GiveCommentField.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Typography\SignUpEntryField.xaml.cs">
+      <DependentUpon>SignUpEntryField.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Assets\EditProfileForm.xaml.cs">
+      <DependentUpon>EditProfileForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Assets\PickImage.xaml.cs">
+      <DependentUpon>PickImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Headers\H2WithDefinition.xaml.cs">
+      <DependentUpon>H2WithDefinition.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Lists\FilterSearchTagList.xaml.cs">
+      <DependentUpon>FilterSearchTagList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Cards\FilterSearchTagCard.xaml.cs">
+      <DependentUpon>FilterSearchTagCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Elements\Lists\HorizontalChampagneEditionList.xaml.cs">
+      <DependentUpon>HorizontalChampagneEditionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\ChampagnePages\ChampagneProfilePage.xaml.cs">
+      <DependentUpon>ChampagneProfilePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\SearchPages\FilterSearchResultPage\SearchResultPage.xaml.cs">
+      <DependentUpon>SearchResultPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\SearchPages\FilterSearchResultPage\FilterSearchResultPage.xaml.cs">
+      <DependentUpon>FilterSearchResultPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\LoginSignupPages\SignUpPage\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\LoginSignupPages\SignupPage\SignUpPage.xaml.cs">
+      <DependentUpon>SignupPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\NotificationsOverviewPage\NotificationsOverviewPage.xaml.cs">
+      <DependentUpon>NotificationsOverviewPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\UserPages\UserSettingsPages\UserSettingsOverviewPage\UserSettingsPage.xaml.cs">
+      <DependentUpon>UserSettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\UserPages\UserSettingsPages\UserSettingsOverviewPage\UserSettingsOverviewPage.xaml.cs">
+      <DependentUpon>UserSettingsOverviewPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\SharedPages\WebViewPage\WebViewPage.xaml.cs">
+      <DependentUpon>WebViewPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Elements\Lists\ProfileContentList.xaml" />
+    <EmbeddedResource Remove="Pages\BrandCellerPage.xaml" />
+    <EmbeddedResource Remove="Elements\EmptyStateScreens\NoFollowers.xaml" />
+    <EmbeddedResource Remove="Elements\EmptyStateScreens\NoFollowing.xaml" />
+    <EmbeddedResource Remove="Elements\EmptyStateScreens\NoFollowingBrands.xaml" />
+    <EmbeddedResource Remove="Elements\EmptyStateScreens\NoTastedChampagnes.xaml" />
+    <EmbeddedResource Remove="Pages\LoginPages\WelcomeScreenPage.xaml" />
+    <EmbeddedResource Remove="Elements\Cards\ChampagneCard %28another copy%29.xaml" />
+    <EmbeddedResource Remove="Elements\Cards\ChampagneCard %28copy%29.xaml" />
+    <EmbeddedResource Remove="CustomLayouts\MyPage.xaml" />
+    <EmbeddedResource Remove="Pages\MyPagez.xaml" />
+    <EmbeddedResource Remove="Pages\TestSignUp.xaml" />
+    <EmbeddedResource Remove="Pages\TestSignUpPage.xaml" />
+    <EmbeddedResource Remove="Pages\WelcomeScreenPage %28copy%29.xaml" />
+    <EmbeddedResource Remove="Pages\LoginPageModel.xaml" />
+    <EmbeddedResource Remove="Elements\Assets\_x3Form.xaml" />
+    <EmbeddedResource Remove="Elements\Sections\CollectionView.xaml" />
+    <EmbeddedResource Remove="Elements\IconButton.xaml" />
+  </ItemGroup>
+</Project>

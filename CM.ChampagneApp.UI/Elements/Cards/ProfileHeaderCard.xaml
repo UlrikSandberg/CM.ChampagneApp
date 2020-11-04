@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.ProfileHeaderCard">
+    <ContentView.Content>
+        <StackLayout Spacing="15">
+            <RelativeLayout>
+                <Grid RowSpacing="0" ColumnSpacing="0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Assets:CircleImage x:Name="Logo" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" Shadow="true" Source="{Binding ProfileImg, Source={x:Reference Control}}"></Assets:CircleImage>
+                </Grid>
+            </RelativeLayout>
+            <Label Text="{Binding ProfileName, Source={x:Reference Control}}" TextColor="White" FontSize="18" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            <Label FontSize="12" TextColor="White" Margin="20,0,20,10" HorizontalTextAlignment="Center" Text="{Binding ProfileText, Source={x:Reference Control}}"/>
+            <Assets:Grid3x1 OnChosenField1x1="Handle_ClickedField1x1" Field1x1Header="{Binding Field1x1Header, Source={x:Reference Control}}" Field1x1="{Binding Field1x1Value, Source={x:Reference Control}}" OnChosenField1x2="Handle_ClickedField1x2" Field1x2Header="{Binding Field1x2Header, Source={x:Reference Control}}" Field1x2="{Binding Field1x2Value, Source={x:Reference Control}}" OnChosenField1x3="Handle_ClickedField1x3" Field1x3Header="{Binding Field1x3Header, Source={x:Reference Control}}" Field1x3="{Binding Field1x3Value, Source={x:Reference Control}}">
+            </Assets:Grid3x1>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

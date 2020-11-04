@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.EditProfileForm">
+    <ContentView.Content>
+        <Frame Padding="0" CornerRadius="20" BackgroundColor="{StaticResource Key=MistyPeacock}" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black">
+            <Grid RowSpacing="0" ColumnSpacing="0" Padding="0" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="65*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" Padding="15" Grid.Column="0" CornerRadius="20" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    <Label VerticalTextAlignment="Center" Text="Name" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12" TextColor="White" />
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="1" VerticalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                <Frame Grid.Row="0" Grid.Column="0" WidthRequest="1" HorizontalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                
+                <Frame Grid.Row="1" Padding="15" Grid.Column="0" CornerRadius="0" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    <Label VerticalTextAlignment="Center" Text="Gender" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12" TextColor="White" />
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" HeightRequest="1" VerticalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                <Frame Grid.Row="1" Grid.Column="0" WidthRequest="1" HorizontalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                
+                <Frame Grid.Row="2" Padding="15" Grid.Column="0" CornerRadius="20" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    <Label VerticalTextAlignment="Center" Text="Country" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12" TextColor="White" />
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="0" WidthRequest="1" HorizontalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                
+                <Frame Grid.Row="0" Padding="15" Grid.Column="1" CornerRadius="20" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    <Typography:TransparentTextEntry x:Name="Entry1" Placeholder="Fill" Unfocused="Handle_Entry1Unfocused" Text="{Binding Entry1Text, Source={x:Reference Control}}" TextColor="White" FontSize="12" FontFamily="{StaticResource Key=ButtonFont}"></Typography:TransparentTextEntry>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                
+                <Frame Grid.Row="1" Padding="15" Grid.Column="1" CornerRadius="0" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    <Typography:TransparentTextEntry x:Name="Entry2" Placeholder="Fill" Unfocused="Handle_Entry2Unfocused" Text="{Binding Entry2Text, Source={x:Reference Control}}" TextColor="White" FontSize="12" FontFamily="{StaticResource Key=ButtonFont}"></Typography:TransparentTextEntry>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" HeightRequest="1" VerticalOptions="End" Padding="0" Margin="0" CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}"></Frame>
+                
+                <Frame Grid.Row="2" Padding="15" Grid.Column="1" CornerRadius="20" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                    <Typography:TransparentTextEntry x:Name="Entry3" Placeholder="Fill" Unfocused="Handle_Entry3Unfocused" Text="{Binding Entry3Text, Source={x:Reference Control}}" TextColor="White" FontSize="12" FontFamily="{StaticResource Key=ButtonFont}"></Typography:TransparentTextEntry>
+                </Frame>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

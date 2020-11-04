@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage x:Name="Control" ScrolledNavigationTitle="{Binding Source={x:Reference Control}, Path=BindingContext.DownloadManager.Data.Name}" RightNavigationIconCommand="{Binding RightIconClicked}" RightNavigationIcon="{Binding ToggleManager.BoolToggle.CurrentValue}" IsContentLoadingAnimationVisible="{Binding DownloadManager.IsDownloading}" IsContentLoadingAnimationEnabled="true" ReconnectCommand="{Binding DownloadManager.Reconnect}" IsOutOfService="{Binding DownloadManager.IsOutOfService}" ScrolledNavigationBackgroundColor="{StaticResource DenimBlack}" IsNavigationbarScrollResponsive="True" HasNavigationBar="True" NavigationBackgroudColor="Transparent" HasBackButton="{Binding HasBackButton}" HasFloatingNavigationBar="True" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.BrandPages.BrandProfilePage.BrandProfilePage">
+    <d:BaseContentPage.PageContent>
+        <CustomLayouts:ContentBackground OnHandle_OnScrolled="Handle_Scrolled" HeaderImg="{Binding DownloadManager.Data.BrandCoverImageUrl}">
+            <CustomLayouts:ContentBackground.AddContent>
+                <StackLayout x:Name="Content" Spacing="30" Padding="0,0,0,0">
+                    <Cards:ProfileHeaderCard ProfileName="{Binding DownloadManager.Data.Name}" ProfileText="{Binding DownloadManager.Data.BrandProfileText}" ProfileImgPlaceholder="PlaceholderBrandLogoImg.png" ProfileImg="{Binding DownloadManager.Data.BrandLogoImageUrl}" Field1x1Header="Bottles" Field1x1Value="{Binding DownloadManager.Data.NumberOfEditions}" Field1x2Header="Tastings" Field1x2Value="{Binding DownloadManager.Data.NumberOfTastings}" Field1x3Header="Followers" Field1x3Value="{Binding DownloadManager.Data.NumberOfFollowers}" Field1x1Command="{Binding CuveesClicked}" Field1x3Command="{Binding FollowersClicked}"></Cards:ProfileHeaderCard>
+                    <Lists:ProfileCardList OnItemClicked="Handle_OnItemClicked" ItemSource="{Binding DownloadManager.Data.Pages}">
+                    </Lists:ProfileCardList>
+                    <Label IsVisible="{Binding DownloadManager.Data.BrandProfile.IsSocialLinksVisible}" Margin="0,0,0,-10" Text="Follow us on" FontFamily="{StaticResource Key=HeaderFont}" TextColor="White" HorizontalOptions="Center" FontSize="16"/>
+                    <Buttons:SocialButtons IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.DownloadManager.Data.BrandProfile.IsSocialLinksVisible}" BindingContext="{Binding DownloadManager.Data.Social}" OnSocialButtonClicked="Handle_OnSocialButtonClicked" FacebookUrl="{Binding FacebookUrl}" InstagramUrl="{Binding InstagramUrl}" PinterestUrl="{Binding PinterestUrl}" TwitterUrl="{Binding TwitterUrl}" wwwUrl="{Binding WebsiteUrl}">
+                    </Buttons:SocialButtons>
+                </StackLayout>
+            </CustomLayouts:ContentBackground.AddContent>
+        </CustomLayouts:ContentBackground>
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

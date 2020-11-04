@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:EmptyStates="clr-namespace:CM.ChampagneApp.UI.Elements.EmptyStateScreens" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.ReconnectView">
+    <ContentView.Content>
+        <Grid x:Name="BaseView">
+            <ContentView x:Name="innerView">
+            </ContentView>
+            <Grid x:Name="OutOfServiceScreen" IsVisible="false">
+                <EmptyStates:OutOfServiceEmptyState TryAgainCommand="{Binding Reconnect, Source={x:Reference Control}}" Margin="0,0,0,-60" IsBackgroundVisible="{Binding IsEmptyStateBackgroundVisible, Source={x:Reference Control}}" IsVisible="true" OnTryAgain="Handle_OnTryAgain"></EmptyStates:OutOfServiceEmptyState>
+                <Navigation:DefaultNavigationBar OnRightNavIconClicked="Handle_OnRightNavIconClicked" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" IsVisible="{Binding IsNavigationVisible, Source={x:Reference Control}}" BackgroundColor="{Binding NavigationColor, Source={x:Reference Control}}" LeftIcon="{Binding LeftIcon, Source={x:Reference Control}}" RightIcon="{Binding RightIcon, Source={x:Reference Control}}" VerticalOptions="StartAndExpand"></Navigation:DefaultNavigationBar>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

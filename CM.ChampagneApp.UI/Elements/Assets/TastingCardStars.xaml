@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.TastingCardStars">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" Spacing="3">
+            <Image x:Name="Star1" Source="Star" HeightRequest="10" />
+            <Image x:Name="Star2" Source="Star" HeightRequest="10" />
+            <Image x:Name="Star3" Source="Star" HeightRequest="10" />
+            <Image x:Name="Star4" Source="Star" HeightRequest="10" />
+            <Image x:Name="Star5" Source="Star" HeightRequest="10" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

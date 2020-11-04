@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:NavBar="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.UserSettingsOverviewPage.UserSettingsOverviewPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <NavBar:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" LeftIcon="BackArrowIcon" Title="Settings" />
+            <ListView x:Name="Settings" ItemTapped="Handle_ItemTapped" HasUnevenRows="true" VerticalOptions="Fill" ItemsSource="{Binding groupedSettings}" GroupDisplayBinding="{Binding}" BackgroundColor="Transparent" IsGroupingEnabled="true">
+                <ListView.Footer>
+                    <StackLayout Padding="0,20,0,20">
+                        <Label Text="Follow us on" FontFamily="{StaticResource Key=HeaderFont}" TextColor="White" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center" />
+                        <Buttons:SocialButtons OnSocialButtonClicked="Handle_OnSocialButtonClicked" Padding="0,10,0,0" FacebookUrl="https://www.facebook.com/champagnemoments.eu/" InstagramUrl="https://www.instagram.com/champagne_moments/" PinterestUrl="https://www.pinterest.dk/ChampMoments/champagne-moments/" wwwUrl="https://champagnemoments.eu/?utm_source%3DChampagne%20App%26utm_medium%3DAppLink%26utm_campaign%3DAppLink">
+                        </Buttons:SocialButtons>
+                    </StackLayout>
+                </ListView.Footer>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="0" CornerRadius="0" BackgroundColor="{StaticResource Key=Charcoal}">
+                                <Headers:H2 Title="{Binding name}" IsVisible="{Binding IsVisible}" BackgroundColor="{StaticResource Key=Charcoal}">
+                                </Headers:H2>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="50">
+                            <StackLayout Padding="0,0,0,0" Orientation="Horizontal" BackgroundColor="{StaticResource Key=MistyPeacock}">
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="14" TextColor="White" VerticalOptions="Center" Margin="20,0,0,0" />
+                                <Frame IsVisible="{Binding IsBadgeVisible}" Padding="0" CornerRadius="7.5" HeightRequest="15" VerticalOptions="Center" WidthRequest="15" BackgroundColor="{StaticResource Key=Coral}">
+                                    <Label TextColor="White" FontSize="10" Text="{Binding BadgeValue}" HorizontalOptions="Center" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                </Frame>
+                                <Image Margin="0,0,20,0" HeightRequest="20" HorizontalOptions="EndAndExpand" Source="ForwardArrowIcon" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

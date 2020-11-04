@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.SearchPages.FilterSearchPage.FilterSearchPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" LeftIcon="BackArrowIcon" Title="Filter Search"/>
+            <CustomLayouts:FilterSearchContent VerticalOptions="FillAndExpand"></CustomLayouts:FilterSearchContent>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

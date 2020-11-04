@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:ListTemplates="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.ListTemplates" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:InputFields="clr-namespace:CM.ChampagneApp.UI.Elements.Assets.InputFields" xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Backgrounds="clr-namespace:CM.ChampagneApp.UI.Elements.Backgrounds" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists.InfiniteListView"
+    xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:SegControl="clr-namespace:CM.ChampagneApp.UI.Elements.SegmentedControl" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.SearchPages.GlobalSearchPage.GlobalSearchPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="RootStack" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+            <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="TopStack" Spacing="0" Grid.Row="0" BackgroundColor="{StaticResource Key=DenimBlack}">
+                    <StackLayout Orientation="Horizontal" Padding="20,30,20,0" BackgroundColor="Transparent">
+                        <InputFields:SearchInputField x:Name="SearchField" TextChanged="Handle_TextChanged" OnDelayedTextChanged="Handle_OnDelayedTextChanged" InputDelay="650" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="14" BackgroundColor="{StaticResource Key=MistyPeacock}" Placeholder="Search...">
+                        </InputFields:SearchInputField>
+                        <Frame x:Name="FilterButtonContainer" Padding="5,0,0,0">
+                            <Button Command="{Binding FilterSearchClicked}" Image="FilterSearchGray" HeightRequest="25" WidthRequest="25"></Button>
+                        </Frame>
+                    </StackLayout>
+                    <SegControl:SegmentedControl x:Name="SegmentControl" OnSegmentSelected="Handle_OnSegmentSelected" IsSlidingIndicatorVisible="true" SlidingIndicatorTintColor="{StaticResource Key=DarkGold}" Padding="0,0,0,0" Grid.Row="0">
+                        <SegControl:SegmentedControl.Children>
+                            <SegControl:SegmentedControlTab Text="MEMBERS" />
+                            <SegControl:SegmentedControlTab Text="CHAMPAGNES" />
+                            <SegControl:SegmentedControlTab Text="BRANDS" />
+                        </SegControl:SegmentedControl.Children>
+                    </SegControl:SegmentedControl>
+                    <Grid BackgroundColor="{StaticResource Key=Charcoal}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="{Binding ShowRefreshIndicator}" x:Name="RefreshAnimation" Padding="0,-100,0,-100">
+                        <Frame HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <forms:AnimationView HeightRequest="200" WidthRequest="500" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+                            </forms:AnimationView>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Lists:GlobalSearchCarousel x:Name="CarouselView" PositionSelected="Handle_PositionSelected" ItemsSource="{Binding CarouselItemSource}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+                        <Lists:GlobalSearchCarousel.ChampagneListViewTemplate>
+                            <DataTemplate>
+                                <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Lists:InfiniteListView OnReconnect="Handle_OnReconnect" ScrollToEntry="{Binding TopVisibleItem}" ShouldScrollToEntry="{Binding ShouldScrollToEntry}" OnCurrentRenderedObjectChanged="Handle_OnChampagneCurrentRenderedObjectChanged" OnRequestNextPage="Handle_OnChampagneRequestNextPage" OnItemTapped="Handle_OnChampagneItemTapped" Margin="0,0,0,0" SeparatorVisibility="None" SeparatorColor="{StaticResource Key=DarkGold}" ItemSource="{Binding PagingService.itemSource}"
+                                        IsBackgroundVisible="false" IsRefreshingActivityStatus="{Binding PagingService.RefreshingStatus}" ActivityStatus="{Binding PagingService.LoadingStatus}" UseFooterAnimationLoaderAsDefault="true" UsePullToRefreshAnimationLoaderAsDefault="true" UseInitAnimationLoaderAsDefault="true" UseDefaultPreContentView="true" DefaultPreContentText="{Binding EmptyStateText}">
+                                        <Lists:InfiniteListView.ListItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ListTemplates:ChampagneSearchModelTemplate Padding="0,15,0,0" BottleImageUri="{Binding BottleImageUrl}" Tastings="{Binding NumberOfTastings}" AverageRatingString="{Binding AverageRatingString}" AverageRating="{Binding AverageRating}" BottleName="{Binding Name}" BrandName="{Binding BrandName}" Vintage="{Binding VintageInfo}">
+                                                    </ListTemplates:ChampagneSearchModelTemplate>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </Lists:InfiniteListView.ListItemTemplate>
+                                    </Lists:InfiniteListView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </Lists:GlobalSearchCarousel.ChampagneListViewTemplate>
+                        <Lists:GlobalSearchCarousel.BrandListViewTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Lists:InfiniteListView OnReconnect="Handle_OnReconnect" OnCurrentRenderedObjectChanged="Handle_OnBrandCurrentRenderedObjectChanged" OnRequestNextPage="Handle_OnBrandRequestNextPage" OnItemTapped="Handle_OnBrandItemTapped" Margin="0,0,0,0" SeparatorVisibility="None" SeparatorColor="{StaticResource Key=DarkGold}" ItemSource="{Binding PagingService.itemSource}" IsBackgroundVisible="false" IsRefreshingActivityStatus="{Binding PagingService.RefreshingStatus}"
+                                        ActivityStatus="{Binding PagingService.LoadingStatus}" DefaultPreContentText="{Binding EmptyStateText}" UseDefaultPreContentView="true" UseFooterAnimationLoaderAsDefault="true" UseInitAnimationLoaderAsDefault="true" UsePullToRefreshAnimationLoaderAsDefault="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Lists:InfiniteListView.ListItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ListTemplates:BrandSearchModelTemplate ImageUrl="{Binding ImageUrl}" Name="{Binding Name}" Padding="20,5,0,5">
+                                                    </ListTemplates:BrandSearchModelTemplate>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </Lists:InfiniteListView.ListItemTemplate>
+                                    </Lists:InfiniteListView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </Lists:GlobalSearchCarousel.BrandListViewTemplate>
+                        <Lists:GlobalSearchCarousel.UserListViewTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Lists:InfiniteListView OnReconnect="Handle_OnUserReconnect" OnItemTapped="Handle_OnUserItemTapped" OnRequestNextPage="Handle_OnRequestNextPage" UseDefaultPreContentView="true" DefaultPreContentText="{Binding EmptyStateText}" ActivityStatus="{Binding PagingService.LoadingStatus}" Margin="0,0,0,0" SeparatorVisibility="None" SeparatorColor="{StaticResource Key=DarkGold}" ItemSource="{Binding PagingService.itemSource}"
+                                        UseFooterAnimationLoaderAsDefault="true" UseInitAnimationLoaderAsDefault="true" UsePullToRefreshAnimationLoaderAsDefault="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsBackgroundVisible="false" BackgroundColor="Transparent">
+                                        <Lists:InfiniteListView.ListItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ListTemplates:UserSearchModelTemplate SubTitle="{Binding Name}" ImageUrl="{Binding ProfileImgUrl}" Name="{Binding ProfileName}" Padding="20,5,0,5">
+                                                    </ListTemplates:UserSearchModelTemplate>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </Lists:InfiniteListView.ListItemTemplate>
+                                    </Lists:InfiniteListView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </Lists:GlobalSearchCarousel.UserListViewTemplate>
+                    </Lists:GlobalSearchCarousel>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.ArticleInfoCard">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Frame IsClippedToBounds="true" Padding="0,0,10,0" Margin="0,0,-10,0" CornerRadius="15" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.65}" effects:ShadowEffects.Opacity="0.8" effects:ShadowEffects.BlurRadius="20" effects:ShadowEffects.Color="Black">
+                <Grid>
+                    <ffimageloading:CachedImage Source="{Binding ArticleImageUrl}" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" ErrorPlaceholder="PlaceholderCover.jpg" LoadingPlaceholder="PlaceholderCover.jpg">
+                        
+                    </ffimageloading:CachedImage>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Frame CornerRadius="0" Padding="0" Opacity="0.8" BackgroundColor="{StaticResource Key=DarkGold}">
+                            </Frame>
+                            <Frame Padding="10,10,10,10">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Text="{Binding ArticleTitle}" FontFamily="{StaticResource Key=HeaderFont}" TextColor="White" FontSize="20" />
+                                        <Typography:TextField Padding="0,-10,10,-10" TextContent="{Binding ArticleSubTitle}">
+                                        </Typography:TextField>
+                                    </StackLayout>
+                                    <Image Source="ForwardIcon" HorizontalOptions="EndAndExpand" HeightRequest="20"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                    <Button Clicked="Handle_Clicked" />
+                </Grid>
+            </Frame>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

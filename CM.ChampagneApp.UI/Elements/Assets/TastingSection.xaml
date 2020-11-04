@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="tastingSection" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.TastingSection">
+    <ContentView.Content>
+        <RelativeLayout>
+            <StackLayout Padding="0,10,0,10" Spacing="20" Orientation="Horizontal" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                <Image Source="{Binding SectionIcon, Source={x:Reference tastingSection}}" VerticalOptions="Start" HorizontalOptions="Center" HeightRequest="30" WidthRequest="30" />
+                <StackLayout Spacing="0">
+                    <Label Text="{Binding SectionHeader, Source={x:Reference tastingSection}}" FontAttributes="Bold" TextColor="{StaticResource Key=LightGold}" FontSize="11" />
+                    <Typography:TextField Padding="0,-10,0,-10" TextContent="{Binding Notes, Source={x:Reference tastingSection}}" ></Typography:TextField>
+                </StackLayout>
+            </StackLayout>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

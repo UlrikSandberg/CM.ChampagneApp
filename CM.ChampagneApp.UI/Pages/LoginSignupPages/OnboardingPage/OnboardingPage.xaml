@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Button="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:Btns="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.LoginSignupPages.OnboardingPage.OnboardingPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="Container" Padding="0,20,0,20" Spacing="10">
+            <Label x:Name="Title" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="CHAMPAGNE MOMENTS" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" FontSize="18" />
+            <controls:CarouselViewControl VerticalOptions="FillAndExpand" CurrentPageIndicatorTintColor="{StaticResource Key=DarkGold}" IndicatorsTintColor="White" x:Name="carView" ShowIndicators="true" ItemsSource="{Binding OnboardingPages}">
+                <controls:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="37*" />
+                                <RowDefinition Height="13*" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Source="{Binding ImageUrl}">
+                            </Image>
+                            <StackLayout Grid.Row="1">
+                                <Label Text="{Binding Title}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily="{StaticResource Key=HeaderFont}" TextColor="White" FontSize="36" />
+                                <Label Margin="50,0,50,0" Text="{Binding Body}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="12" TextColor="White" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </controls:CarouselViewControl.ItemTemplate>
+            </controls:CarouselViewControl>
+            <Label Text="SWIPE RIGHT" TextColor="White" FontSize="10" HorizontalOptions="Center"/>
+            <StackLayout Padding="0,10,0,0" Spacing="20" HorizontalOptions="Center" Orientation="Horizontal">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Margin="30,0,30,0" Text="  SIGN UP  " TextColor="White" FontSize="12" FontFamily="Avenir" FontAttributes="Bold" />
+                    <Button Clicked="Handle_SignUpClicked" x:Name="SignUpBtn" PropertyChanged="Handle_SignUpPropertyChanged" BorderWidth="1" BorderColor="{StaticResource Key=DarkGold}" BorderRadius="15" TextColor="White" FontFamily="Avenir">
+                    </Button>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Frame CornerRadius="15" Padding="0" BackgroundColor="{StaticResource Key=DarkGold}">
+                        <Grid>
+                        <Label HorizontalOptions="Center" VerticalOptions="Center" Margin="30,0,30,0" Text="   LOGIN   " FontSize="12" TextColor="White" FontFamily="Avenir" FontAttributes="Bold" />
+                        <Button Clicked="Handle_LoginClicked" x:Name="LoginBtn" PropertyChanged="Handle_LoginPropertyChanged" BorderWidth="1" BorderColor="{StaticResource Key=DarkGold}" BorderRadius="15" TextColor="White">
+                        </Button>
+                            </Grid>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

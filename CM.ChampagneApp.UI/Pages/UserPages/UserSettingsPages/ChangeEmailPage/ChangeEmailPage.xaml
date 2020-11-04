@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.ChangeEmailPage.ChangeEmailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" Title="Manage Email Address" LeftIcon="BackArrowIcon" LeftIconCommand="{Binding NavigateBack}" RightIcon="CheckMarkIcon.png" RightIconCommand="{Binding DoneEditing}">
+            </Navigation:DefaultNavigationBar>
+            <CustomLayouts:ReconnectView Reconnect="{Binding Reconnect}" IsOutOfService="{Binding IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfService}">
+                <CustomLayouts:ReconnectView.AddContent>
+                    <Grid VerticalOptions="FillAndExpand">
+                        <ScrollView Padding="0,0,0,20" VerticalOptions="FillAndExpand" IsVisible="{Binding IsDownloadingCurrentUserSettings, Converter={StaticResource InverseBool}}">
+                            <StackLayout Spacing="10" Padding="30,0,30,0">
+                                <StackLayout Padding="0,20,0,0" Spacing="10" IsVisible="{Binding UserSettings.IsEmailVerified, Converter={StaticResource InverseBool}}">
+                                    <Label Text="Before we start Popping Bottles..." TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" FontSize="32"/>
+                                    <Label Text="Please check your inbox for a confirmation email so we make sure we've got your email right." TextColor="White" FontFamily="{StaticResource Key=ButtonFont}" FontSize="12"/>
+                                    <Buttons:RoundButtonMediumFullScreen Padding="0,5,0,5" Text="Re-send Confirmation Email" ClickedCommand="{Binding ResendConfirmation}"/>
+                                    <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="{Binding IsResendingConfirmationEmail}" IsVisible="{Binding IsResendingConfirmationEmail}" Color="LightGray"/>
+                                </StackLayout>
+                                    <Typography:SignUpEntryField IsEnabled="false" Padding="40,20,40,0" Keyboard="Email" TextColor="Gray" Text="{Binding UserSettings.Email}" Title="Current Email" ValidationState="{Binding SuccesState}">
+                                    </Typography:SignUpEntryField>
+                                    <Label Margin="40,0,40,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="{Binding EmailVerifiedText}" TextColor="{Binding EmailVerifiedColor}" FontSize="10" />
+                                    <Typography:SignUpEntryField Padding="40,0,40,0" Keyboard="Email" Text="{Binding newEmailEntered, Mode=TwoWay}" Title="New Email" OnEntryFieldCompleted="Handle_OnNewEmailFieldCompleted">
+                                    </Typography:SignUpEntryField>
+                                    <Label Margin="40,0,40,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="" TextColor="{StaticResource Key=Coral}" FontSize="10" />
+                                    <Typography:SignUpEntryField Padding="40,0,40,0" Keyboard="Default" Text="{Binding passwordEntered, Mode=TwoWay}" IsPassword="true" Title="Password" OnEntryFieldCompleted="Handle_OnPasswordFieldCompleted">
+                                    </Typography:SignUpEntryField>
+                                <Headers:H2 IsVisible="false" Padding="0,10,0,0" Title="Info" />
+                                <Label IsVisible="false" Text="It is important that you confirm your email address. If we detect malicious behaviour related to your account or if we need to communicate with you we will inform you by email. This corrospondence could consist of transactional emails in the form of password recovery emails." TextColor="White" FontSize="10"/>
+                            </StackLayout>
+                        </ScrollView>
+                        <Assets:ActivityIndicatorWithSuccesBox DissappearCommand="{Binding DoneUploading}" Text="Please wait while we save your changes" IsVisible="{Binding IsUploadingIndicatorVisible}" IsLoading="{Binding IsUploadingEmail}" IsDoneUploadingWithError="{Binding IsDoneChangingEmailWithError}" IsDoneUploadingWithSucces="{Binding IsDoneChangingEmailWithSucces}">
+                        </Assets:ActivityIndicatorWithSuccesBox>
+                        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsDownloadingCurrentUserSettings}" IsRunning="{Binding IsDownloadingCurrentUserSettings}" Color="LightGray">
+                        </ActivityIndicator>
+                    </Grid>
+                </CustomLayouts:ReconnectView.AddContent>
+            </CustomLayouts:ReconnectView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

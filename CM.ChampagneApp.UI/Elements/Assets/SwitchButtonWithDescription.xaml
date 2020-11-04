@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.SwitchButtonWithDescription">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:BoolToStringConverter FalseValue="OFF" TrueValue="ON" x:Key="BoolString"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Description, Source={x:Reference Control}}" FontSize="16" VerticalOptions="Center" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" />
+            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" Spacing="10">
+                <Label IsVisible="{Binding IsTextToggleVisible, Source={x:Reference Control}}" Text="{Binding IsToggled, Source={x:Reference Control}, Converter={StaticResource BoolString}}" TextColor="White" FontSize="10" VerticalOptions="Center"/>
+                <Switch Toggled="Handle_Toggled" IsToggled="{Binding IsToggled, Source={x:Reference Control}}" OnColor="{StaticResource Key=DarkGold}" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

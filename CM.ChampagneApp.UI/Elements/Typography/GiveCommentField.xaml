@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Typography.GiveCommentField">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Grid x:Name="ChatGrid" ColumnSpacing="0" BackgroundColor="{StaticResource Key=DenimBlack}" VerticalOptions="EndAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Typography:CommentEditor OnInvalidateMeasure="Handle_OnInvalidateMeasure" Margin="20,20,0,20" Grid.Row="0" Grid.Column="0" Keyboard="Default" Completed="Handle_Completed" x:Name="TextArea" Unfocused="Handle_Unfocused" Focused="Handle_Focused" VerticalOptions="Center"
+                    TextColor="White" FontSize="12" BackgroundColor="Transparent">
+                </Typography:CommentEditor>
+                <Button Clicked="Handle_PostComment" VerticalOptions="Center" HorizontalOptions="Center" Margin="-8,0,0,0" Grid.Row="0" Grid.Column="1" Text="POST" FontSize="16" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}">
+                </Button>
+            </Grid>
+            <StackLayout x:Name="EditView" IsVisible="false" BackgroundColor="{StaticResource Key=DenimBlack}" Padding="20,0,20,20">
+                <Headers:H2 Title="Edit Comment" Padding="0,5,0,5"></Headers:H2>
+                <Typography:CommentEditor x:Name="EditTextArea" TextColor="White" FontSize="12" BackgroundColor="Transparent"></Typography:CommentEditor>
+                <Grid>
+                    <Button Clicked="Handle_CancelEdit" FontSize="16" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" Text="Cancel" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Button Clicked="Handle_UpdateComment" FontSize="16" TextColor="White" FontFamily="{StaticResource Key=HeaderFont}" Text="Update" VerticalOptions="Center" HorizontalOptions="End" />
+                </Grid>
+            </StackLayout>
+            </StackLayout>
+    </ContentView.Content>
+</ContentView>

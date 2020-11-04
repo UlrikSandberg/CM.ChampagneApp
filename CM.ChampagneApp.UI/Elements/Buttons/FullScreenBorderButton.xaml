@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Ele="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.FullScreenBorderButton">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.2}">
+                <Frame Padding="2,2,2,2" BackgroundColor="{Binding BorderColor, Source={x:Reference Control}}" CornerRadius="15">
+                    <Frame CornerRadius="15" BackgroundColor="{Binding FillColor, Source={x:Reference Control}}">
+                        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                            <Label Text="{Binding LeftText, Source={x:Reference Control}}" FontSize="14" TextColor="White" VerticalOptions="Center" FontFamily="{StaticResource Key=HeaderFont}" />
+                            <Label Text="{Binding RightText, Source={x:Reference Control}}" FontSize="14" TextColor="White" FontFamily="Avenir" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+                <Button Command="{Binding ClickedCommand, Source={x:Reference Control}}">
+                </Button>
+            </Grid>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

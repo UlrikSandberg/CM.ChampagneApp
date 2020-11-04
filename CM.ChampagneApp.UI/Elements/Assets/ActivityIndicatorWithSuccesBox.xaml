@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.ActivityIndicatorWithSuccesBox">
+    <ContentView.Content>
+        <Grid>
+            <Frame x:Name="contentFrame" IsVisible="false" CornerRadius="15" HeightRequest="150" WidthRequest="150" BackgroundColor="{StaticResource Key=DenimBlack}" VerticalOptions="Center" HorizontalOptions="Center">
+                <Grid>
+                    <Label Text="{Binding Text, Source={x:Reference Control}}" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="12" FontFamily="{StaticResource Key=HeaderFont}"/>
+                    <ActivityIndicator x:Name="LoadingIndicator" IsRunning="true" IsVisible="true" Color="LightGray" HorizontalOptions="Center" VerticalOptions="Center">
+                    </ActivityIndicator>
+                    <forms:AnimationView Margin="0,25,0,0" HeightRequest="100" WidthRequest="100" x:Name="CheckMarkAnimation" Animation="SuccesCheckAnimation.json" Loop="false" AutoPlay="false" OnFinish="Handle_OnSuccesFinish" VerticalOptions="Center" HorizontalOptions="Center"></forms:AnimationView>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

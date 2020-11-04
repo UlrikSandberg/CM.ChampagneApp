@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Buttons.ButtonSwitch">
+    <ContentView.Content>
+        <RelativeLayout>
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" Padding="0,0,0,0" x:Name="ButtonView">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="25*" />
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="ContentGrid" Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Spacing="0" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0">
+                    <Label Text="{Binding LeftValue, Source={x:Reference Control}}" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="{Binding LeftTitle, Source={x:Reference Control}}" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Frame x:Name="GoldIndicator" Padding="10,0,10,0" Margin="-10,2,-10,0" HeightRequest="2" BackgroundColor="{StaticResource Key=DarkGold}" HorizontalOptions="Fill" />
+                </StackLayout>
+                <Button Clicked="Handle_ClickedLeft" Grid.Row="0" Grid.Column="0" />
+                <StackLayout Spacing="0" HorizontalOptions="End" Grid.Row="0" Grid.Column="1">
+                    <Label Text="{Binding RightValue, Source={x:Reference Control}}" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="{Binding RightTitle, Source={x:Reference Control}}" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Frame x:Name="RightIndicator" Padding="10,0,10,0" Margin="-10,2,-10,0" HeightRequest="2" BackgroundColor="{StaticResource Key=DarkGold}" HorizontalOptions="Fill" IsVisible="false" />
+                </StackLayout>
+                <Button Clicked="Handle_ClickedRight" Grid.Row="0" Grid.Column="1" />
+            </Grid>
+        </Grid>
+            </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

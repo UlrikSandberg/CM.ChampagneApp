@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Navigation.DiscoverNavBar">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:FontSizeConverter x:Key="FontResizer"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame x:Name="Container" Padding="0,30,0,10" CornerRadius="0" HasShadow="{Binding HasShadow, Source={x:Reference Control}}" BackgroundColor="{StaticResource Key=Charcoal}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" HeightRequest="65">
+            <Grid>
+                <Label Margin="10,0,0,0" Grid.Column="0" Text="CHAMPAGNE MOMENTS" FontSize="{Binding Converter={StaticResource FontResizer}, ConverterParameter=22}" FontFamily="{StaticResource Key=HeaderFont}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Handle_Tapped" Command="{Binding TitleDoubleTappedCommand, Source={x:Reference Control}}" NumberOfTapsRequired="2"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <!--<StackLayout Grid.Column="1" HorizontalOptions="Center" Orientation="Horizontal" Padding="0,0,30,0">
+                    <Grid ColumnSpacing="5" x:Name="ButtonContainer">
+                        <Button Padding="5" Grid.Column="0" Command="{Binding LeftButtonCommand, Source={x:Reference Control}}" Image="WhiteStar_Discover" />
+                        <Button Padding="5" Grid.Column="1" Command="{Binding RightButtonCommand, Source={x:Reference Control}}" Image="FilterSearchGray" />
+                    </Grid>
+                </StackLayout>-->
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

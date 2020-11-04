@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Lists.ListTemplates.Top10ListTemplate">
+     <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:FontSizeConverter x:Key="FontResizer" LargeResizingFactor="1.0"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <RelativeLayout>
+            <Frame Padding="0" HasShadow="true" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                <Grid>
+                    <Frame Padding="0" IsClippedToBounds="true" CornerRadius="15" BackgroundColor="{StaticResource Key=DenimBlack}">
+                        <Grid>
+                            <Frame Padding="0" HasShadow="false">
+                                <ffimageloading:CachedImage HorizontalOptions="End" ErrorPlaceholder="PlaceholderCover.jpg" LoadingPlaceholder="PlaceholderCover.jpg" Source="{Binding ImageUrl, Source={x:Reference Control}}">
+                                </ffimageloading:CachedImage>
+                            </Frame>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="220*" />
+                                    <ColumnDefinition Width="180*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Grid.Row="0">
+                                    <Image Margin="-5,0,0,0" Aspect="Fill" Source="Top10ListTrapez.png" />
+                                    <Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35*"/>
+                                                <ColumnDefinition Width="10*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="5*"/>
+                                                <RowDefinition Height="5*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <StackLayout VerticalOptions="CenterAndExpand" Padding="20,0,0,0" Grid.Column="0" Grid.Row="1">
+                                                <Label Text="{Binding Title, Source={x:Reference Control}}" TextColor="White" FontSize="{Binding Converter={StaticResource FontResizer}, ConverterParameter=18}" FontFamily="Avenir"/>
+                                                <Frame CornerRadius="0" BackgroundColor="{StaticResource Key=DarkGold}" Padding="0,1,0,1"></Frame>
+                                                <Label Margin="0,0,-20,0" Text="{Binding SubTitle, Source={x:Reference Control}}" TextColor="White" FontSize="{Binding Converter={StaticResource FontResizer}, ConverterParameter=11}" FontFamily="Avenir"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </Frame>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

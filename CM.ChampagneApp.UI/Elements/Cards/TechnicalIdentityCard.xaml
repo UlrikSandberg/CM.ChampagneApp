@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.TechnicalIdentityCard">
+    <ContentView.Content>
+        <RelativeLayout>
+            <Frame CornerRadius="10" BackgroundColor="{StaticResource Key=MistyPeacock}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1.42}" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black">
+                <StackLayout>
+                    <Label Text="{Binding Identity}" FontFamily="{StaticResource Key=HeaderFont}" FontSize="12" TextColor="{StaticResource Key=LightGold}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    <StackLayout Spacing="0">
+                        <Label Text="{Binding GrapeVariant}" FontSize="10" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding GrapeValue}" FontSize="10" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </RelativeLayout>  
+    </ContentView.Content>
+</ContentView>

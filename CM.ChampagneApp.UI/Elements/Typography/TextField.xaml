@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="textField" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Typography.TextField">
+    <ContentView.Content>
+        <Frame BackgroundColor="Transparent" Padding="0,10,0,10">
+            <Label x:Name="TextContentLabel" FontFamily="AvenirNext" Text="{Binding TextContent, Source={x:Reference textField}}" TextColor="White" FontSize="11" />
+        </Frame>
+    </ContentView.Content>
+</ContentView>

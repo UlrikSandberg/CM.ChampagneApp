@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:RatingStars="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:ValueConvert="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns:elements="clr-namespace:CM.ChampagneApp.UI.Elements" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.ChampagneEditionCard">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConvert:BoolToStringConverter x:Key="BoolToString" TrueValue="Vintage" FalseValue="Non-Vintage"></ValueConvert:BoolToStringConverter>
+            <ValueConvert:FontSizeConverter x:Key="FontSizeConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <RelativeLayout Padding="0" BackgroundColor="Transparent">
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1.1}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="1" BackgroundColor="#252736" CornerRadius="15" effects:ShadowEffects.Opacity="0.5" effects:ShadowEffects.BlurRadius="10" effects:ShadowEffects.Color="Black" />
+                </Grid>
+                <Grid ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="56*" />
+                        <ColumnDefinition Width="44*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="4*" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="1" Padding="5,0,0,5" Margin="0,0,-5,0">
+                            <StackLayout Padding="8,0,0,0" Spacing="2" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
+                                <Label Text="{Binding BrandName}" TextColor="{StaticResource Key=DarkGold}" FontSize="{Binding Source=10, Converter={StaticResource FontSizeConverter}, ConverterParameter=10}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily="Avenir" FontAttributes="Bold" />
+                                <Label Text="{Binding BottleName}" LineBreakMode="WordWrap" TextColor="White" FontSize="{Binding Source=10, Converter={StaticResource FontSizeConverter}, ConverterParameter=12}" FontFamily="Avenir" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Center" Spacing="0" Padding="0,0,0,5">
+                                <Label Text="{Binding VintageYear}" TextColor="White" FontSize="12" Margin="5,0,0,0" FontAttributes="Bold" HorizontalOptions="Center" FontFamily="Avenir" HorizontalTextAlignment="Center"/>
+                                <Grid Padding="0,0,0,0" ColumnSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="38*" />
+                                        <ColumnDefinition Width="62*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding AverageRating}" TextColor="White" FontSize="16" FontAttributes="Bold" FontFamily="Avenir" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <StackLayout Grid.Column="1" Spacing="0" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <RatingStars:ChampagneCardStars Padding="0,0,10,0" RatingValue="{Binding AverageRating}">
+                                        </RatingStars:ChampagneCardStars>
+                                        <Label Text="{Binding NumberOfTastings, StringFormat='{0} Tastings'}" TextColor="White" FontSize="8" FontAttributes="Bold" FontFamily="Avenir" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80*" />
+                                <RowDefinition Height="10*" />
+                            </Grid.RowDefinitions>
+                            <Image Source="OvalBlack" Grid.Row="1" />
+                        </Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="89*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <Frame HasShadow="true" Padding="0">
+                                <ffimageloading:CachedImage Source="{Binding BottleImgUrl}" ErrorPlaceholder="bottle_bubbles" LoadingPlaceholder="bottle_bubbles">
+                                </ffimageloading:CachedImage>
+                            </Frame>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Button Clicked="Handle_Clicked"/>
+            </Grid>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

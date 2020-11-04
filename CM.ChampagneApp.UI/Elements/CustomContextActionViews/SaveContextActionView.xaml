@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView HeightRequest="150" WidthRequest="150" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.CustomContextActionViews.SaveContextActionView">
+    <ContentView.Content>
+        <Grid BackgroundColor="{StaticResource Key=DarkGold}">
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

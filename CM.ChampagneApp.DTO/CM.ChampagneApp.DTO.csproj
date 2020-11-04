@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ReleaseVersion>0.2</ReleaseVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'iOS Release|iPhone' ">
+    <IntermediateOutputPath>obj\iPhone\iOS Release</IntermediateOutputPath>
+    <DebugType></DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\iOS Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <NoWarn></NoWarn>
+    <NoStdLib>false</NoStdLib>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Builders\" />
+    <Folder Include="Builders\Helpers\" />
+    <Folder Include="Documents\" />
+    <Folder Include="BusinessModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\POSTModels\DeviceInstallation\" />
+    <Folder Include="Models\GETModels\Notifications\" />
+    <Folder Include="Models\GETModels\ChampagneModels\" />
+    <Folder Include="Models\GETModels\Top10ListModels\" />
+  </ItemGroup>
+</Project>

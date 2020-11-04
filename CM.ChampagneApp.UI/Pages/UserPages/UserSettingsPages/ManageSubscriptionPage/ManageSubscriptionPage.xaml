@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Buttons="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.UserPages.UserSettingsPages.ManageSubscriptionPage.ManageSubscriptionPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" LeftIconCommand="{Binding NavigateBack}" LeftIcon="BackArrowIcon" Title="Manage Subscriptions">
+                </Navigation:DefaultNavigationBar>
+                <StackLayout Spacing="10">
+                    <Buttons:FullScreenBorderButton Padding="20,20,20,0" Command="{Binding MemberSubscriptionInactive}" FillColor="{StaticResource Key=Charcoal}" BorderColor="{StaticResource Key=DarkGold}" LeftText="Member Subscription" RightText="INACTIVE" IsVisible="{Binding IsSubscriptionActive, Converter={StaticResource InverseBool}}">
+                    </Buttons:FullScreenBorderButton>
+                    <Buttons:FullScreenButton Command="{Binding MemberSubscriptionActive}" StartColor="{StaticResource Key=DarkGold}" EndColor="{StaticResource Key=GradientStart}" StartPoint="0,0" EndPoint="1,0" LeftText="Member Subscription" RightText="ACTIVE" IsVisible="{Binding IsSubscriptionActive}" Padding="20,20,20,0">
+                    </Buttons:FullScreenButton>
+                    <Buttons:FullScreenBorderButton Padding="20" Command="{Binding RestorePurchase}" FillColor="{StaticResource Key=Charcoal}" BorderColor="{StaticResource Key=DarkGold}" LeftText="Restore Purchased Member Subscription">
+                    </Buttons:FullScreenBorderButton>
+                    <Headers:H2 Title="Info" />
+                    <Label Margin="20,0,20,0" FontFamily="Avenir" FontSize="13" Text="The Member Subscription button takes you to your Apple iTunes account. There you can view and manage your auto-renewable subscription. The selected member subscription will automatically renew within 24 hours of the end of the selected member subscription period unless cancelled. You will be charged through your iTunes account. You can manage your subscription in Apple iTunes Account settings using the Member Subscription button above." TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

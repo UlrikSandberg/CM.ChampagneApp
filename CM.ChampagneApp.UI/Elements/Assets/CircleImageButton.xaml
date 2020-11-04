@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.CircleImageButton">
+    <ContentView.Content>
+        <Frame BackgroundColor="Transparent" HasShadow="{Binding Shadow, Source={x:Reference Control}}" Padding="0">
+            <Frame BackgroundColor="Transparent" x:Name="Container" IsClippedToBounds="true" Padding="0" HeightRequest="{Binding Diameter, Source={x:Reference Control}}" WidthRequest="{Binding Diameter, Source={x:Reference Control}}">
+                <Grid>
+                    <ffimageloading:CachedImage x:Name="ImagePresenter" Source="{Binding Source, Source={x:Reference Control}}" Aspect="AspectFill">
+                    </ffimageloading:CachedImage>
+                    <Button IsEnabled="{Binding ChoosePhotoEnabled, Source={x:Reference Control}}" Clicked="Handle_ClickedAsync">
+                    </Button>
+                </Grid>
+            </Frame>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

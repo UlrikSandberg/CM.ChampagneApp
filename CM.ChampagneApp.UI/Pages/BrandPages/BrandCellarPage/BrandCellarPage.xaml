@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:BaseContentPage x:Name="Control" IsContentLoadingAnimationVisible="{Binding DownloadManager.IsDownloading}" IsContentLoadingAnimationEnabled="true" ReconnectCommand="{Binding DownloadManager.Reconnect}" IsOutOfService="{Binding DownloadManager.IsOutOfService}" NavigationTitle="{Binding DownloadManager.Data.Title}" ScrolledNavigationTitle="{Binding DownloadManager.Data.Title}" IsNavigationbarScrollResponsive="True" HasBackButton="{Binding HasBackButton}" HasNavigationBar="True" HasFloatingNavigationBar="True" ScrolledNavigationBackgroundColor="{StaticResource DenimBlack}" NavigationBackgroudColor="Transparent" xmlns:d="clr-namespace:CM.ChampagneApp.UI.Pages" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Pages.BrandPages.BrandCellarPage.BrandCellarPage">
+    <d:BaseContentPage.PageContent>
+        <Grid>
+            <CustomLayouts:ContentBackground HeaderImg="{Binding DownloadManager.Data.HeaderImgUrl}">
+                <CustomLayouts:ContentBackground.AddContent>
+                    <StackLayout>
+                        <CustomLayouts:BrandCellarSectionController OnChampagneClicked="Handle_OnChampagneClicked" ItemSource="{Binding DownloadManager.Data.sections}">
+                        </CustomLayouts:BrandCellarSectionController>
+                    </StackLayout>
+                </CustomLayouts:ContentBackground.AddContent>
+            </CustomLayouts:ContentBackground>
+            <CustomLayouts:VintageArchive Title="{Binding VintageArchive.VintageArchiveTitle}" Description="{Binding VintageArchive.VintageArchiveDescription}" BackgroundClickedCommand="{Binding VintageArchive.CancelVintageArchive}" OnChampagneClicked="Handle_OnVintageArchiveClicked" IsOutOfServiceTextVisible="{Binding VintageArchive.IsVintageArchiveOutOfServiceTextVisible}" ItemSource="{Binding VintageArchive.ItemSource}" IsVisible="false" IsVisibleWithAnimation="{Binding VintageArchive.VintageArchiveIsVisible}">
+            </CustomLayouts:VintageArchive>
+            <!--<CustomLayouts:ContentBackground BindingContext="{Binding BrandCellar}" NavLeftIcon="BackArrowIcon" NavTitle="{Binding Title}" ScrolledTitle="{Binding Title}" HeaderImg="{Binding HeaderImgUrl}" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked">
+                <CustomLayouts:ContentBackground.AddContent>
+                    <StackLayout>
+                        <CustomLayouts:BrandCellarSectionController OnChampagneClicked="Handle_OnChampagneClicked" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingCellar, Converter={StaticResource InverseBool}}" ItemSource="{Binding Source={x:Reference Control}, Path=BindingContext.BrandCellar.sections}">
+                        </CustomLayouts:BrandCellarSectionController>
+                        <ActivityIndicator IsRunning="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingCellar}" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingCellar}" Color="LightGray" />
+                    </StackLayout>
+                </CustomLayouts:ContentBackground.AddContent>
+            </CustomLayouts:ContentBackground>
+            <CustomLayouts:VintageArchive Title="{Binding VintageArchiveTitle}" Description="{Binding VintageArchiveDescription}" IsOutOfServiceTextVisible="{Binding IsVintageArchiveOutOfServiceTextVisible}" OnBackgroundClicked="Handle_OnBackgroundClicked" OnChampagneClicked="Handle_OnVintageArchiveChampagneClicked" IsVisible="false" IsVisibleWithAnimation="{Binding ShouldShowVintageArchive}" ItemSource="{Binding VintageArchive}">
+            </CustomLayouts:VintageArchive>-->
+        </Grid>
+        <!--<CustomLayouts:ReconnectView IsNavigationVisible="true" OnNavigateBack="Handle_OnLeftNavIconClicked" OnTryAgain="Handle_OnTryAgain" IsOutOfService="{Binding IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfService}">
+            <CustomLayouts:ReconnectView.AddContent>
+                <Grid>
+                    <CustomLayouts:ContentBackground BindingContext="{Binding BrandCellar}" NavLeftIcon="BackArrowIcon" NavTitle="{Binding Title}" ScrolledTitle="{Binding Title}" HeaderImg="{Binding HeaderImgUrl}" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked">
+                        <CustomLayouts:ContentBackground.AddContent>
+                            <StackLayout>
+                                <CustomLayouts:BrandCellarSectionController OnChampagneClicked="Handle_OnChampagneClicked" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingCellar, Converter={StaticResource InverseBool}}" ItemSource="{Binding Source={x:Reference Control}, Path=BindingContext.BrandCellar.sections}">
+                                </CustomLayouts:BrandCellarSectionController>
+                                <ActivityIndicator IsRunning="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingCellar}" IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.IsDownloadingCellar}" Color="LightGray" />
+                            </StackLayout>
+                        </CustomLayouts:ContentBackground.AddContent>
+                    </CustomLayouts:ContentBackground>
+                    <CustomLayouts:VintageArchive Title="{Binding VintageArchiveTitle}" Description="{Binding VintageArchiveDescription}" IsOutOfServiceTextVisible="{Binding IsVintageArchiveOutOfServiceTextVisible}" OnBackgroundClicked="Handle_OnBackgroundClicked" OnChampagneClicked="Handle_OnVintageArchiveChampagneClicked" IsVisible="false" IsVisibleWithAnimation="{Binding ShouldShowVintageArchive}" ItemSource="{Binding VintageArchive}">
+                    </CustomLayouts:VintageArchive>
+                </Grid>
+            </CustomLayouts:ReconnectView.AddContent>
+        </CustomLayouts:ReconnectView>-->
+    </d:BaseContentPage.PageContent>
+</d:BaseContentPage>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Color="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.GridTextFrame">
+    <ContentView.Content>
+        <Frame CornerRadius="0" Padding="10" BackgroundColor="{StaticResource Key=Charcoal}">
+            <Label Text="{Binding ContentText, Source={x:Reference Control}}" TextColor="White" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+        </Frame>
+    </ContentView.Content>
+</ContentView>

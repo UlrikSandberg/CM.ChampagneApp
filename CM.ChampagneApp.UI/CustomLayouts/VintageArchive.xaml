@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="vintageArchive" xmlns:Fonts="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Lists="clr-namespace:CM.ChampagneApp.UI.Elements.Lists" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.VintageArchive">
+    <ContentView.Content>
+        <Grid BackgroundColor="#AA000000">
+            <Button Clicked="Handle_Clicked">
+            </Button>
+            <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center" Spacing="30">
+                <StackLayout>
+                    <Label Text="{Binding Title, Source={x:Reference vintageArchive}}" TextColor="White" FontSize="22" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center" />
+                    <Label Text="{Binding Description, Source={x:Reference vintageArchive}}" TextColor="White" FontSize="14" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center"/>
+                    <StackLayout Padding="0,5,0,0" x:Name="LoadingIndicator" IsVisible="true">
+                        <ActivityIndicator x:Name="Indicator"  IsVisible="true" IsRunning="true" Color="LightGray"/>
+                        <Image IsVisible="{Binding IsOutOfServiceTextVisible, Source={x:Reference vintageArchive}}" HeightRequest="15" WidthRequest="15" Source="SignUpValidationError.png"/>
+                    </StackLayout>
+                    <Label IsVisible="{Binding IsOutOfServiceTextVisible, Source={x:Reference vintageArchive}}" Text="Is out of service... Try reconnect." TextColor="White" FontSize="14" FontFamily="{StaticResource Key=HeaderFont}" HorizontalOptions="Center"/>
+                  </StackLayout>
+                <ScrollView Padding="20,0,0,0" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout x:Name="Archive" Padding="0,0,0,20" Orientation="Horizontal" Spacing="10">
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

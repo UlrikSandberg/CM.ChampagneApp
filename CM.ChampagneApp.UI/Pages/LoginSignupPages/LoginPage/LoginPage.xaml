@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns:Headers="clr-namespace:CM.ChampagneApp.UI.Elements.Headers" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:RoundBtn="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Btns="clr-namespace:CM.ChampagneApp.UI.Elements.Buttons" xmlns:Typography="clr-namespace:CM.ChampagneApp.UI.Elements.Typography" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CM.ChampagneApp.UI.Pages.LoginSignupPages.LoginPage.LoginPage">
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="LoginBackground" Aspect="AspectFill" />
+            <Grid>
+                <Navigation:DefaultNavigationBar Title="Login" VerticalOptions="Start" OnLeftNavIconClicked="Handle_OnLeftNavIconClicked" LeftIcon="BackArrowIcon">
+                </Navigation:DefaultNavigationBar>
+                    <StackLayout Spacing="15" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Typography:SignUpEntryField Text="{Binding Email}" Keyboard="Email" Margin="60,0,60,0" Title="EMAIL" OnEntryFieldCompleted="Handle_OnEmailCompleted">
+                        </Typography:SignUpEntryField>
+                        <Typography:SignUpEntryField IsPassword="true" Margin="60,0,60,0" Title="PASSWORD" OnEntryFieldCompleted="Handle_OnPasswordCompleted">
+                        </Typography:SignUpEntryField>
+                        <Button Text="Forgot Password?" Clicked="Handle_ForgotPasswordClicked" TextColor="White" FontAttributes="Bold" FontSize="11" HorizontalOptions="End" Margin="0,0,60,0" />
+                        <RoundBtn:RoundButtomMedium HasShadow="true" Text="                 LOGIN                 " OnClicked="Handle_LoginClicked" Background="{StaticResource Key=DarkGold}">
+                        </RoundBtn:RoundButtomMedium>
+                        <Headers:H2 Title="OR">
+                        </Headers:H2>
+                        <Button Margin="0,-15,0,0" Text="Dont have an account? Sign Up." Clicked="Handle_NoAccountSignUpClicked" TextColor="White" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center" />
+                    </StackLayout>
+
+            </Grid>
+            <Assets:ActivityIndicatorWithSuccesBox OnDidDisappear="Handle_OnDidDisappear" Text="Signing in..." IsDoneUploadingWithError="{Binding IsDoneLoadingWithError}" IsDoneUploadingWithSucces="{Binding IsDoneLoadingWithSucces}" IsVisible="{Binding IsLoadingIndicatorVisible}" IsLoading="{Binding IsLoading}"></Assets:ActivityIndicatorWithSuccesBox>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

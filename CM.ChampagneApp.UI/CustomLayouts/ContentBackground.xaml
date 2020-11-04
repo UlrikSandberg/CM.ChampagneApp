@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:CustomScrollView="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" x:Name="Control" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.CustomLayouts.ContentBackground" xmlns:res="clr-namespace:CM.ChampagneApp.UI.Resources">
+    <ContentView.Content>
+        <Grid>
+            <CustomScrollView:CustomScrollView x:Name="ContentScrollView" Scrolled="Handle_Scrolled" Grid.Row="0" Grid.Column="0">
+                <StackLayout>
+                    <RelativeLayout Padding="0" BackgroundColor="Teal" VerticalOptions="Start">
+                        <Grid BackgroundColor="Transparent" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.6}">
+                            <ffimageloading:CachedImage x:Name="ChampagneProfileHeader" Source="{Binding HeaderImg, Source={x:Reference Control}}" BackgroundColor="{StaticResource Key=Charcoal}" Aspect="AspectFill" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.6}" ErrorPlaceholder="PlaceholderCover.jpg" LoadingPlaceholder="PlaceholderCover.jpg">
+                                
+                            </ffimageloading:CachedImage>
+                                                       
+<!--                                <Image x:Name="ChampagneProfileHeader" Source="{Binding HeaderImg, Source={x:Reference ContentBackground}}" BackgroundColor="{StaticResource Key=Charcoal}" Aspect="AspectFill" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.6}"/>-->
+                            <Frame x:Name="ChampagneprofileHeaderOverlay" Padding="0" BackgroundColor="{StaticResource Key=TransparentColor}" Opacity="{Binding CoverImageOpacity, Source={x:Reference Control}}"/>
+
+                        </Grid>
+                    </RelativeLayout>
+                    <Frame HasShadow="false" Padding="20" Margin="0,-25,0,0" CornerRadius="25" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Key=Charcoal}">
+                        <ContentView Margin="0,0,0,0" VerticalOptions="StartAndExpand" BackgroundColor="Transparent" x:Name="contentPresenter">
+                            <!--When this control is consumed elsewhere. The Custom ContentBackground.content goes into here-->
+                        </ContentView>
+                    </Frame>
+                </StackLayout>
+            </CustomScrollView:CustomScrollView>
+            <Navigation:DefaultNavigationBar IsBadgeVisible="{Binding IsBadgeVisible, Source={x:Reference Control}}" x:Name="NavBar" OnLeftNavIconClicked="Handle_OnLeftIconClicked" OnNavTitleClicked="Handle_OnTitleClicked" OnRightNavIconClicked="Handle_OnRightIconClicked" RightIcon="{Binding NavRightIcon, Source={x:Reference Control}}" TrueValueImg="{Binding TrueValueImg, Source={x:Reference Control}}" FalseValueImg="{Binding FalseValueImg, Source={x:Reference Control}}" IsToggle="{Binding IsRightIconToggle, Source={x:Reference Control}}" Toggle="{Binding Toggle, Source={x:Reference Control}}" LeftIcon="{Binding NavLeftIcon, Source={x:Reference Control}}" SubTitle="{Binding NavSubTitle, Source={x:Reference Control}}" Title="{Binding NavTitle, Source={x:Reference Control}}" VerticalOptions="Start"></Navigation:DefaultNavigationBar>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

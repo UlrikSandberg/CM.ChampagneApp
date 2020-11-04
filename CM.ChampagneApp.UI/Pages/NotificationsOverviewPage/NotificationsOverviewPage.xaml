@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage x:Name="Control" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:Assets="clr-namespace:CM.ChampagneApp.UI.Elements.Assets" xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:Resources="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns:Cards="clr-namespace:CM.ChampagneApp.UI.Elements.Cards" xmlns:CustomLayouts="clr-namespace:CM.ChampagneApp.UI.CustomLayouts" xmlns:Navigation="clr-namespace:CM.ChampagneApp.UI.Elements.Navigation" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CM.ChampagneApp.UI.Pages.NotificationsOverviewPage.NotificationsOverviewPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <StackLayout Spacing="0" IsVisible="{Binding IsNotificationsReminderVisible, Converter={StaticResource InverseBool}}">
+                <Navigation:DefaultNavigationBar BackgroundColor="{StaticResource Key=DenimBlack}" Title="Notifications" />
+                <CustomLayouts:ReconnectView Reconnect="{Binding Reconnect}" IsOutOfService="{Binding IsOutOfService}" IsOutOfServiceHelper="{Binding IsOutOfService}">
+                    <CustomLayouts:ReconnectView.AddContent>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Grid IsVisible="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager.IsRefreshing}" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Frame Padding="0,-80,0,-80" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <forms:AnimationView HeightRequest="200" WidthRequest="500" x:Name="CheckMarkAnimation2" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+                                    </forms:AnimationView>
+                                </Frame>
+                            </Grid>
+                            <ListView IsPullToRefreshEnabled="true" RefreshCommand="{Binding Refresh}" IsRefreshing="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager.IsRefreshing}" ItemAppearing="Handle_ItemAppearing" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" BackgroundColor="Transparent" CachingStrategy="RecycleElement" ItemsSource="{Binding Notifications}">
+                                <ListView.Header>
+                                </ListView.Header>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Cards:NotificationCard>
+                                            </Cards:NotificationCard>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.Footer>
+                                    <StackLayout Padding="0,10,0,5" Spacing="0">
+                                        <Grid IsVisible="{Binding IsLoadingEntities}" BindingContext="{Binding Source={x:Reference Control}, Path=BindingContext.PageManager}" x:Name="FooterLoadingAnimation" Margin="0,0,0,0" Padding="0,-100,0,-100">
+                                            <Frame HeightRequest="200">
+                                                <forms:AnimationView HeightRequest="200" WidthRequest="500" Animation="RefreshAnimationShattered.json" Loop="true" AutoPlay="true">
+                                                </forms:AnimationView>
+                                            </Frame>
+                                        </Grid>
+                                        <Assets:CircleImage Padding="0,30,0,30" HorizontalOptions="Center" VerticalOptions="Center" Diameter="50" HeightRequest="100" WidthRequest="100" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" Shadow="true"
+                                            Source="SquareLogo.png">
+                                        </Assets:CircleImage>
+                                    </StackLayout>
+                                </ListView.Footer>
+                            </ListView>
+                        </StackLayout>
+                    </CustomLayouts:ReconnectView.AddContent>
+                </CustomLayouts:ReconnectView>
+            </StackLayout>
+            <CustomLayouts:NotificationsReminder x:Name="NotificationsReminder" AllowNotificationsCommand="{Binding NotificationsNotNow}" NotNowCommand="{Binding AllowNotifications}" PrivacyPolicyCommand="{Binding PrivacyPolicy}" IsVisible="{Binding IsNotificationsReminderVisible}" Padding="20,0,20,0" BackgroundColor="{StaticResource Key=Charcoal}">
+            </CustomLayouts:NotificationsReminder>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

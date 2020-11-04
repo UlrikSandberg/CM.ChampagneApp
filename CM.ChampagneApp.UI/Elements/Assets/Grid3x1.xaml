@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="Control" xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Assets.Grid3x1">
+    <ContentView.Content>
+        <Grid>
+            <Frame HasShadow="true" BackgroundColor="{StaticResource Key=Charcoal}" Padding="0,0,0,0" Margin="10,0,10,0">
+                
+            </Frame>
+        <Grid BackgroundColor="{StaticResource Key=DarkGold}" RowSpacing="1" ColumnSpacing="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+            <Frame Margin="0,1,0,1" CornerRadius="0" Padding="5" BackgroundColor="{StaticResource Key=Charcoal}" Grid.Row="0" Grid.Column="0">
+                <StackLayout Spacing="2">
+                    <Label Text="{Binding Field1x1Header, Source={x:Reference Control}}" TextColor="White" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Field1x1, Source={x:Reference Control}}" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Grid.Column="0" Clicked="Handle_ClickedField1x1"/>
+            <Frame Margin="0,1,0,1" CornerRadius="0" Padding="5" BackgroundColor="{StaticResource Key=Charcoal}" Grid.Row="0" Grid.Column="1">
+                <StackLayout Spacing="2">
+                    <Label Text="{Binding Field1x2Header, Source={x:Reference Control}}" TextColor="White" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Field1x2, Source={x:Reference Control}}" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Grid.Column="1" Clicked="Handle_ClickedField1x2"/>
+            <Frame Margin="0,1,0,1" CornerRadius="0" Padding="5" BackgroundColor="{StaticResource Key=Charcoal}" Grid.Row="0" Grid.Column="2">
+                <StackLayout Spacing="2">
+                    <Label Text="{Binding Field1x3Header, Source={x:Reference Control}}" TextColor="White" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Field1x3, Source={x:Reference Control}}" TextColor="White" FontSize="11" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Button Grid.Row="0" Grid.Column="2" Clicked="Handle_ClickedField1x3"/>
+        </Grid>
+            
+       </Grid>
+    </ContentView.Content>
+</ContentView>

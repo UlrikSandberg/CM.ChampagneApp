@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns:Colors="clr-namespace:CM.ChampagneApp.UI.Resources"  xmlns:ValueConverters="clr-namespace:CM.ChampagneApp.UI.Resources.ValueConverters" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:effects="clr-namespace:CM.ChampagneApp.UI.Resources.Effects" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CM.ChampagneApp.UI.Elements.Cards.CommentCard">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ValueConverters:BoolToStringConverter TrueValue="HeartGoldIcon2x.png" FalseValue="HeartGrayIcon.png" x:Key="LikeImage" />
+            <ValueConverters:InverseBoolConverter TrueValue="false" FalseValue="true" x:Key="InverseBool" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <Grid x:Name="ReviewContent" IsEnabled="{Binding IsEnabled}" ColumnSpacing="10" Padding="20,20,10,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="85*" />
+                    <ColumnDefinition Width="15*" />
+                </Grid.ColumnDefinitions>
+                <Frame Padding="0" x:Name="ProfileImageContainer" IsClippedToBounds="true" VerticalOptions="Start">
+                    <ffimageloading:CachedImage x:Name="ProfileImage" PropertyChanged="Handle_PropertyChanged" VerticalOptions="Start" Source="{Binding AuthorProfileImgUrl}" HeightRequest="25" WidthRequest="25" />
+                </Frame>
+                <StackLayout Spacing="10" Grid.Row="0" Grid.Column="1">
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                        <Button Clicked="Handle_ProfileNameClicked" x:Name="Username" Text="{Binding AuthorName}" Margin="0,-15,0,-15" TextColor="White" FontSize="10" />
+                        <Image Source="Oval" HeightRequest="6" />
+                        <Label Text="{Binding CommentDateStringRepresentation}" TextColor="White" FontSize="10" />
+                    </StackLayout>
+                    <Label x:Name="ReviewBody" Text="{Binding Comment}" TextColor="White" FontSize="10" />
+                </StackLayout>
+                <Grid Grid.Column="2" HeightRequest="0" Padding="0,0,20,0">
+                    <StackLayout VerticalOptions="Start" Orientation="Horizontal">
+                        <Grid>
+                            <Image VerticalOptions="Start" Source="{Binding IsLikedByRequester, Converter={StaticResource LikeImage}}" />
+                            <Button x:Name="LikeBtn" Clicked="Handle_LikeComment" PropertyChanged="Handle_PropertyChangedLikeButton" />
+                        </Grid>
+                        <Label Text="{Binding NumberOfLikes}" TextColor="White" FontSize="10" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+            <Frame CornerRadius="0" Margin="2" Padding="0" IsVisible="{Binding IsEnabled, Converter={StaticResource InverseBool}}" BackgroundColor="Transparent">
+                <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" IsVisible="true" IsRunning="true" Color="White">
+                </ActivityIndicator>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
